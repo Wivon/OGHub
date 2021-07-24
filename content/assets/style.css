@@ -1,0 +1,72 @@
+/* main */
+
+@import url(https://wivon-hub.tk/fonts/samsungSharp.css);
+body {
+    background: #1f1f1f;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'samsung_sharp_sansbold', 'Helvetica';
+}
+
+/* title */
+
+h1 {
+    margin-top: 50px;
+    text-align: center;
+    color: #f1f1f1;
+}
+
+/* titleBar */
+
+.titleBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    display: flex;
+    justify-content: right;
+    flex-direction: row;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-app-region: drag;
+}
+
+.titleBar .TitleBarActionButton {
+    background: tomato;
+    font-weight: 300;
+    font-size: 15px;
+    color: #1f1f1f;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    -webkit-app-region: none;
+}
+
+.titleBar .minimizeBtn {
+    color: #fff;
+    background: transparent;
+}
+
+.titleBar .minimizeBtn:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+#notification {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OG Hub</title>
+
+    <!-- meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/app.js" defer></script>
+</head>
+
+<body>
+
+    <div class="titleBar">
+        <button onclick="window.close()" class="closeBtn TitleBarActionButton">X</button>
+        <button onclick="window.minimize()" class="minimizeBtn TitleBarActionButton">_</button>
+    </div>
+
+    <h1>OG Hub</h1>
+
+    <div id="notification" class="hidden">
+        <p id="message"></p>
+        <button id="close-button" onClick="closeNotification()">
+            Close
+        </button>
+        <button id="restart-button" onClick="restartApp()" class="hidden">
+            Restart
+        </button>
+    </div>
+
+</body>
+
+</html>
