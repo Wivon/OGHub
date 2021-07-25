@@ -22,18 +22,15 @@ function createWindow() {
     mainWindow = null;
   });
 
-  // ipc.on('IpcMinimize', () => {
-  //   console.log('window minimized')
-  //   mainWindow.minimize();
-  // })
-
-  // ipc.on('openDeveloperTools', () => {
-  //   console.log('opening developer tools')
-  //   mainWindow.webContents.openDevTools()
-  // })
   mainWindow.once('ready-to-show', () => {
     autoUpdater.checkForUpdatesAndNotify();
   });
+
+  ipcMain.on('openDevTools', () => {
+    console.log('opening developer tools')
+    mainWindow.webContents.openDevTools()
+  })
+
 }
 
 app.on('ready', () => {
@@ -68,4 +65,8 @@ autoUpdater.on('update-downloaded', () => {
 
 ipcMain.on('restart_app', () => {
   autoUpdater.quitAndInstall();
+});
+
+ipcMain.on('minimizeApp', () => {
+  console.log('eofzhdizj')
 });

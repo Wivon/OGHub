@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
-    <script src="assets/app.js" defer></script>
 </head>
 
 <body>
@@ -21,8 +20,19 @@
 
     <h1>OG Hub</h1>
 
+    <div class="container">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </div>
+
     <div id="notification" class="hidden">
-        <p id="message"></p>
+        <p id="message">loading...</p>
         <button id="close-button" onClick="closeNotification()">
             Close
         </button>
@@ -30,6 +40,47 @@
             Restart
         </button>
     </div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        let minimizeBtn = document.querySelector('.minimizeBtn');
+
+        minimizeBtn.addEventListener('click', () => {
+            ipcRenderer.send('minimizeApp');
+        })
+
+        document.body.onkeydown = (key) => {
+            if (key.keyCode == "123") {
+                ipcRenderer.send('openDevTools');
+            }
+        }
+
+        // update notification
+        const notification = document.getElementById('notification');
+        const message = document.getElementById('message');
+        const restartButton = document.getElementById('restart-button');
+
+        ipcRenderer.on('update_available', () => {
+            ipcRenderer.removeAllListeners('update_available');
+            message.innerText = 'A new update is available. Downloading now...';
+            notification.classList.remove('hidden');
+        });
+
+        ipcRenderer.on('update_downloaded', () => {
+            ipcRenderer.removeAllListeners('update_downloaded');
+            message.innerText = 'Update Downloaded. It will be installed on restart. Restart now?';
+            restartButton.classList.remove('hidden');
+            notification.classList.remove('hidden');
+        });
+
+        function closeNotification() {
+            notification.classList.add('hidden');
+        }
+        function restartApp() {
+            ipcRenderer.send('restart_app');
+        }
+    </script>
 
 </body>
 
