@@ -1,0 +1,23 @@
+# OGHub
+Free up **SPACE** in **your taskbar**
+
+
+## installation guide
+- go to [releases](https://github.com/Wivon/OGHub/releases)
+
+- download the latest version (OG-Hub-Setup-X.X.X.exe)
+
+- run the installer
+
+- add OG Hub to your taskbar and launch it
+
+**features:**
+
+- add your programs in OG Hub
+- customize OG Hub
+- let it run in the background
+- OG Hub updates automatically, just restart the app when prompted
+
+![https://github.com/Wivon/OGHub/releases](src/img/logoX512.png)
+
+## ⚠️ OG Hub is in development ⚠️
