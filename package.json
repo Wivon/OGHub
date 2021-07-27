@@ -12,11 +12,11 @@
   "build": {
     "appId": "og-hub",
     "win": {
-      "icon": "src/img/logoX512.png"
+      "icon": "src/img/logoX512.ico"
     },
     "nsis": {
-      "installerIcon": "src/img/setup_logoX512.png",
-      "uninstallerIcon": "src/img/uninstall_logoX512.png",
+      "installerIcon": "src/img/setup_logoX512.ico",
+      "uninstallerIcon": "src/img/uninstall_logoX512.ico",
       "uninstallDisplayName": "uninstall OG Hub",
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
