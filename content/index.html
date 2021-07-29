@@ -14,8 +14,8 @@
 <body>
 
     <div class="titleBar">
-        <button onclick="window.close()" class="closeBtn TitleBarActionButton">X</button>
-        <button onclick="window.minimize()" class="minimizeBtn TitleBarActionButton">_</button>
+        <button class="closeBtn TitleBarActionButton">X</button>
+        <button class="minimizeBtn TitleBarActionButton">_</button>
     </div>
 
     <h1>OG Hub</h1>
@@ -45,9 +45,14 @@
         const { ipcRenderer } = require('electron');
 
         let minimizeBtn = document.querySelector('.minimizeBtn');
+        let closeBtn = document.querySelector('.closeBtn');
 
         minimizeBtn.addEventListener('click', () => {
             ipcRenderer.send('minimizeApp');
+        })
+
+        closeBtn.addEventListener('click', () => {
+            ipcRenderer.send('closeApp');
         })
 
         document.body.onkeydown = (key) => {

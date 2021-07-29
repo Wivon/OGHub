@@ -11,9 +11,9 @@ function createWindow() {
     frame: false,
     resizable: false,
     webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
-      devTools: true
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
     },
   });
 
@@ -26,15 +26,14 @@ function createWindow() {
     autoUpdater.checkForUpdatesAndNotify();
   });
 
-  ipcMain.on('openDevTools', () => {
-    console.log('opening developer tools')
-    mainWindow.webContents.openDevTools()
-  })
 
 }
 
 app.on('ready', () => {
   createWindow();
+
+  // open dev tools
+  mainWindow.webContents.openDevTools()
 });
 
 app.on('window-all-closed', function () {
@@ -53,8 +52,8 @@ ipcMain.on('app_version', (event) => {
   event.sender.send('app_version', { version: app.getVersion() });
 });
 
-// auto updater
 
+// auto updater
 autoUpdater.on('update-available', () => {
   mainWindow.webContents.send('update_available');
 });
@@ -67,6 +66,41 @@ ipcMain.on('restart_app', () => {
   autoUpdater.quitAndInstall();
 });
 
+// main window ipc functions
+ipcMain.on('openDevTools', () => {
+  console.log('opening dev tools')
+  mainWindow.webContents.openDevTools()
+})
+
 ipcMain.on('minimizeApp', () => {
-  console.log('eofzhdizj')
+  mainWindow.minimize()
+  console.log('app minimized')
 });
+
+ipcMain.on('closeApp', () => {
+  mainWindow.hide()
+});
+
+// tray icon
+const { Menu, Tray } = require('electron')
+
+let tray = null
+
+app.whenReady().then(() => {
+  tray = new Tray('src/img/logoX512.png')
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'Quit',
+      click() { app.quit(); }
+    }
+  ])
+  tray.setToolTip('OG Hub is running in background')
+  tray.setContextMenu(contextMenu)
+  tray.on('click', function () {
+    mainWindow.show()
+  })
+})
+
+if (app.requestSingleInstanceLock() == false) {
+
+}
