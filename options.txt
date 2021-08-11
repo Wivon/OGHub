@@ -1,0 +1,13 @@
+autoUpdate=true
+backgroundRunning=true
+backgroundMode=backgroundColor
+backgroundColor=#1f1f1f
+UseOnlineApp=false
+startAtLaunch=false
+runAsAdmin=false
+dragAndDrop=true
+LogActions=true
+keyCodes.DevTools.open=123
+channel = beta
+allowToChangeInstallationDirectory = true
+oneClick = false

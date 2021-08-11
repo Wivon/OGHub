@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, ipcRenderer } = require('electron');
 const ipc = ipcRenderer
 const { autoUpdater } = require('electron-updater');
+const path = require('path');
 
 let mainWindow;
 
@@ -26,14 +27,10 @@ function createWindow() {
     autoUpdater.checkForUpdatesAndNotify();
   });
 
-
 }
 
 app.on('ready', () => {
-  createWindow();
-
-  // open dev tools
-  mainWindow.webContents.openDevTools()
+  createWindow()
 });
 
 app.on('window-all-closed', function () {
@@ -52,7 +49,10 @@ ipcMain.on('app_version', (event) => {
   event.sender.send('app_version', { version: app.getVersion() });
 });
 
-
+function restart () {
+  app.relaunch()
+  app.exit()
+}
 // auto updater
 autoUpdater.on('update-available', () => {
   mainWindow.webContents.send('update_available');
@@ -77,8 +77,16 @@ ipcMain.on('minimizeApp', () => {
   console.log('app minimized')
 });
 
+ipcMain.on('quitApp', () => {
+  app.quit()
+});
+
 ipcMain.on('closeApp', () => {
   mainWindow.hide()
+});
+
+ipcMain.on('restart', () => {
+  restart()
 });
 
 // tray icon
@@ -87,8 +95,26 @@ const { Menu, Tray } = require('electron')
 let tray = null
 
 app.whenReady().then(() => {
-  tray = new Tray('src/img/logoX512.png')
+  
+  const trayIcnName = 'logoX512.png';
+  const trayIcnPath = process.env.WEBPACK_DEV_SERVER_URL
+  ? path.join(__dirname, `/app.asar/src/img/${trayIcnName}`)
+  : path.join(__dirname, `/src/img/${trayIcnName}`);
+
+  tray = new Tray(trayIcnPath)
   const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'restart',
+      click() { restart() }
+    },
+    {
+      label: 'Check for Updates',
+      click() { autoUpdater.checkForUpdatesAndNotify(); }
+    },
+    {
+      label: 'Dev tools',
+      click() { mainWindow.webContents.openDevTools() }
+    },
     {
       label: 'Quit',
       click() { app.quit(); }
@@ -101,6 +127,6 @@ app.whenReady().then(() => {
   })
 })
 
-if (app.requestSingleInstanceLock() == false) {
+// if (app.requestSingleInstanceLock() == false) {
 
-}
+// }
