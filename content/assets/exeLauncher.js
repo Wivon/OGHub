@@ -1,0 +1,1 @@
+ipcRenderer.send('launchExe', 'C:/Users/briss/AppData/Local/Programs/OG Hub/OG Hub.exe')
