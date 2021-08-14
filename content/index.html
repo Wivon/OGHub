@@ -9,79 +9,110 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
+
+    <!-- js -->
+    <script src="assets/updater.js" defer></script>
+    <script src="assets/app.js" defer></script>
+    <script src="assets/Sortable.min.js" defer></script>
+    <script src="assets/exeLauncher.js" defer></script>
+    <script src="assets/appImporter.js" defer></script>
+    <script src="assets/settings.js" defer></script>
 </head>
 
 <body>
 
     <div class="titleBar">
-        <button onclick="window.close()" class="closeBtn TitleBarActionButton">X</button>
-        <button onclick="window.minimize()" class="minimizeBtn TitleBarActionButton">_</button>
+        <span class="title">OG Hub</span>
+        <div class="actions">
+            <button class="minimizeBtn TitleBarActionButton">_</button>
+            <button class="closeBtn TitleBarActionButton">X</button>
+        </div>
     </div>
 
-    <h1>OG Hub</h1>
+    <header>
+        <div tabindex="1" class="settingsBtn headerBtn">
+            <!-- open settings -->
+        </div>
+        <h1>OG Hub</h1>
+        <div tabindex="2" class="AccountBtn headerBtn">
+            <!-- open account settings -->
+        </div>
+    </header>
 
-    <div class="container">
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+    <div class="container pannel active">
+        <div class="card">
+            <div class="handle"></div>
+            <img src="img/logoX512.png" alt="app icon" class="icon">
+            <h3>App name</h3>
+        </div>
+        <div class="card">
+            <div class="handle"></div>
+            <img src="img/logoX512.png" alt="app icon" class="icon">
+            <h3>App name 2</h3>
+        </div>
+        <div class="card">
+            <div class="handle"></div>
+            <img src="img/logoX512.png" alt="app icon" class="icon">
+            <h3>App name 3</h3>
+        </div>
+        <div class="card">
+            <div class="handle"></div>
+            <img src="img/logoX512.png" alt="app icon" class="icon">
+            <h3>App name 4</h3>
+        </div>
+        <div class="card">
+            <div class="handle"></div>
+            <img src="img/logoX512.png" alt="app icon" class="icon">
+            <h3>App name 5</h3>
+        </div>
+        <div class="card">
+            <div class="handle"></div>
+            <img src="img/logoX512.png" alt="app icon" class="icon">
+            <h3>App name 6</h3>
+        </div>
+
     </div>
+
+    <div class="settings pannel">
+        <div class="backButton"></div> <h2 class="panTitle">Settings</h2>
+
+        <div class="parameters">
+            <div class="parameterBox" param-id="addApp">
+                <img class="parameterIcon" src="img/settings_add_icon.png">
+                <div class="paramDetails">
+                    <h2 class="parameterName">Add new app</h2>
+                    <h5 class="parameterDesc">add new app to OG Hub & customize them.</h5>
+                </div>
+            </div>
+            <div class="parameterBox" param-id="backgrndSettings">
+                <img class="parameterIcon" src="img/settings_background_icon.png">
+                <div class="paramDetails">
+                    <h2 class="parameterName">Background Settings</h2>
+                    <h5 class="parameterDesc">customize OG Hub theme, background, and behavior</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="parameterContent">
+            <h1>loading...</h1>
+        </div>
+    </div>
+
+    <div class="account pannel">
+        <h2 class="panTitle">Account Options</h2>
+    </div>
+
+    <footer><a onclick="toggleEditCards()">edit</a> - <a onclick="ipcRenderer.send('quitApp')">quit</a></footer>
 
     <div id="notification" class="hidden">
         <p id="message">loading...</p>
         <button id="close-button" onClick="closeNotification()">
-            Close
+            X
         </button>
         <button id="restart-button" onClick="restartApp()" class="hidden">
             Restart
         </button>
     </div>
-
-    <script>
-        const { ipcRenderer } = require('electron');
-
-        let minimizeBtn = document.querySelector('.minimizeBtn');
-
-        minimizeBtn.addEventListener('click', () => {
-            ipcRenderer.send('minimizeApp');
-        })
-
-        document.body.onkeydown = (key) => {
-            if (key.keyCode == "123") {
-                ipcRenderer.send('openDevTools');
-            }
-        }
-
-        // update notification
-        const notification = document.getElementById('notification');
-        const message = document.getElementById('message');
-        const restartButton = document.getElementById('restart-button');
-
-        ipcRenderer.on('update_available', () => {
-            ipcRenderer.removeAllListeners('update_available');
-            message.innerText = 'A new update is available. Downloading now...';
-            notification.classList.remove('hidden');
-        });
-
-        ipcRenderer.on('update_downloaded', () => {
-            ipcRenderer.removeAllListeners('update_downloaded');
-            message.innerText = 'Update Downloaded. It will be installed on restart. Restart now?';
-            restartButton.classList.remove('hidden');
-            notification.classList.remove('hidden');
-        });
-
-        function closeNotification() {
-            notification.classList.add('hidden');
-        }
-        function restartApp() {
-            ipcRenderer.send('restart_app');
-        }
-    </script>
-
 </body>
 
 </html>
