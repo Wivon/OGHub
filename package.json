@@ -1,7 +1,7 @@
 {
   "name": "og-hub",
   "productName": "OG Hub",
-  "version": "0.0.3",
+  "version": "0.0.8",
   "description": "An outgoing hub to free up space in the taskbar",
   "main": "main.js",
   "scripts": {
@@ -36,6 +36,7 @@
     "electron-builder": "^22.11.7"
   },
   "dependencies": {
-    "electron-updater": "^4.3.9"
+    "electron-updater": "^4.3.9",
+    "path": "^0.12.7"
   }
 }

@@ -1,0 +1,7 @@
+autoUpdate=true
+backgroundRunning=true
+backgroundMode=backgroundColor
+backgroundColor=#1f1f1f
+UseOnlineApp=false
+startWithWindows=false
+dragAndDrop=true
