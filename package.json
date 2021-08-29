@@ -2,7 +2,7 @@
   "name": "og-hub",
   "productName": "OG Hub",
   "version": "0.1.0",
-  "description": "An outgoing hub to free up space in the taskbar",
+  "description": "Free up Space in your Taskbar",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
