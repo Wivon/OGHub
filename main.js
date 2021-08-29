@@ -23,15 +23,20 @@ function createWindow() {
     mainWindow = null;
   });
 
-  mainWindow.once('ready-to-show', () => {
-    autoUpdater.checkForUpdatesAndNotify();
-  });
-
 }
+
+ipcMain.on('checkForUpdates', () => {
+  autoUpdater.checkForUpdatesAndNotify();
+})
 
 app.on('ready', () => {
   createWindow()
+  console.log(`app version ${app.getVersion()}`)
 });
+
+ipcMain.handle('og-hub-version', (event, arg) => {
+  return app.getVersion();
+})
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
@@ -49,7 +54,7 @@ ipcMain.on('app_version', (event) => {
   event.sender.send('app_version', { version: app.getVersion() });
 });
 
-function restart () {
+function restart() {
   app.relaunch()
   app.exit()
 }
@@ -95,11 +100,11 @@ const { Menu, Tray } = require('electron')
 let tray = null
 
 app.whenReady().then(() => {
-  
+
   const trayIcnName = 'logoX512.png';
   const trayIcnPath = process.env.WEBPACK_DEV_SERVER_URL
-  ? path.join(__dirname, `/app.asar/src/img/${trayIcnName}`)
-  : path.join(__dirname, `/src/img/${trayIcnName}`);
+    ? path.join(__dirname, `/app.asar/src/img/${trayIcnName}`)
+    : path.join(__dirname, `/src/img/${trayIcnName}`);
 
   tray = new Tray(trayIcnPath)
   const contextMenu = Menu.buildFromTemplate([
@@ -126,6 +131,33 @@ app.whenReady().then(() => {
     mainWindow.show()
   })
 })
+
+const { dialog } = require('electron')
+
+// exe importer
+ipcMain.handle('select-exe', (event, arg) => {
+  console.log('opening file explorer')
+  return dialog.showOpenDialog({ properties: ['openFile'] })
+})
+
+ipcMain.on('save-new-card', (event, msg) => {
+  console.log(msg)
+})
+
+// exe launcher
+const child = require('child_process').execFile;
+
+ipcMain.on('launch-exe', (event, exePath) => {
+  child(exePath, function (err, data) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+
+    console.log(data.toString());
+  });
+})
+
 
 // if (app.requestSingleInstanceLock() == false) {
 

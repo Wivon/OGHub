@@ -14,6 +14,9 @@
     <script src="assets/updater.js" defer></script>
     <script src="assets/app.js" defer></script>
     <script src="assets/Sortable.min.js" defer></script>
+    <script src="assets/exeLauncher.js" defer></script>
+    <script src="assets/appImporter.js" defer></script>
+    <script src="assets/settings.js" defer></script>
 </head>
 
 <body>
@@ -28,38 +31,94 @@
 
     <header>
         <div tabindex="1" class="settingsBtn headerBtn">
-
+            <!-- open settings -->
         </div>
         <h1>OG Hub</h1>
         <div tabindex="2" class="AccountBtn headerBtn">
-
+            <!-- open account settings -->
         </div>
     </header>
 
-    <div class="container">
-        <div class="card">
+    <div class="container pannel active">
+        <div class="card" exe-path="err666">
             <div class="handle"></div>
-            <img src="img/logoX512.png" alt="app icon" class="icon">
-            <h3>App name</h3>
-        </div>
-        <div class="card">
-            <div class="handle"></div>
-            <img src="img/logoX512.png" alt="app icon" class="icon">
-            <h3>App name 2</h3>
-        </div>
-        <div class="card">
-            <div class="handle"></div>
-            <img src="img/logoX512.png" alt="app icon" class="icon">
-            <h3>App name 3</h3>
-        </div>
-        <div class="card">
-            <div class="handle"></div>
-            <img src="img/logoX512.png" alt="app icon" class="icon">
-            <h3>App name 4</h3>
+            <img src="img/logoX1024.png" alt="app icon" class="icon">
+            <h3>OG Hub V0.1.0</h3>
         </div>
     </div>
 
-    <footer><a class="editCardsBtn">edit</a> - <a class="quitBtn">quit</a></footer>
+    <div class="settings pannel">
+        <div class="backButton"></div> <h2 class="panTitle">Settings</h2>
+
+        <div class="parameters">
+            <div class="parameterBox" param-id="addApp">
+                <img class="parameterIcon" src="img/settings_add_icon.png">
+                <div class="paramDetails">
+                    <h2 class="parameterName">Add new app</h2>
+                    <h5 class="parameterDesc">add new app to OG Hub & customize them.</h5>
+                </div>
+            </div>
+            <div class="parameterBox" param-id="backgrndSettings">
+                <img class="parameterIcon" src="img/settings_background_icon.png">
+                <div class="paramDetails">
+                    <h2 class="parameterName">Background Settings</h2>
+                    <h5 class="parameterDesc">customize OG Hub theme, background & behaviour.</h5>
+                </div>
+            </div>
+            <div class="parameterBox" param-id="updates">
+                <img class="parameterIcon" src="img/settings_update_icon.png">
+                <div class="paramDetails">
+                    <h2 class="parameterName">Updates</h2>
+                    <h5 class="parameterDesc">OG Hub updates, check for updates, restart...</h5>
+                </div>
+            </div>
+            <div class="parameterBox" param-id="shortcuts">
+                <img class="parameterIcon" src="img/settings_shortcuts_icon.png">
+                <div class="paramDetails">
+                    <h2 class="parameterName">Shortcuts</h2>
+                    <h5 class="parameterDesc">Speed up even more !</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="parameterContent">
+            <h1>loading...</h1>
+        </div>
+    </div>
+
+    <div class="account pannel">
+        <div class="backButton"></div> <h2 class="panTitle">Account Options</h2>
+
+        <div class="parameters">
+            <div class="parameterBox" param-id="signin">
+                <img class="parameterIcon" src="img/settings_signin_icon.png">
+                <div class="paramDetails">
+                    <h2 class="parameterName">Sign in</h2>
+                    <h5 class="parameterDesc">Sign in for restore data, apps & settings</h5>
+                </div>
+            </div>
+            <div class="parameterBox" param-id="signup">
+                <img class="parameterIcon" src="img/settings_signup_icon.png">
+                <div class="paramDetails">
+                    <h2 class="parameterName">Sign up</h2>
+                    <h5 class="parameterDesc">Sign in for sync data, apps & settings</h5>
+                </div>
+            </div>
+            <div class="parameterBox" param-id="logout">
+                <img class="parameterIcon" src="img/settings_logout_icon.png">
+                <div class="paramDetails">
+                    <h2 class="parameterName">Logout</h2>
+                    <h5 class="parameterDesc">Stop sync, (or reset apps, data & settings)</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="parameterContent">
+            <h1>loading...</h1>
+        </div>
+    </div>
+
+    <footer><a onclick="toggleEditCards()">edit</a> - <a onclick="ipcRenderer.send('quitApp')">quit</a></footer>
 
     <div id="notification" class="hidden">
         <p id="message">loading...</p>

@@ -1,7 +1,7 @@
 {
   "name": "og-hub",
   "productName": "OG Hub",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "An outgoing hub to free up space in the taskbar",
   "main": "main.js",
   "scripts": {
@@ -19,11 +19,12 @@
       "uninstallerIcon": "src/img/uninstall_logoX512.ico",
       "uninstallDisplayName": "uninstall OG Hub",
       "oneClick": false,
+      "shortcutName": "OG Hub",
       "allowToChangeInstallationDirectory": true
     }
   },
   "keywords": [
-    "hub"
+    "OG hub"
   ],
   "author": "Wivon Hub",
   "repository": {
@@ -37,6 +38,11 @@
   },
   "dependencies": {
     "electron-updater": "^4.3.9",
-    "path": "^0.12.7"
+    "exe-icon-extractor": "^1.0.8",
+    "icon-extractor": "^1.0.3",
+    "path": "^0.12.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "reactdom": "^2.0.0"
   }
 }
