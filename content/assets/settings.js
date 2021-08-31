@@ -10,6 +10,10 @@ let HTMLAccountParameterContent = document.querySelector('.account .parameterCon
 let AccbackButton = document.querySelector('.account .backButton')
 let AccSettingsTitle = document.querySelector('.account .panTitle')
 
+// css elements
+let root = document.documentElement
+let readroot = getComputedStyle(document.documentElement)
+
 // update check date
 var LastUpdateCheckDateObj = new Date();
 let LastUpdateCheckDate = LastUpdateCheckDateObj.toUTCString();
@@ -35,10 +39,11 @@ fetch('https://api.github.com/repos/Wivon/OGHub/releases/latest').then(response 
                 "paramContent": '<div class="addApp"><button class="selectExeBtn" onclick="SelectExecutable()">Select Executable</button><input class="shortcutNameInput" type="text" placeholder="shortcut name"></input><button class="CreateShortcutBtn" onclick="CreateShortcut()">Create Shortcut</button></div>',
                 "openWith": "settings"
             }, {
-                "paramId": "backgrndSettings",
-                "paramName": "Application background",
-                "paramContent": '<h2>Background color: </h2><input class="appBackgrndSelector" type="color" value="#1f1f1f"></input><button oncklick="changeBackgroundColor()">Apply</button',
-                "openWith": "settings"
+                "paramId": "customize",
+                "paramName": "Customization",
+                "paramContent": `<h2 onshow="setColorInputValue()">Background color: </h2><input class="appBackgrndSelector" type="color" value="${GetThemeColors()[0]}"></input><br><h2>Text color: </h2><input class="appTextColorSelector" type="color" value="${GetThemeColors()[1]}"></input><br><h2>Accent color: </h2><input class="appAccentColorSelector" type="color" value="${GetThemeColors()[2]}"></input><br><input type="checkbox" name"isLightTheme" class="isLightTheme"></input><label for="isLightTheme">Enable Light Theme</label><br><button onclick="changeBackgroundColor()">Apply</button>`,
+                "openWith": "settings",
+                "displayAction": setColorInputValue
             }, {
                 "paramId": "updates",
                 "paramName": "Updates",
@@ -86,6 +91,13 @@ parameterBoxes.forEach(paramBox => {
                     setTimeout(() => {
                         parametersBoxesBox.style.height = "0";
                     }, 190)
+
+                    if (typeof ParamContentObj.displayAction === 'undefined') {
+
+                    } else {
+                        console.log('this pannel has a displayAction, running it')
+                        ParamContentObj.displayAction()
+                    }
                 }
                 else {
                     console.log('opening ' + ParamContentObj.paramName + ' in account pannel')
@@ -168,9 +180,44 @@ function CheckForUpdatesButton() {
     }, 5000)
 }
 
+
 // backgroundColor
+
+let newBackgrndColor
+let newTextColor
+let newAccentColor
+
+function GetThemeColors() {
+    if (typeof newBackgrndColor !== 'undefined' && typeof newTextColor !== 'undefined' && typeof newAccentColor !== 'undefined') {
+        return [newBackgrndColor, newTextColor, newAccentColor]
+    }
+    else {
+        console.log('custom colors variables are not defined, displaying default')
+        return [readroot.getPropertyValue('--backgrnd-color'), readroot.getPropertyValue('--text-color'), readroot.getPropertyValue('--accent-color')]
+    }
+}
+
 function changeBackgroundColor() {
-    let newBackgrndColor = document.querySelector('.appBackgrndSelector').value
-    console.log(`updating background color to ${newBackgrndColor}`)
-    document.body.style.backgroundColor = newBackgrndColor
+    // get colors from inputs
+    newBackgrndColor = document.querySelector('.appBackgrndSelector').value
+    newTextColor = document.querySelector('.appTextColorSelector').value
+    newAccentColor = document.querySelector('.appAccentColorSelector').value
+
+    // display infos in console
+    console.info(`updating background color to ${newBackgrndColor}, updating text color to ${newTextColor}, updating accent color to ${newAccentColor}`)
+
+    // set colors variables
+    root.style.setProperty('--backgrnd-color', newBackgrndColor)
+    root.style.setProperty('--text-color', newTextColor)
+    root.style.setProperty('--accent-color', newAccentColor)
+
+    root.style.getPropertyValue
+}
+
+function setColorInputValue() {
+    console.log('setting colors input value...')
+
+    document.querySelector('.appBackgrndSelector').value = GetThemeColors()[0]
+    document.querySelector('.appTextColorSelector').value = GetThemeColors()[1]
+    document.querySelector('.appAccentColorSelector').value = GetThemeColors()[2]
 }

@@ -1,7 +1,7 @@
 {
   "name": "og-hub",
   "productName": "OG Hub",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Free up Space in your Taskbar",
   "main": "main.js",
   "scripts": {

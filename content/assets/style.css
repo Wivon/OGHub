@@ -1,9 +1,15 @@
-/* main */
-
+/* main css */
 @import url('https://wivon-hub.tk/fonts/samsungSharp.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --backgrnd-color:#1f1f1f;
+    --text-color:#f1f1f1;
+    --accent-color:#0092e6;
+}
+
 body {
-    background: #1f1f1f;
+    background: var(--backgrnd-color);
     overflow: hidden;
 }
 
@@ -12,7 +18,7 @@ body {
     margin: 0;
     box-sizing: border-box;
     font-family: 'Inter', 'Helvetica';
-    color: #f1f1f1;
+    color: var(--text-color);
     user-select: none;
 }
 
@@ -70,7 +76,7 @@ header {
 
 h1 {
     text-align: center;
-    color: #f1f1f1;
+    color: var(--text-color);
     font-family: 'samsung_sharp_sansbold', 'Helvetica';
     vertical-align: middle;
 }
@@ -118,13 +124,14 @@ header .headerBtn:active {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.3);
     -webkit-app-region: drag;
     vertical-align: middle;
 }
 
 .titleBar span.title {
-    color: #f1f1f1b0;
+    color: var(--text-color);
+    opacity: .7;
     font-size: 12px;
     vertical-align: middle;
     padding-left: 10px;
@@ -138,7 +145,7 @@ header .headerBtn:active {
     background: tomato;
     font-weight: 700;
     font-size: 15px;
-    color: #1f1f1f;
+    color: var(--backgrnd-color);
     border: none;
     width: 20px;
     height: 100%;
@@ -165,7 +172,7 @@ header .headerBtn:active {
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.6);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    color: #1f1f1f;
+    color: var(--backgrnd-color);
 }
 
 #notification:hover {
@@ -469,11 +476,11 @@ footer a:hover {
 }
 
 .parameterContent button {
-    background: rgb(0, 145, 230);
+    background: var(--accent-color);
     border-radius: 5px;
-    color: #1f1f1f;
+    color: var(--backgrnd-color);
     border: none;
-    outline-color: rgba(0, 145, 230, 0.5);
+    outline-color: var(--backgrnd-color);
     font-size: 20px;
     font-weight: 800;
     margin-top: 10px;
@@ -484,7 +491,7 @@ footer a:hover {
 }
 
 .parameterContent button:hover {
-    background: rgba(0, 146, 230, 0.8);
+    opacity: .8;
 }
 
 .parameterContent h4 {
