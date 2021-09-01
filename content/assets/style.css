@@ -1,11 +1,11 @@
 /* main css */
+
 @import url('https://wivon-hub.tk/fonts/samsungSharp.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 :root {
-    --backgrnd-color:#1f1f1f;
-    --text-color:#f1f1f1;
-    --accent-color:#0092e6;
+    --backgrnd-color: #1f1f1f;
+    --text-color: #f1f1f1;
+    --accent-color: #0092e6;
 }
 
 body {
@@ -168,19 +168,44 @@ header .headerBtn:active {
     bottom: 20px;
     left: 20px;
     width: max-content;
-    padding: 20px;
+    max-width: 250px;
+    min-width: 150px;
+    padding: 10px 20px;
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(255px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: var(--backgrnd-color);
 }
 
-#notification:hover {
-    opacity: 0.2;
+#notification #close-button {
+    background: transparent;
+    border: none;
+    color: white;
+    position: absolute;
+    right: 8px;
+    top: calc(50% - 11px);
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    transform: scale(1.5);
+    font-weight: 200;
 }
 
-#notification .close-button, .restart-button {
-    margin-top: 10px;
+#notification #restart-button {
+    background: transparent;
+    color: var(--accent-color);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#notification #restart-button:hover {
+    text-decoration: underline;
+}
+
+#notification #close-button, #restart-button {
+    margin-top: 5px;
 }
 
 .hidden {
@@ -368,7 +393,6 @@ footer a:hover {
 
 .parameterBox:hover {
     background: #f1f1f152;
-    
 }
 
 .parameterBox .paramDetails .parameterName {
@@ -386,11 +410,16 @@ footer a:hover {
     cursor: default;
 }
 
-.parameterBox .parameterIcon {
+.parameterIcon {
     filter: invert();
     width: 28px;
     height: 28px;
     margin-right: 15px;
+}
+
+.smallIcon {
+    width: 10px;
+    height: 10px;
 }
 
 .parameterBox::after {
@@ -498,8 +527,13 @@ footer a:hover {
     font-weight: 500;
 }
 
+.parameterContent h3.appVersionIndicator {
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
 .parameterContent .updateInfo {
-    margin-top: 20px;
+    margin-top: 10px;
     background: #37383b;
     border-radius: 15px;
     padding: 10px;

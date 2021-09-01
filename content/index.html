@@ -16,6 +16,7 @@
     <script src="assets/Sortable.min.js" defer></script>
     <script src="assets/exeLauncher.js" defer></script>
     <script src="assets/appImporter.js" defer></script>
+    <script src="assets/customizer.js" defer></script>
     <script src="assets/settings.js" defer></script>
 </head>
 
@@ -120,12 +121,12 @@
 
     <footer><a onclick="toggleEditCards()">edit</a> - <a onclick="ipcRenderer.send('quitApp')">quit</a></footer>
 
-    <div id="notification" class="hidden">
+    <div id="notification" class="">
         <p id="message">loading...</p>
         <button id="close-button" onClick="closeNotification()">
-            X
+            <img class="parameterIcon smallIcon" src="img/close_icon.png">
         </button>
-        <button id="restart-button" onClick="restartApp()" class="hidden">
+        <button id="restart-button" onClick="restartApp()" class="">
             Restart
         </button>
     </div>

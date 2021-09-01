@@ -47,8 +47,9 @@ fetch('https://api.github.com/repos/Wivon/OGHub/releases/latest').then(response 
             }, {
                 "paramId": "updates",
                 "paramName": "Updates",
-                "paramContent": '<div class="updateHeader"><img src="img/settings_update_icon.png"><div><h2>✔️ You are up to date</h2><h4>Last check: <span>' + LastUpdateCheckDate + '</span></h4><div class="buttons"><button class="checkBtn" onclick="CheckForUpdatesButton()">Check for Updates</button><button class="hidden restartBtn" onclick="restartApp()">restart</button></div></div></div><div class="updateInfo"><h4>Current version: ' + appVersion + ', last release changelog :</h4><br><p class="changelog">' + lastReleaseDescription + '</p></div>',
-                "openWith": "settings"
+                "paramContent": '<div class="updateHeader"><img src="img/settings_update_icon.png"><div><h2>✔️ You\'re up to date</h2><h4>Last check: <span>' + LastUpdateCheckDate + '</span></h4><div class="buttons"><button class="checkBtn" onclick="CheckForUpdatesButton()">Check for Updates</button><button class="hidden restartBtn" onclick="restartApp()">restart</button></div></div></div><h3 class="appVersionIndicator">Current version: ' + appVersion + '</h3><div class="updateInfo">Last release changelog :<br><br><p class="changelog">' + lastReleaseDescription + '</p></div>',
+                "openWith": "settings",
+                "displayAction": setUpdaterStatus
             }, {
                 "paramId": "shortcuts",
                 "paramName": "Shortcuts",
@@ -153,7 +154,7 @@ function backAccOptions() {
     console.log('closing pannel')
 }
 
-// settings functions
+// update
 function CheckForUpdatesButton() {
     console.log('checking for updates')
     // get date
@@ -177,47 +178,6 @@ function CheckForUpdatesButton() {
         document.querySelector('.parameterContent div div .checkBtn').style.pointerEvents = 'auto';
         document.querySelector('.parameterContent div div .checkBtn').innerHTML = "Check For Updates";
         console.log('check finished succefuly')
+        setUpdaterStatus()
     }, 5000)
-}
-
-
-// backgroundColor
-
-let newBackgrndColor
-let newTextColor
-let newAccentColor
-
-function GetThemeColors() {
-    if (typeof newBackgrndColor !== 'undefined' && typeof newTextColor !== 'undefined' && typeof newAccentColor !== 'undefined') {
-        return [newBackgrndColor, newTextColor, newAccentColor]
-    }
-    else {
-        console.log('custom colors variables are not defined, displaying default')
-        return [readroot.getPropertyValue('--backgrnd-color'), readroot.getPropertyValue('--text-color'), readroot.getPropertyValue('--accent-color')]
-    }
-}
-
-function changeBackgroundColor() {
-    // get colors from inputs
-    newBackgrndColor = document.querySelector('.appBackgrndSelector').value
-    newTextColor = document.querySelector('.appTextColorSelector').value
-    newAccentColor = document.querySelector('.appAccentColorSelector').value
-
-    // display infos in console
-    console.info(`updating background color to ${newBackgrndColor}, updating text color to ${newTextColor}, updating accent color to ${newAccentColor}`)
-
-    // set colors variables
-    root.style.setProperty('--backgrnd-color', newBackgrndColor)
-    root.style.setProperty('--text-color', newTextColor)
-    root.style.setProperty('--accent-color', newAccentColor)
-
-    root.style.getPropertyValue
-}
-
-function setColorInputValue() {
-    console.log('setting colors input value...')
-
-    document.querySelector('.appBackgrndSelector').value = GetThemeColors()[0]
-    document.querySelector('.appTextColorSelector').value = GetThemeColors()[1]
-    document.querySelector('.appAccentColorSelector').value = GetThemeColors()[2]
 }

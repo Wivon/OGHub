@@ -31,7 +31,7 @@ ipcMain.on('checkForUpdates', () => {
 
 app.on('ready', () => {
   createWindow()
-  console.log(`app version ${app.getVersion()}`)
+  console.log(`app version: ${app.getVersion()}`)
 });
 
 ipcMain.handle('og-hub-version', (event, arg) => {
