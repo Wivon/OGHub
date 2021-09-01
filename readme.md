@@ -20,4 +20,4 @@ Free up **SPACE** in **your taskbar**
 
 ![https://github.com/Wivon/OGHub/releases](src/img/logoX512.png)
 
-## ⚠️ OG Hub is in development ⚠️
+### ⚠️ OG Hub is in development ⚠️
