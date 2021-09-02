@@ -1,3 +1,3 @@
-const launchExe = function (exePath) {
+function launchExe (exePath) {
     ipcRenderer.send('launch-exe', exePath)
 }

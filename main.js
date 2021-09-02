@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, ipcRenderer } = require('electron');
+const { app, BrowserWindow, ipcMain, ipcRenderer, globalShortcut } = require('electron');
 const ipc = ipcRenderer
 const { autoUpdater } = require('electron-updater');
 const path = require('path');

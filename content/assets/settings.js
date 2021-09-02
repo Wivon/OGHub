@@ -36,7 +36,7 @@ fetch('https://api.github.com/repos/Wivon/OGHub/releases/latest').then(response 
             {
                 "paramId": "addApp",
                 "paramName": "Add new app",
-                "paramContent": '<div class="addApp"><button class="selectExeBtn" onclick="SelectExecutable()">Select Executable</button><input class="shortcutNameInput" type="text" placeholder="shortcut name"></input><button class="CreateShortcutBtn" onclick="CreateShortcut()">Create Shortcut</button></div>',
+                "paramContent": '<div class="addApp"><button class="selectExeBtn" onclick="SelectExecutable()">Select Executable</button><button class="selectIconBtn">Selected icon: default</button><input class="shortcutNameInput" type="text" placeholder="shortcut name"></input><button class="CreateShortcutBtn" onclick="CreateShortcut()">Create Shortcut</button></div>',
                 "openWith": "settings"
             }, {
                 "paramId": "customize",

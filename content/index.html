@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="assets/style.css">
 
     <!-- js -->
-    <script src="assets/updater.js" defer></script>
-    <script src="assets/app.js" defer></script>
     <script src="assets/Sortable.min.js" defer></script>
     <script src="assets/exeLauncher.js" defer></script>
     <script src="assets/appImporter.js" defer></script>
     <script src="assets/customizer.js" defer></script>
+    <script src="assets/customizer.js" defer></script>
+    <script src="assets/formatFunctions.js" defer></script>
+    <script src="assets/updater.js" defer></script>
+    <script src="assets/app.js" defer></script>
     <script src="assets/settings.js" defer></script>
 </head>
 
@@ -45,6 +47,11 @@
             <div class="handle"></div>
             <img src="img/logoX1024.png" alt="app icon" class="icon">
             <h3>OG Hub V0.1.0</h3>
+        </div>
+        <div class="card" onclick="launchExe('C:\\Windows\\explorer.exe')">
+            <div class="handle"></div>
+            <img src="img/logoX1024.png" alt="app icon" class="icon">
+            <h3>Explorer</h3>
         </div>
     </div>
 
@@ -102,7 +109,7 @@
                 <img class="parameterIcon" src="img/settings_signup_icon.png">
                 <div class="paramDetails">
                     <h2 class="parameterName">Sign up</h2>
-                    <h5 class="parameterDesc">Sign in for sync data, apps & settings</h5>
+                    <h5 class="parameterDesc">Sign up for sync data, apps & settings</h5>
                 </div>
             </div>
             <div class="parameterBox" param-id="logout">
@@ -121,12 +128,12 @@
 
     <footer><a onclick="toggleEditCards()">edit</a> - <a onclick="ipcRenderer.send('quitApp')">quit</a></footer>
 
-    <div id="notification" class="">
+    <div id="notification" class="hidden">
         <p id="message">loading...</p>
         <button id="close-button" onClick="closeNotification()">
             <img class="parameterIcon smallIcon" src="img/close_icon.png">
         </button>
-        <button id="restart-button" onClick="restartApp()" class="">
+        <button id="restart-button" onClick="restartApp()" class="hidden">
             Restart
         </button>
     </div>
