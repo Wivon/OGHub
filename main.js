@@ -32,6 +32,10 @@ ipcMain.on('checkForUpdates', () => {
 app.on('ready', () => {
   createWindow()
   console.log(`app version: ${app.getVersion()}`)
+
+  globalShortcut.register('Alt+CommandOrControl+I', () => {
+    mainWindow.show()
+  })
 });
 
 ipcMain.handle('og-hub-version', (event, arg) => {
@@ -157,7 +161,6 @@ ipcMain.on('launch-exe', (event, exePath) => {
     console.log(data.toString());
   });
 })
-
 
 // if (app.requestSingleInstanceLock() == false) {
 
