@@ -137,3 +137,8 @@ let AccountBtn = document.querySelector('.AccountBtn')
 AccountBtn.addEventListener('click', () => {
     showPannel('.account', 'Account options', '<!-- no footer for this pannel (account options) -->')
 })
+
+function quitApp() {
+    savePageState(cardsContainer.innerHTML)
+    ipcRenderer.send('quitApp')
+}
