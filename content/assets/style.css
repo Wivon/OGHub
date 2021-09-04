@@ -22,6 +22,11 @@ body {
     user-select: none;
 }
 
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
 /* header */
 
 header {
@@ -110,7 +115,7 @@ header .settingsBtn:hover {
 }
 
 header .headerBtn:active {
-    transform: rotate(0deg) scale(0.9);
+    transform: rotate(-25deg) scale(0.9);
 }
 
 /* titleBar */
@@ -139,6 +144,19 @@ header .headerBtn:active {
     height: 100%;
     text-align: center;
     margin-top: 3px;
+}
+
+.titleBar span.title span {
+    animation: titleDisplay .2s ease-out;
+}
+
+@keyframes titleDisplay {
+    from {
+        opacity: .2;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .titleBar .TitleBarActionButton {
@@ -580,4 +598,40 @@ footer a:hover {
     outline: none;
     font-size: 18px;
     margin-top: 10px;
+}
+
+.parameterContent label {
+    margin-right: 10px;
+}
+
+select {
+    background: var(--accent-color);
+    color: var(--backgrnd-color);
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    font-weight: 900;
+}
+
+option {
+    background: var(--accent-color);
+    color: var(--backgrnd-color);
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.parameterContent h2.themeTitle {
+    margin-bottom: 10px;
+}
+
+.parameterContent a {
+    color: var(--accent-color);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.parameterContent a:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }

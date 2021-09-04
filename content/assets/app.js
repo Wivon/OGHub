@@ -24,7 +24,7 @@ function changeTitleStatus(newStatus) {
     }
     else {
         if (newStatus != "") {
-            titlebarText.innerHTML = "OG Hub | " + newStatus
+            titlebarText.innerHTML = "OG Hub | <span>" + newStatus + "</span>"
             status = newStatus
         }
         else {

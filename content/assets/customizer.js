@@ -19,6 +19,7 @@ function changeBackgroundColor() {
     newBackgrndColor = document.querySelector('.appBackgrndSelector').value
     newTextColor = document.querySelector('.appTextColorSelector').value
     newAccentColor = document.querySelector('.appAccentColorSelector').value
+    isLightTheme = document.querySelector('.isLightTheme')
 
     // display infos in console
     console.info(`updating background color to ${newBackgrndColor}, updating text color to ${newTextColor}, updating accent color to ${newAccentColor}`)

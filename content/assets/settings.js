@@ -41,13 +41,13 @@ fetch('https://api.github.com/repos/Wivon/OGHub/releases/latest').then(response 
             }, {
                 "paramId": "customize",
                 "paramName": "Customization",
-                "paramContent": `<h2 onshow="setColorInputValue()">Background color: </h2><input class="appBackgrndSelector" type="color" value="${GetThemeColors()[0]}"></input><br><h2>Text color: </h2><input class="appTextColorSelector" type="color" value="${GetThemeColors()[1]}"></input><br><h2>Accent color: </h2><input class="appAccentColorSelector" type="color" value="${GetThemeColors()[2]}"></input><br><input type="checkbox" name"isLightTheme" class="isLightTheme"></input><label for="isLightTheme">Enable Light Theme</label><br><button onclick="changeBackgroundColor()">Apply</button>`,
+                "paramContent": `<h2 class="themeTitle">Colors</h2><h3>Background color: </h3><input class="appBackgrndSelector" type="color" value="${GetThemeColors()[0]}"></input><br><h3>Text color: </h3><input class="appTextColorSelector" type="color" value="${GetThemeColors()[1]}"></input><br><h3>Accent color: </h3><input class="appAccentColorSelector" type="color" value="${GetThemeColors()[2]}"></input><br><label for="ThemeSelector">Icons theme</label><select name="ThemeSelector" class="ThemeSelector"><option value="light">Light</option><option value="dark">Dark</option></select><br><button onclick="changeBackgroundColor()">Apply</button>`,
                 "openWith": "settings",
                 "displayAction": setColorInputValue
             }, {
                 "paramId": "updates",
                 "paramName": "Updates",
-                "paramContent": '<div class="updateHeader"><img src="img/settings_update_icon.png"><div><h2>✔️ You\'re up to date</h2><h4>Last check: <span>' + LastUpdateCheckDate + '</span></h4><div class="buttons"><button class="checkBtn" onclick="CheckForUpdatesButton()">Check for Updates</button><button class="hidden restartBtn" onclick="restartApp()">restart</button></div></div></div><h3 class="appVersionIndicator">Current version: ' + appVersion + '</h3><div class="updateInfo">Last release changelog :<br><br><p class="changelog">' + lastReleaseDescription + '</p></div>',
+                "paramContent": '<div class="updateHeader"><img src="img/settings_update_icon.png"><div><h2>✔️ You\'re up to date</h2><h4>Last check: <span>' + LastUpdateCheckDate + '</span></h4><div class="buttons"><button class="checkBtn" onclick="CheckForUpdatesButton()">Check for Updates</button><button class="hidden restartBtn" onclick="restartApp()">restart</button></div></div></div><h3 class="appVersionIndicator">Current version: ' + appVersion + '</h3><div class="updateInfo">Last release changelog :<br><br><p class="changelog">' + lastReleaseDescription + '</p></div><br><a onclick="shell.openExternal(\'https://forms.gle/jmFMQZCknfSwKmmN6\')">report bug, idea, comment</a>',
                 "openWith": "settings",
                 "displayAction": setUpdaterStatus
             }, {
