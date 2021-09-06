@@ -47,6 +47,7 @@ function CreateShortcut() {
             ipcRenderer.send('save-new-card', newShortcutName + "$$--$$" + SelectedExePath + "$$--$$")
     }, 2000)
 
+    sendTempNotification('✔️ card added !', 2000)
 
 }
 
