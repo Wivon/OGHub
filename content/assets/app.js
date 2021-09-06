@@ -1,4 +1,3 @@
-
 let minimizeBtn = document.querySelector('.minimizeBtn');
 let closeBtn = document.querySelector('.closeBtn');
 let cardsContainer = document.querySelector('.container')
@@ -141,4 +140,17 @@ AccountBtn.addEventListener('click', () => {
 function quitApp() {
     savePageState(cardsContainer.innerHTML)
     ipcRenderer.send('quitApp')
+}
+
+function setResizable(boolean) {
+    ipcRenderer.send('set-resizable', boolean)
+}
+
+function setResizable(boolean) {
+    ipcRenderer.send('set-fullscreenable', boolean)
+}
+
+function setZoomLevel(level) {
+    document.body.style.zoom = level + "%";
+    console.log('zoom level changed to ' + level)
 }

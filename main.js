@@ -42,6 +42,22 @@ ipcMain.handle('og-hub-version', (event, arg) => {
   return app.getVersion();
 })
 
+ipcMain.on('set-resizable', (event, msg) => {
+  if (msg === 'true') {
+    mainWindow.setResizable(true);
+  } else {
+    mainWindow.setResizable(false);
+  }
+})
+
+ipcMain.on('set-fullscrenable', (event, msg) => {
+  if (msg === 'true') {
+    mainWindow.setFullscree
+  } else {
+    mainWindow.setResizable(false);
+  }
+})
+
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
     app.quit();
@@ -161,6 +177,38 @@ ipcMain.on('launch-exe', (event, exePath) => {
     console.log(data.toString());
   });
 })
+
+// options in options.json
+const fs = require('fs');
+const fileName = './options.json';
+const file = require(fileName);
+
+function readOptionsJSON() {
+  let file_content = fs.readFileSync(fileName);
+  let content = JSON.parse(file_content);
+  return content
+}
+
+function WriteOptionsJSON(optionName, option) {
+  file[optionName] = option;
+
+  fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+    if (err) return console.log(err);
+    console.log('writing to ' + fileName);
+  });
+}
+
+ipcMain.on('save-options', (event, msg) => {
+  let newOptionName = JSON.parse(msg)[0]
+  let newOptionValue = JSON.parse(msg)[1]
+  WriteOptionsJSON(newOptionName, newOptionValue)
+})
+
+ipcMain.handle('get-options', (event, msg) => {
+  let OptionName = msg
+  return readOptionsJSON()[OptionName]
+})
+
 
 // if (app.requestSingleInstanceLock() == false) {
 

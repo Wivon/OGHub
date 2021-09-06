@@ -7,5 +7,5 @@
     "accentColor": "#0092e6",
     "UseOnlineApp": false,
     "startWithWindows": false,
-    "dragAndDrop": true
+    "dragAndDrop": false
 }

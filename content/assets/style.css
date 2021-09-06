@@ -20,6 +20,7 @@ body {
     font-family: 'Inter', 'Helvetica';
     color: var(--text-color);
     user-select: none;
+    outline: none;
 }
 
 .disabled {
