@@ -49,11 +49,6 @@ function setUpdaterStatus() {
     if (UPDATER_STATUS == 'UPDATE_AV') {
         document.querySelector('.parameterContent div div h2').innerHTML = "ℹ️ Update available ! downloading..."
         document.querySelector('.parameterContent div div .buttons .checkBtn').classList.add('hidden');
-        
-        // change check for update button style
-        document.querySelector('.parameterContent div div .checkBtn').style.opacity = 0.5;
-        document.querySelector('.parameterContent div div .checkBtn').style.pointerEvents = 'none';
-        document.querySelector('.parameterContent div div .checkBtn').innerHTML = "downloading update...";
 
     } else if (UPDATER_STATUS == 'UPDATE_DL') {
         document.querySelector('.parameterContent div div h2').innerHTML = "ℹ️ New Update Downloaded. install on restart."

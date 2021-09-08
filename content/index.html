@@ -14,6 +14,7 @@
     <script src="assets/Sortable.min.js" defer></script>
     <script src="assets/exeLauncher.js" defer></script>
     <script src="assets/saver.js" defer></script>
+    <script src="assets/contextMenu.js" defer></script>
     <script src="assets/appImporter.js" defer></script>
     <script src="assets/customizer.js" defer></script>
     <script src="assets/customizer.js" defer></script>
@@ -25,6 +26,17 @@
 </head>
 
 <body>
+
+    <div class="cardContextMenu">
+        <div class="CtxMenubutton">
+            <img src="img/delete_icon.png">
+            <button class="invert">delete</button>
+        </div>
+        <div class="CtxMenubutton">
+            <img src="img/settingsX256.png">
+            <button>edit</button>
+        </div>
+    </div>
 
     <div class="titleBar">
         <span class="title">OG Hub</span>
@@ -53,7 +65,7 @@
     </div>
 
     <div class="settings pannel">
-        <div class="backButton"></div> <h2 class="panTitle">Settings</h2>
+        <div class="backButton invert"></div> <h2 class="panTitle">Settings</h2>
 
         <div class="parameters">
             <div class="parameterBox" param-id="addApp">

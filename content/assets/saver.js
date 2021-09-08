@@ -15,7 +15,6 @@ function savePageState(htmlcontent) {
     console.log('saved page state')
 }
 
-// pretty logical, getItem retrieves your local storage data
 if (localStorage.getItem('page_html')) {
     if (content.innerHTML != localStorage.getItem('page_html')) {
         content.innerHTML = localStorage.getItem('page_html');

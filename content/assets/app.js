@@ -50,24 +50,27 @@ function updateFooterContent(newContent) {
     }
 }
 
-document.body.onkeydown = (key) => {
-    if (key.keyCode == "123") {
+document.body.onkeydown = (event) => {
+    if (event.keyCode == "123") {
         console.log('opening dev tools')
         ipcRenderer.send('openDevTools');
     }
-    else if (key.keyCode == "116") {
+    else if (event.keyCode == "116") {
         if (CTRL_IS_PRESSED) {
             ipcRenderer.send('restart');
         } else {
             window.location.href = window.location.href
         }
     }
-    else if (key.keyCode == "81") {
+    else if (event.keyCode == "81") {
         if (CTRL_IS_PRESSED) {
             ipcRenderer.send('quitApp');
         }
+    } else if (event.keyCode == "27") {
+        event.preventDefault();
+        ipcRenderer.send('minimizeApp');
     }
-    if (key.keyCode == 17) {
+    if (event.keyCode == 17) {
         CTRL_IS_PRESSED = true
         console.log('ctrl key is down')
     }

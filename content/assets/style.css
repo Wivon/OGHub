@@ -284,29 +284,6 @@ header .headerBtn:active {
     animation: cardDisplay .2s ease-in;
 }
 
-.card::after {
-    content: '';
-    background: url('../img/delete_icon.png');
-    background-size: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: -35px;
-    left: calc(50% - 17.5px);
-    height: 35px;
-    width: 35px;
-    opacity: 0;
-    pointer-events: none;
-    filter: invert();
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.editing .card::after {
-    opacity: 1;
-    pointer-events: auto;
-}
-
 .editing .card .handle {
     pointer-events: all;
     cursor: grab;
@@ -635,4 +612,43 @@ option {
 .parameterContent a:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.cardContextMenu {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    height: max-content;
+    max-height: 300px;
+    width: max-content;
+    max-width: 200px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.cardContextMenu .CtxMenubutton {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    height: max-content;
+    min-width: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(255px);
+}
+
+.cardContextMenu .CtxMenubutton img {
+    height: 25px;
+}
+
+.cardContextMenu .CtxMenubutton button {
+    background: transparent;
+    color: var(--text-color);
+    border: none;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+
+.invert {
+    filter: invert();
 }

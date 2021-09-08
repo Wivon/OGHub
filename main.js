@@ -22,8 +22,15 @@ function createWindow() {
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
-
 }
+
+autoUpdater.on('download-progress', (progressObj) => {
+  let log_message = "Download speed: " + progressObj.bytesPerSecond;
+  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+  console.log(log_message);
+  mainWindow.webContents.send('download-progress', log_message);
+})
 
 ipcMain.on('checkForUpdates', () => {
   autoUpdater.checkForUpdatesAndNotify();
@@ -33,6 +40,9 @@ app.on('ready', () => {
   createWindow()
   console.log(`app version: ${app.getVersion()}`)
 
+  globalShortcut.register('Alt+CommandOrControl+I', () => {
+    mainWindow.show()
+  })
   globalShortcut.register('Alt+CommandOrControl+I', () => {
     mainWindow.show()
   })
@@ -106,7 +116,11 @@ ipcMain.on('quitApp', () => {
   app.quit()
 });
 
-ipcMain.on('closeApp', () => {
+ipcMain.on('quitApp', () => {
+  app.quit()
+});
+
+ipcMain.on('hideApp', () => {
   mainWindow.hide()
 });
 
