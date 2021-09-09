@@ -71,3 +71,7 @@ function setUpdaterStatus() {
 
     }
 }
+
+ipcRenderer.on('download-progress', (event, progress) => {
+    console.log(progress)
+})

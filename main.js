@@ -218,9 +218,13 @@ ipcMain.on('save-options', (event, msg) => {
   WriteOptionsJSON(newOptionName, newOptionValue)
 })
 
-ipcMain.handle('get-options', (event, msg) => {
-  let OptionName = msg
-  return readOptionsJSON()[OptionName]
+ipcMain.handle('get-options', (event, msg=null) => {
+  if (msg == null || msg == "") {
+    return JSON.stringify(readOptionsJSON())
+  } else {
+    return readOptionsJSON()[msg]
+
+  }
 })
 
 

@@ -157,3 +157,25 @@ function setZoomLevel(level) {
     document.body.style.zoom = level + "%";
     console.log('zoom level changed to ' + level)
 }
+
+document.body.onclick = () => {
+    savePageState(content.innerHTML)
+    hideContextMenus()
+}
+
+let OGHUB_CONFIG = {}
+
+ipcRenderer.invoke('get-options').then(response => {
+    console.log('OG Hub options received !')
+    OGHUB_CONFIG = JSON.parse(response)
+})
+
+function getOGHUB_OPTION(option) {
+    if (OGHUB_CONFIG == {} || OGHUB_CONFIG == null) {
+        ipcRenderer.invoke('get-options', option).then(response => {
+            return response
+        })
+    } else {
+        return OGHUB_CONFIG[option]
+    }
+}

@@ -1,19 +1,30 @@
-let cardcardContextMenu = document.querySelector('.cardcardContextMenu')
+let cardContextMenu = document.querySelector('.cardContextMenu')
 
 function setEventsListeners() {
-    cardsContainer.addEventListener('cardContextMenu', (event) => {
+    cardsContainer.addEventListener('contextmenu', (event) => {
         event.preventDefault()
 
+        cardContextMenu.style.display = "flex"
+
         //montrer le menu personnalisé sans le faire déppasser de la page
-        if (e.clientY < (document.body.clientHeight - cardContextMenu.offsetHeight) && e.clientX < (document.body.clientWidth - cardContextMenu.offsetWidth)) {
-            cardcardContextMenu.style.display = "flex";
-            cardcardContextMenu.style.top = (e.clientY + window.scrollY) + "px";
-            cardcardContextMenu.style.left = e.clientX + "px";
+        if (event.clientX < (cardsContainer.offsetWidth - cardContextMenu.offsetWidth)) {
+            cardContextMenu.style.display = "flex";
+            cardContextMenu.style.top = (event.clientY + window.scrollY) + "px";
+            cardContextMenu.style.left = event.clientX + "px";
+            console.log(`showing card context menu (default) (event.clientY ${event.clientY})`)
         }
         else {
             cardContextMenu.style.display = "flex";
-            cardContextMenu.style.top = ((e.clientY + window.scrollY) - cardContextMenu.offsetHeight) + "px";
-            cardContextMenu.style.left = (e.clientX - cardContextMenu.offsetWidth) + "px";
+            cardContextMenu.style.top = ((event.clientY + window.scrollY) - cardContextMenu.offsetHeight) + "px";
+            cardContextMenu.style.left = (event.clientX - cardContextMenu.offsetWidth) + "px";
+            console.log(`showing card context menu (moved) (event.clientY ${event.clientY})`)
         }
     })
 }
+
+function hideContextMenus() {
+    document.querySelector('.cardContextMenu').style.display = "none";
+    console.log('hide contextMenus')
+}
+
+setEventsListeners()

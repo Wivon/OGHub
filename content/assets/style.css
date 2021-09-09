@@ -261,9 +261,13 @@ header .headerBtn:active {
 }
 
 .container.editing .card {
-    transform: scale(0.9) translateY(-5px);
+    transform: scale(0.9);
     opacity: 0.75;
     animation: editing ease-in-out infinite;
+}
+
+.container {
+    overflow: hidden;
 }
 
 .card {
@@ -620,21 +624,32 @@ option {
     left: 0;
     height: max-content;
     max-height: 300px;
-    width: max-content;
+    width: 130px;
     max-width: 200px;
-    display: flex;
+    display: none;
     justify-content: start;
     flex-direction: column;
+    border-radius: 8px;
+    z-index: 1000;
+    backdrop-filter: blur(255px);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 3px;
 }
 
 .cardContextMenu .CtxMenubutton {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     flex-direction: row;
     height: max-content;
     min-width: 100px;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(255px);
+    padding: 5px;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(255, 255, 255, .4);
+}
+
+
+.cardContextMenu .CtxMenubutton:last-child {
+    border-bottom: none;
 }
 
 .cardContextMenu .CtxMenubutton img {
@@ -647,8 +662,19 @@ option {
     border: none;
     margin-bottom: 5px;
     margin-left: 20px;
+    text-align: start;
 }
 
+.cardContextMenu .CtxMenubutton::after {
+    content: '';
+    background-image: url(../img/settings_open_icon.png);
+    background-position: center;
+    background-size: 100%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+}
 .invert {
     filter: invert();
 }

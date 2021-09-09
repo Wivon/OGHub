@@ -6,10 +6,6 @@ document.body.onblur = () => {
     savePageState(content.innerHTML)
 }
 
-document.body.onclick = () => {
-    savePageState(content.innerHTML)
-}
-
 function savePageState(htmlcontent) {
     localStorage.setItem('page_html', htmlcontent);
     console.log('saved page state')
