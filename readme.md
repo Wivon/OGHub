@@ -1,6 +1,7 @@
 # OGHub
-Free up **SPACE** in **your taskbar**
+Free up **SPACE** in your **Taskbar**
 
+### [**feedback**](https://forms.gle/kfzZiQJyytgscY9R9)
 
 ## installation guide
 - go to [releases](https://github.com/Wivon/OGHub/releases)
