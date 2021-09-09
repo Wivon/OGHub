@@ -41,7 +41,7 @@ fetch('https://api.github.com/repos/Wivon/OGHub/releases/latest').then(response 
             }, {
                 "paramId": "customize",
                 "paramName": "Customization",
-                "paramContent": `<h2 class="themeTitle">Colors</h2><h3>Background color: </h3><input class="appBackgrndSelector" type="color" value="${GetThemeColors()[0]}"></input><br><h3>Text color: </h3><input class="appTextColorSelector" type="color" value="${GetThemeColors()[1]}"></input><br><h3>Accent color: </h3><input class="appAccentColorSelector" type="color" value="${GetThemeColors()[2]}"></input><br><label for="ThemeSelector">Icons theme</label><select name="ThemeSelector" class="ThemeSelector"><option value="light">Light</option><option value="dark">Dark</option></select><br><button onclick="changeBackgroundColor()">Apply</button>`,
+                "paramContent": `<h2 class="themeTitle">Colors</h2><h3>Background color: </h3><input class="appBackgrndSelector" type="color" value="${GetThemeColors()[0]}"></input><br><h3>Text color: </h3><input class="appTextColorSelector" type="color" value="${GetThemeColors()[1]}"></input><br><h3>Accent color: </h3><input class="appAccentColorSelector" type="color" value="${GetThemeColors()[2]}"></input><br><label for="ThemeSelector">Icons theme</label><select name="ThemeSelector" class="ThemeSelector"><option value="light">Light</option><option value="dark">Dark</option></select><br><button onclick="changeBackgroundColor()">Apply</button><button onclick="resetTheme()">Reset</button>`,
                 "openWith": "settings",
                 "displayAction": setColorInputValue
             }, {

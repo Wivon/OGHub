@@ -28,6 +28,86 @@ body {
     opacity: 0.5;
 }
 
+/* Popup */
+
+.popup {
+    width: 200px;
+    height: 220px;
+    background: rgba(0, 0, 0, .7);
+    display: none;
+    justify-content: start;
+    flex-direction: column;
+    position: absolute;
+    vertical-align: middle;
+    z-index: 200;
+    animation: popupDisplay .3s ease-out;
+    border-radius: 15px;
+    padding: 10px;
+    top: calc(50% - 110px);
+    right: calc(50% - 100px);
+    backdrop-filter: blur(255px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, .7);
+}
+
+.popup img {
+    width: 60px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.popup p {
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.popup .buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.popup .buttons button {
+    margin: auto;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 1);
+    cursor: pointer;
+}
+
+@keyframes popupDisplay {
+    from {
+        opacity: 0;
+        transform: scale(.2);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.popupBackground.popHidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.popupBackground {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    transition: .2s;
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /* header */
 
 header {
@@ -133,6 +213,7 @@ header .headerBtn:active {
     background: rgba(255, 255, 255, 0.3);
     -webkit-app-region: drag;
     vertical-align: middle;
+    z-index: 100000;
 }
 
 .titleBar span.title {
@@ -533,7 +614,7 @@ footer a:hover {
     border: none;
     outline-color: var(--backgrnd-color);
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 600;
     margin-top: 10px;
     padding: 5px 10px;
     transition: 0.2s;
@@ -647,7 +728,6 @@ option {
     border-bottom: 1px solid rgba(255, 255, 255, .4);
 }
 
-
 .cardContextMenu .CtxMenubutton:last-child {
     border-bottom: none;
 }
@@ -675,6 +755,7 @@ option {
     position: absolute;
     right: 20px;
 }
+
 .invert {
     filter: invert();
 }

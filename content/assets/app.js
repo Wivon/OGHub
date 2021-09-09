@@ -165,10 +165,12 @@ document.body.onclick = () => {
 
 let OGHUB_CONFIG = {}
 
-ipcRenderer.invoke('get-options').then(response => {
-    console.log('OG Hub options received !')
-    OGHUB_CONFIG = JSON.parse(response)
-})
+function refreshOGHubOptions() {
+    ipcRenderer.invoke('get-options').then(response => {
+        console.log('OG Hub options received !')
+        OGHUB_CONFIG = JSON.parse(response)
+    })
+}
 
 function getOGHUB_OPTION(option) {
     if (OGHUB_CONFIG == {} || OGHUB_CONFIG == null) {
@@ -179,3 +181,9 @@ function getOGHUB_OPTION(option) {
         return OGHUB_CONFIG[option]
     }
 }
+
+function setOptionsProperty(option, value) {
+    ipcRenderer.send('save-options', JSON.stringify([option, value]))
+}
+
+refreshOGHubOptions()
