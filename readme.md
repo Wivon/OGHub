@@ -21,6 +21,6 @@ Free up **SPACE** in your **Taskbar**
 - let it run in the background
 - OG Hub updates automatically, just restart the app when prompted
 
-![https://github.com/Wivon/OGHub/releases](src/img/logoX512.png)
+<img src="src/img/logoX512.png" width="150px">
 
 ## ⚠️ OG Hub is in development ⚠️
