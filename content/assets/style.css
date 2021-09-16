@@ -31,8 +31,8 @@ body {
 /* Popup */
 
 .popup {
-    width: 200px;
-    height: 220px;
+    width: 250px;
+    height: 270px;
     background: rgba(0, 0, 0, .7);
     display: none;
     justify-content: start;
@@ -42,11 +42,12 @@ body {
     z-index: 200;
     animation: popupDisplay .3s ease-out;
     border-radius: 15px;
-    padding: 10px;
-    top: calc(50% - 110px);
-    right: calc(50% - 100px);
+    padding: 25px;
+    top: calc(50% - 125px);
+    right: calc(50% - 135px);
     backdrop-filter: blur(255px);
     box-shadow: 0 0 15px rgba(0, 0, 0, .7);
+    transition: all .3 ease-out;
 }
 
 .popup img {
@@ -82,7 +83,7 @@ body {
 @keyframes popupDisplay {
     from {
         opacity: 0;
-        transform: scale(.2);
+        transform: scale(.7);
     }
     to {
         opacity: 1;
