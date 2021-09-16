@@ -293,6 +293,10 @@ header .headerBtn:active {
     font-weight: 200;
 }
 
+#notification p {
+    font-size: 15px;
+}
+
 #notification .notifBtn {
     background: transparent;
     color: var(--accent-color);
