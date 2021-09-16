@@ -145,8 +145,8 @@ function quitApp() {
     ipcRenderer.send('quitApp')
 }
 
-function setResizable(boolean) {
-    ipcRenderer.send('set-resizable', boolean)
+function setResizable() {
+    ipcRenderer.send('set-resizable')
 }
 
 function setResizable(boolean) {
