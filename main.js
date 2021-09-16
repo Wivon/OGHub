@@ -52,12 +52,9 @@ ipcMain.handle('og-hub-version', (event, arg) => {
   return app.getVersion();
 })
 
-ipcMain.on('set-resizable', (event, msg) => {
-  if (msg === 'true') {
-    mainWindow.setResizable(true);
-  } else {
-    mainWindow.setResizable(false);
-  }
+ipcMain.on('set-resizable', () => {
+  mainWindow.setResizable(true)
+  console.log('mainWindow.isResizable : true')
 })
 
 ipcMain.on('set-fullscrenable', (event, msg) => {
