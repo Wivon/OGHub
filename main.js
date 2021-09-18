@@ -25,11 +25,12 @@ function createWindow() {
 }
 
 autoUpdater.on('download-progress', (progressObj) => {
-  let log_message = "Download speed: " + progressObj.bytesPerSecond;
-  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
-  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
-  console.log(log_message);
-  mainWindow.webContents.send('download-progress', log_message);
+  let bytePerSecond = progressObj.bytesPerSecond
+  let dlPercent = progressObj.percent
+  let downloaded = progressObj.transferred
+  let toDownload = progressObj.total
+  let response = [bytePerSecond, dlPercent, downloaded, toDownload]
+  mainWindow.webContents.send('download-progress', JSON.stringify(response));
 })
 
 ipcMain.on('checkForUpdates', () => {
