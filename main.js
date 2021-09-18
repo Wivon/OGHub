@@ -43,9 +43,6 @@ app.on('ready', () => {
   globalShortcut.register('Alt+CommandOrControl+I', () => {
     mainWindow.show()
   })
-  globalShortcut.register('Alt+CommandOrControl+I', () => {
-    mainWindow.show()
-  })
 });
 
 ipcMain.handle('og-hub-version', (event, arg) => {
