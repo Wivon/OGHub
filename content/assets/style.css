@@ -764,3 +764,14 @@ option {
 .invert {
     filter: invert();
 }
+
+.downloadProgress {
+    display: none;
+    transition: all .3s;
+}
+
+.downloadProgress.downloading {
+    display: block;
+    padding-top: 15px;
+    padding-left: 15px;
+}

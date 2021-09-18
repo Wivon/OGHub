@@ -50,6 +50,8 @@ function setUpdaterStatus() {
         document.querySelector('.parameterContent div div h2').innerHTML = "ℹ️ Update available ! downloading..."
         document.querySelector('.parameterContent div div .buttons .checkBtn').classList.add('hidden');
 
+        setDownloadProgress();
+
     } else if (UPDATER_STATUS == 'UPDATE_DL') {
         document.querySelector('.parameterContent div div h2').innerHTML = "ℹ️ New Update Downloaded. install on restart."
         document.querySelector('.parameterContent div div .buttons .restartBtn').classList.remove('hidden');
@@ -70,6 +72,13 @@ function setUpdaterStatus() {
         document.querySelector('.parameterContent div div .checkBtn').innerHTML = "Check for Updates";
 
     }
+}
+
+function setDownloadProgress() {
+    document.querySelector('.downloadProgress').classList.add('downloading');
+    let timer = setInterval(() => {
+        
+    }, 100)
 }
 
 ipcRenderer.on('download-progress', (event, progress) => {
