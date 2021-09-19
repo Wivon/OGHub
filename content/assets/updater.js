@@ -77,13 +77,20 @@ function setUpdaterStatus() {
 function setDownloadProgress() {
     document.querySelector('.downloadProgress').classList.add('downloading');
     let timer = setInterval(() => {
-        document.querySelector('.dlPercent').innerHTML = "lol"
+        document.querySelector('.dlPercent').innerHTML = dlProgressObj[1]
+        document.querySelector('.downloaded').innerHTML = dlProgressObj[2]
+        document.querySelector('.toDownload').innerHTML = dlProgressObj[3]
+        document.querySelector('.dlSpeed').innerHTML = dlProgressObj[0]
+        if (dlProgressObj[1] == "100") {
+            clearInterval(timer);
+            document.querySelector('.downloadProgress').classList.remove('downloading');
+        }
     }, 100)
 }
 
-let progressObj = []
+let dlProgressObj = []
 
 ipcRenderer.on('download-progress', (event, progress) => {
-    progressObj = JSON.parse(progress)
-    console.log(progressObj)
+    dlProgressObj = JSON.parse(progress)
+    console.info(dlProgressObj)
 })
