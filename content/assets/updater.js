@@ -1,4 +1,4 @@
-const { ipcRenderer, shell } = require('electron');
+const { ipcRenderer } = require('electron');
 // update notification
 const notification = document.getElementById('notification');
 const message = document.getElementById('message');
@@ -77,10 +77,13 @@ function setUpdaterStatus() {
 function setDownloadProgress() {
     document.querySelector('.downloadProgress').classList.add('downloading');
     let timer = setInterval(() => {
-        
+        document.querySelector('.dlPercent').innerHTML = "lol"
     }, 100)
 }
 
+let progressObj = []
+
 ipcRenderer.on('download-progress', (event, progress) => {
-    console.log(progress)
+    progressObj = JSON.parse(progress)
+    console.log(progressObj)
 })

@@ -7,11 +7,11 @@ let footer = document.querySelector('footer')
 let CTRL_IS_PRESSED = false
 
 minimizeBtn.addEventListener('click', () => {
-    ipcRenderer.send('minimizeApp');
+    send('minimizeApp');
 })
 
 closeBtn.addEventListener('click', () => {
-    ipcRenderer.send('closeApp');
+    send('closeApp');
 })
 
 let status
@@ -53,22 +53,22 @@ function updateFooterContent(newContent) {
 document.body.onkeydown = (event) => {
     if (event.keyCode == "123") {
         console.log('opening dev tools')
-        ipcRenderer.send('openDevTools');
+        send('openDevTools');
     }
     else if (event.keyCode == "116") {
         if (CTRL_IS_PRESSED) {
-            ipcRenderer.send('restart');
+            send('restart');
         } else {
             window.location.href = window.location.href
         }
     }
     else if (event.keyCode == "81") {
         if (CTRL_IS_PRESSED) {
-            ipcRenderer.send('quitApp');
+            send('quitApp');
         }
     } else if (event.keyCode == "27") {
         event.preventDefault();
-        ipcRenderer.send('minimizeApp');
+        send('minimizeApp');
     }
     if (event.keyCode == 17) {
         CTRL_IS_PRESSED = true
@@ -92,7 +92,7 @@ function toggleEditCards() {
 }
 
 function quitApp() {
-    ipcRenderer.send('quitApp')
+    send('quitApp')
 }
 
 // show showPannel
@@ -142,15 +142,15 @@ AccountBtn.addEventListener('click', () => {
 
 function quitApp() {
     savePageState(cardsContainer.innerHTML)
-    ipcRenderer.send('quitApp')
+    send('quitApp')
 }
 
 function setResizable() {
-    ipcRenderer.send('set-resizable')
+    send('set-resizable')
 }
 
 function setResizable(boolean) {
-    ipcRenderer.send('set-fullscreenable', boolean)
+    send('set-fullscreenable', boolean)
 }
 
 function setZoomLevel(level) {
@@ -183,7 +183,7 @@ function getOGHUB_OPTION(option) {
 }
 
 function setOptionsProperty(option, value) {
-    ipcRenderer.send('save-options', JSON.stringify([option, value]))
+    send('save-options', JSON.stringify([option, value]))
 }
 
 refreshOGHubOptions()

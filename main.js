@@ -22,6 +22,8 @@ function createWindow() {
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
+
+  mainWindow.webContents.openDevTools()
 }
 
 autoUpdater.on('download-progress', (progressObj) => {
