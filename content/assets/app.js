@@ -11,20 +11,21 @@ minimizeBtn.addEventListener('click', () => {
 })
 
 closeBtn.addEventListener('click', () => {
-    ipcRenderer.send('closeApp');
+    ipcRenderer.send('hideApp');
+    console.log('closeBtn clicked, closing app')
 })
 
-let status
+let Titlestatus
 
 function changeTitleStatus(newStatus) {
-    if (newStatus == status) {
+    if (newStatus == Titlestatus) {
         titlebarText.innerHTML = "OG Hub"
-        status = ""
+        Titlestatus = ""
     }
     else {
         if (newStatus != "") {
             titlebarText.innerHTML = "OG Hub | <span>" + newStatus + "</span>"
-            status = newStatus
+            Titlestatus = newStatus
         }
         else {
             titlebarText.innerHTML = "OG Hub"
