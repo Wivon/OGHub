@@ -4,7 +4,7 @@ Free up **SPACE** in your **Taskbar**
 ### [**feedback**](https://forms.gle/kfzZiQJyytgscY9R9)
 
 ## installation guide
-(we are working on a simpler installation)
+*(we are working on a simpler installation)*
 
 - go to [releases](https://github.com/Wivon/OGHub/releases)
 
