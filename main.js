@@ -22,8 +22,6 @@ function createWindow() {
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
-
-  mainWindow.webContents.openDevTools()
 }
 
 autoUpdater.on('download-progress', (progressObj) => {
@@ -223,6 +221,8 @@ ipcMain.handle('get-options', (event, msg=null) => {
 
   }
 })
+
+console.log("appdata path: "+app.getPath("appData"))
 
 
 // if (app.requestSingleInstanceLock() == false) {
