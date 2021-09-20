@@ -53,7 +53,7 @@ fetch('https://api.github.com/repos/Wivon/OGHub/releases/latest').then(response 
             }, {
                 "paramId": "shortcuts",
                 "paramName": "Shortcuts",
-                "paramContent": '<ul><li>Refresh: F5</li><br><li>Restart OG Hub: Ctrl + F5</li><br><li>Dev tools: F12</li><br><li>Quit OG Hub: Ctrl + Q</li></ul>',
+                "paramContent": '<div class="shortcuts"><ul><li>Show OG Hub (tips: set as macro): <kbd>Ctrl</kbd> + <kbd>Maj</kbd> + <kbd>i</kbd></li><br><li>Hide OG Hub: <kbd>Esc</kbd></li><br><li>Refresh: <kbd>F5</kbd></li><br><li>Restart OG Hub: <kbd>Ctrl</kbd> + <kbd>F5</kbd></li><br><li>Dev tools: <kbd>F12</kbd></li><br><li>Quit OG Hub: <kbd>Ctrl</kbd> + <kbd>Q</kbd></li></ul></div>',
                 "openWith": "settings"
             }, {
                 "paramId": "signin",

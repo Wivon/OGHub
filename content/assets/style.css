@@ -775,3 +775,29 @@ option {
     padding-top: 15px;
     padding-left: 15px;
 }
+
+kbd {
+    display: inline-block;
+    background: rgba(0, 0, 0, .6);
+    border-radius: 3px;
+    padding: 2.5px 5px;
+    width: max-content;
+    height: max-content;
+    border-bottom: 3px solid rgba(255, 255, 255, .2);
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+}
+
+kbd:hover {
+    cursor: pointer;
+}
+
+kbd:active {
+    transform: translateY(2px);
+    margin-bottom: 1px;
+    border-bottom: 2px solid rgba(255, 255, 255, .2);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, .4);
+}
+
+.shortcuts {
+    padding-left: 25px;
+}
