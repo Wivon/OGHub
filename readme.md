@@ -12,7 +12,7 @@ Free up **SPACE** in your **Taskbar**
 
 - run the installer
 
-- add OG Hub to your taskbar and launch it
+- add OG Hub to your taskbar and launch it !
 
 ## features
 
