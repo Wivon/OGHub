@@ -8,6 +8,10 @@
     --accent-color: #0092e6;
 }
 
+.debug div:hover,.debug button:hover,.debug img:hover,.debug p:hover,.debug span:hover,.debug a:hover {
+    background: #ff00003b;
+}
+
 body {
     background: var(--backgrnd-color);
     overflow: hidden;
