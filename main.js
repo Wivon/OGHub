@@ -16,6 +16,7 @@ function createWindow() {
       contextIsolation: false,
       enableRemoteModule: true,
     },
+    icon: path.join(__dirname, 'src/img/logoX512.png')
   });
 
   mainWindow.loadFile('content/index.html');
