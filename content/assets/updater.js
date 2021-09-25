@@ -1,4 +1,4 @@
-const { ipcRenderer } = require('electron');
+const { ipcRenderer, shell } = require('electron');
 // update notification
 const notification = document.getElementById('notification');
 const message = document.getElementById('message');
@@ -84,6 +84,7 @@ function setDownloadProgress() {
         if (dlProgressObj[1] == "100") {
             clearInterval(timer);
             document.querySelector('.downloadProgress').classList.remove('downloading');
+            setUpdaterStatus()
         }
     }, 100)
 }

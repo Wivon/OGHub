@@ -8,12 +8,12 @@ document.body.onblur = () => {
 
 function savePageState(htmlcontent) {
     localStorage.setItem('page_html', htmlcontent);
-    console.log('saved page state')
+    console.log('saved cards')
 }
 
 if (localStorage.getItem('page_html')) {
     if (content.innerHTML != localStorage.getItem('page_html')) {
         content.innerHTML = localStorage.getItem('page_html');
-        console.log('restored page state');
+        console.log('restored cards last save');
     }
 }
