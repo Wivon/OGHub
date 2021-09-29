@@ -190,13 +190,24 @@ ipcMain.on('launch-exe', (event, exePath) => {
 
 // options in options.json
 const fs = require('fs');
-const fileName = './options.json';
-const file = require(fileName);
+const fileName = app.getPath("appData") + "\\og-hub\\options.txt";
+const DEFAULT_OPTIONS = '{"autoUpdate": true,"backgroundRunning": true,"backgroundMode": "backgroundColor","theme": "dark","backgroundColor": "#1f1f1f","textColor": "#f1f1f1","accentColor": "#0092e6","UseOnlineApp": "true","startWithWindows": false,"dragAndDrop": false,"zoolLevel": "100"}'
 
 function readOptionsJSON() {
-  let file_content = fs.readFileSync(fileName);
-  let content = JSON.parse(file_content);
-  return content
+  if (fs.exists(fileName, () => { console.log('options.txt checked') })) {
+    const file = require(fileName);
+    let file_content = fs.readFileSync(fileName);
+    let content = JSON.parse(file_content);
+    return content
+  } else {
+    fs.writeFile(fileName, DEFAULT_OPTIONS, function (err) {
+      if (err) throw err;
+    });
+    let file_content = fs.readFileSync(fileName);
+    let content = JSON.parse(file_content);
+    return content
+    console.log('options.txt file does not exist, creating...');
+  }
 }
 
 function WriteOptionsJSON(optionName, option) {
@@ -214,7 +225,7 @@ ipcMain.on('save-options', (event, msg) => {
   WriteOptionsJSON(newOptionName, newOptionValue)
 })
 
-ipcMain.handle('get-options', (event, msg=null) => {
+ipcMain.handle('get-options', (event, msg = null) => {
   if (msg == null || msg == "") {
     return JSON.stringify(readOptionsJSON())
   } else {
@@ -223,7 +234,7 @@ ipcMain.handle('get-options', (event, msg=null) => {
   }
 })
 
-console.log("appdata path: "+app.getPath("appData"))
+console.log("appdata path: " + app.getPath("appData"))
 
 
 // if (app.requestSingleInstanceLock() == false) {
