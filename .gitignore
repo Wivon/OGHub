@@ -3,3 +3,4 @@ node_modules/
 dist/
 sogh.cmd
 build/
+options.json
