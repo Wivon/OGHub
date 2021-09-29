@@ -14,6 +14,8 @@ Free up **SPACE** in your **Taskbar**
 
 - add OG Hub to your taskbar and launch it !
 
+- use <kbd>Ctrl + Alt + I</kbd> to show OG Hub
+
 ## features
 
 - add your programs in OG Hub
