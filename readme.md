@@ -2,6 +2,7 @@
 Free up **SPACE** in your **Taskbar**
 
 ### [**feedback**](https://forms.gle/kfzZiQJyytgscY9R9)
+### [**☕ buy me a coffee ☕**](https://paypal.me/LilianBrss)
 
 ## installation guide
 *(we are working on a simpler installation)*
