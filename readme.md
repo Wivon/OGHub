@@ -2,6 +2,7 @@
 Free up **SPACE** in your **Taskbar**
 
 ### [**feedback**](https://forms.gle/kfzZiQJyytgscY9R9)
+### [**☕ buy me a coffee ☕**](https://paypal.me/LilianBrss)
 
 ## installation guide
 *(we are working on a simpler installation)*
@@ -13,6 +14,8 @@ Free up **SPACE** in your **Taskbar**
 - run the installer
 
 - add OG Hub to your taskbar and launch it !
+
+- use <kbd>Ctrl + Alt + I</kbd> to show OG Hub
 
 ## features
 
