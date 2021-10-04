@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain, ipcRenderer, globalShortcut } = require('el
 const ipc = ipcRenderer
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
+const installedWinApps = require('installed-win-apps')
 
 let mainWindow;
 
@@ -191,26 +192,26 @@ ipcMain.on('launch-exe', (event, exePath) => {
 // options in options.json
 const fs = require('fs');
 const fileName = app.getPath("appData") + "\\og-hub\\options.txt";
-const DEFAULT_OPTIONS = '{"autoUpdate": true,"backgroundRunning": true,"backgroundMode": "backgroundColor","theme": "dark","backgroundColor": "#1f1f1f","textColor": "#f1f1f1","accentColor": "#0092e6","UseOnlineApp": "true","startWithWindows": false,"dragAndDrop": false,"zoolLevel": "100"}'
+const DEFAULT_OPTIONS = '{"autoUpdate": true,"backgroundRunning": true,"backgroundMode": "backgroundColor","theme": "dark","backgroundColor": "#1f1f1f","textColor": "#f1f1f1","accentColor": "#0092e6","UseOnlineApp": false,"startWithWindows": false,"dragAndDrop": false,"zoomLevel": "100"}'
 
 function readOptionsJSON() {
-  if (fs.exists(fileName, () => { console.log('options.txt checked') })) {
-    const file = require(fileName);
+  if (fs.exists(fileName, () => { console.log('options.txt exists, reading...') })) {
     let file_content = fs.readFileSync(fileName);
     let content = JSON.parse(file_content);
     return content
   } else {
+    console.log('options.txt file does not exist, creating...');
     fs.writeFile(fileName, DEFAULT_OPTIONS, function (err) {
       if (err) throw err;
     });
     let file_content = fs.readFileSync(fileName);
     let content = JSON.parse(file_content);
     return content
-    console.log('options.txt file does not exist, creating...');
   }
 }
 
 function WriteOptionsJSON(optionName, option) {
+  file = {};
   file[optionName] = option;
 
   fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
@@ -230,13 +231,14 @@ ipcMain.handle('get-options', (event, msg = null) => {
     return JSON.stringify(readOptionsJSON())
   } else {
     return readOptionsJSON()[msg]
-
   }
 })
 
 console.log("appdata path: " + app.getPath("appData"))
 
-
+installedWinApps.getAllPaths().then(paths => {
+  console.log(paths)   //paths is an array that contains the paths of all installed apps
+})
 // if (app.requestSingleInstanceLock() == false) {
 
 // }
