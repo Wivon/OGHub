@@ -4,9 +4,16 @@ let newTextColor
 let newAccentColor
 
 document.body.onload = () => {
-    newBackgrndColor = getOGHUB_OPTION('backgroundColor')
-    newTextColor = getOGHUB_OPTION('textColor')
-    newAccentColor = getOGHUB_OPTION('accentColor')
+    if (getOGHUB_OPTION('backgroundColor') == "undefined" || getOGHUB_OPTION('textColor') || "undefined" || getOGHUB_OPTION('accentColor') == "undefined") {
+        console.log('custom colors not defined, using default')
+        newBackgrndColor = "#1f1f1f"
+        newTextColor = "#f1f1f1"
+        newAccentColor = "#0092e6"
+    } else {
+        newBackgrndColor = getOGHUB_OPTION('backgroundColor')
+        newTextColor = getOGHUB_OPTION('textColor')
+        newAccentColor = getOGHUB_OPTION('accentColor')
+    }
 
     refreshTheme()
 }
@@ -48,7 +55,7 @@ function changeBackgroundColor() {
     root.style.getPropertyValue
 }
 
-function setColorInputValue(backgroundColor=GetThemeColors()[0], textColor=GetThemeColors()[1], accentColor=GetThemeColors()[2]) {
+function setColorInputValue(backgroundColor = GetThemeColors()[0], textColor = GetThemeColors()[1], accentColor = GetThemeColors()[2]) {
     console.log('setting colors input value...')
 
     document.querySelector('.appBackgrndSelector').value = backgroundColor
