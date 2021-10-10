@@ -782,7 +782,7 @@ option {
 
 kbd {
     display: inline-block;
-    background: rgba(0, 0, 0, .6);
+    background: rgba(0, 0, 0, .3);
     border-radius: 3px;
     padding: 2.5px 5px;
     width: max-content;
@@ -796,10 +796,9 @@ kbd:hover {
 }
 
 kbd:active {
-    transform: translateY(2px);
+    transform: translateY(1px);
     margin-bottom: 1px;
     border-bottom: 2px solid rgba(255, 255, 255, .2);
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, .4);
 }
 
 .shortcuts {
