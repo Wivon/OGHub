@@ -195,19 +195,21 @@ const fileName = app.getPath("appData") + "\\og-hub\\options.txt";
 const DEFAULT_OPTIONS = '{"autoUpdate": true,"backgroundRunning": true,"backgroundMode": "backgroundColor","theme": "dark","backgroundColor": "#1f1f1f","textColor": "#f1f1f1","accentColor": "#0092e6","UseOnlineApp": false,"startWithWindows": false,"dragAndDrop": false,"zoomLevel": "100"}'
 
 function readOptionsJSON() {
-  if (fs.exists(fileName, () => { console.log('options.txt exists, reading...') })) {
-    let file_content = fs.readFileSync(fileName);
-    let content = JSON.parse(file_content);
-    return content
-  } else {
-    console.log('options.txt file does not exist, creating...');
-    fs.writeFile(fileName, DEFAULT_OPTIONS, function (err) {
-      if (err) throw err;
-    });
-    let file_content = fs.readFileSync(fileName);
-    let content = JSON.parse(file_content);
-    return content
-  }
+  return new Promise(function (resolve, reject) {
+    if (fs.exists(fileName, () => { console.log('options.txt exists, reading...') })) {
+      let file_content = fs.readFileSync(fileName);
+      let content = JSON.parse(file_content);
+      resolve(content)
+    } else {
+      console.log('options.txt file does not exist, creating...');
+      fs.writeFile(fileName, DEFAULT_OPTIONS, function (err) {
+        if (err) throw err;
+      });
+      let file_content = fs.readFileSync(fileName);
+      let content = JSON.parse(file_content);
+      resolve(content)
+    }
+  })
 }
 
 function WriteOptionsJSON(optionName, option) {
