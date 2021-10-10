@@ -169,18 +169,13 @@ let OGHUB_CONFIG = {}
 function refreshOGHubOptions() {
     ipcRenderer.invoke('get-options').then(response => {
         console.log('OG Hub options received !')
+        console.log('response: ' + response)
         OGHUB_CONFIG = JSON.parse(response)
     })
 }
 
 function getOGHUB_OPTION(option) {
-    if (OGHUB_CONFIG == {} || OGHUB_CONFIG == null) {
-        ipcRenderer.invoke('get-options', option).then(response => {
-            return response
-        })
-    } else {
-        return OGHUB_CONFIG[option]
-    }
+    return OGHUB_CONFIG[option]
 }
 
 function setOptionsProperty(option, value) {

@@ -191,7 +191,7 @@ ipcMain.on('launch-exe', (event, exePath) => {
 
 // options in options.json
 const fs = require('fs');
-const fileName = app.getPath("appData") + "\\og-hub\\options.txt";
+const fileName = app.getPath("appData") + "\\OG Hub\\options.txt";
 const DEFAULT_OPTIONS = '{"autoUpdate": true,"backgroundRunning": true,"backgroundMode": "backgroundColor","theme": "dark","backgroundColor": "#1f1f1f","textColor": "#f1f1f1","accentColor": "#0092e6","UseOnlineApp": false,"startWithWindows": false,"dragAndDrop": false,"zoomLevel": "100"}'
 
 function readOptionsJSON() {
@@ -213,7 +213,9 @@ function readOptionsJSON() {
 }
 
 function WriteOptionsJSON(optionName, option) {
-  file = JSON.parse(readOptionsJSON);
+  readOptionsJSON().then(response => {
+    file = JSON.parse(response)
+  })
   file[optionName] = option;
 
   fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
@@ -228,12 +230,10 @@ ipcMain.on('save-options', (event, msg) => {
   WriteOptionsJSON(newOptionName, newOptionValue)
 })
 
-ipcMain.handle('get-options', (event, msg = null) => {
-  if (msg == null || msg == "") {
-    return JSON.stringify(readOptionsJSON())
-  } else {
-    return readOptionsJSON()[msg]
-  }
+ipcMain.handle('get-options', (event) => {
+    readOptionsJSON().then(response => {
+      return response
+    })
 })
 
 console.log("appdata path: " + app.getPath("appData"))
