@@ -23,7 +23,7 @@ Free up **SPACE** in your **Taskbar**
 - customize OG Hub
 - let it run in the background
 - OG Hub updates automatically, just restart the app when prompted
-
+<br>
 <img src="src/img/logoX512.png" width="150px">
 
 ## ⚠️ OG Hub is in development ⚠️
