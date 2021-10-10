@@ -211,7 +211,7 @@ function readOptionsJSON() {
 }
 
 function WriteOptionsJSON(optionName, option) {
-  file = {};
+  file = JSON.parse(readOptionsJSON);
   file[optionName] = option;
 
   fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
@@ -239,6 +239,7 @@ console.log("appdata path: " + app.getPath("appData"))
 installedWinApps.getAllPaths().then(paths => {
   console.log(paths)   //paths is an array that contains the paths of all installed apps
 })
+
 // if (app.requestSingleInstanceLock() == false) {
 
 // }
