@@ -5,10 +5,10 @@
 :root {
     --backgrnd-color: #1f1f1f;
     --text-color: #f1f1f1;
-    --accent-color: #0092e6;
+    --accent-color: #3781f8;
 }
 
-.debug div:hover,.debug button:hover,.debug img:hover,.debug p:hover,.debug span:hover,.debug a:hover {
+.debug div:hover, .debug button:hover, .debug img:hover, .debug p:hover, .debug span:hover, .debug a:hover {
     background: #ff00003b;
 }
 
@@ -35,62 +35,82 @@ body {
 /* Popup */
 
 .popup {
-    width: 250px;
-    height: 270px;
-    background: rgba(0, 0, 0, .7);
     display: none;
-    justify-content: start;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, .9);
+    backdrop-filter: blur(999px);
+    padding: 1.5rem;
+    border-radius: 0.5em;
+    border: 1px solid rgba(0, 0, 0, .6);
+    max-width: 300px;
+    box-shadow: rgba(0, 0, 0, .6) 0 0 20px;
+    text-align: center;
+    top: 150px;
     position: absolute;
-    vertical-align: middle;
-    z-index: 200;
-    animation: popupDisplay .3s ease-out;
-    border-radius: 15px;
-    padding: 25px;
-    top: calc(50% - 125px);
-    right: calc(50% - 135px);
-    backdrop-filter: blur(255px);
-    box-shadow: 0 0 15px rgba(0, 0, 0, .7);
-    transition: all .3 ease-out;
+    left: 0;
+    right: 0;
+    width: 250px;
+    z-index: 99999999999999;
+    margin-left: auto;
+    margin-right: auto;
+    animation: popupDisplay .25s ease-out;
 }
 
-.popup img {
-    width: 60px;
-    margin: auto;
-    margin-bottom: 15px;
+.popup h3 {
+    margin-bottom: 0;
 }
 
 .popup p {
-    font-weight: 500;
-    font-size: 15px;
-    text-align: center;
+    opacity: .75;
+}
+
+.popup img {
+    width: 64px;
     margin-bottom: 10px;
 }
 
 .popup .buttons {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .popup .buttons button {
-    margin: auto;
-    background-color: var(--accent-color);
-    color: var(--text-color);
-    border-radius: 5px;
+    color: rgba(0, 0, 0, .9);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5em;
     border: none;
-    padding: 5px 10px;
-    box-shadow: inset 0 0 4px rgba(0, 0, 0, 1);
+    outline: none;
+    font-size: 1.15em;
+    line-height: 1;
+    box-shadow: #343a40 1px 1px 2px;
+    width: 100%;
+}
+
+.popup .buttons button:last-child {
+    margin-top: 10px;
+}
+
+.popup .buttons button.accent {
+    box-shadow: rgba(255, 255, 255, .23) 0px 5px 10px inset;
+    background: var(--accent-color);
     cursor: pointer;
 }
 
 @keyframes popupDisplay {
     from {
         opacity: 0;
-        transform: scale(.7);
+        transform-origin: top;
+        transform: scale(.85);
     }
     to {
         opacity: 1;
+        transform-origin: top;
         transform: scale(1);
     }
 }

@@ -29,7 +29,7 @@
 <body>
 
     <div class="cardContextMenu">
-        <div onclick="openPopup('Do you want to delete this. You can\'t undo this action.', true, '<button onclick=\'hidePopup()\' class=\'Popupbutton\'>Cancel</button><hr><button class=\'Popupbutton\'>Confirm</button>', {'path': 'img/delete_icon.png', 'invert': true})"
+        <div onclick="openPopup('Delete ?','You can\'t undo this action.', true, '<button class=\'Popupbutton\'>Confirm</button><button onclick=\'hidePopup()\' class=\'Popupbutton accent\'>Cancel</button>', {'path': 'img/delete_icon.png', 'invert': true})"
             class="CtxMenubutton">
             <img class="invert" src="img/delete_icon.png">
             <button>Delete</button>
@@ -40,9 +40,11 @@
         </div>
     </div>
 
+
     <div class="popup" style="transition: all .3 ease-out;">
         <img class="invert" src="img/delete_icon.png">
-        <p class="text">Are you sure you want to delete? This action is irreversible.</p>
+        <h3></h3>
+        <p class="text"></p>
         <div class="buttons">
             <button onclick="hidePopup()" class="Popupbutton">Cancel</button>
             <hr>
@@ -51,7 +53,7 @@
     </div>
 
     <div onclick="hidePopup()" class="popupBackground popHidden"></div>
-
+    
     <div class="titleBar">
         <span class="title">OG Hub</span>
         <div class="actions">
@@ -71,7 +73,10 @@
     </header>
 
     <div class="container pannel active">
-        <div class="card" onclick="launchExe('C:\\Windows\\explorer.exe')"><div class="handle"></div><img src="img/explorer_icon.png" alt="app icon" class="icon"><h3>Explorer</h3></div>
+        <div class="card" onclick="launchExe('C:\\Windows\\explorer.exe')">
+            <div class="handle"></div><img src="img/explorer_icon.png" alt="app icon" class="icon">
+            <h3>Explorer</h3>
+        </div>
     </div>
 
     <div class="settings pannel">

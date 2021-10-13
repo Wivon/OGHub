@@ -6,9 +6,9 @@ let newAccentColor
 document.body.onload = () => {
     if (getOGHUB_OPTION('backgroundColor') == "undefined" || getOGHUB_OPTION('textColor') || "undefined" || getOGHUB_OPTION('accentColor') == "undefined") {
         console.warn('custom colors not defined, using default')
-        newBackgrndColor = "#1f1f1f"
-        newTextColor = "#f1f1f1"
-        newAccentColor = "#0092e6"
+        newBackgrndColor = readroot.getPropertyValue('--backgrnd-color')
+        newTextColor = readroot.getPropertyValue('--text-color')
+        newAccentColor = readroot.getPropertyValue('--accent-color')
     } else {
         newBackgrndColor = getOGHUB_OPTION('backgroundColor')
         newTextColor = getOGHUB_OPTION('textColor')
