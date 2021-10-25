@@ -819,13 +819,16 @@ option {
 }
 
 kbd {
+    font-size: 18px;
     display: inline-block;
     background: rgba(0, 0, 0, .3);
     border-radius: 3px;
     padding: 2.5px 5px;
     width: max-content;
     height: max-content;
-    border-bottom: 3px solid rgba(255, 255, 255, .2);
+    border-bottom: 4px solid rgba(255, 255, 255, .2);
+    border-left: 1px solid rgba(255, 255, 255, .2);
+    border-right: 1px solid rgba(255, 255, 255, .2);
     box-shadow: 0 0 2px rgba(0, 0, 0, .2);
 }
 
@@ -834,8 +837,8 @@ kbd:hover {
 }
 
 kbd:active {
-    transform: translateY(1px);
-    margin-bottom: 1px;
+    transform: translateY(2px);
+    margin-bottom: 2px;
     border-bottom: 2px solid rgba(255, 255, 255, .2);
 }
 
