@@ -26,6 +26,7 @@ function hidePopup() {
     document.querySelector('.popup').style.transition = 'all .3 ease-out';
     document.querySelector('.popup').style.transform = 'scale(.7)';
     document.querySelector('.popup').style.opacity = '0';
+
     setTimeout(() => {
         document.querySelector('.popup').style.transform = 'scale(1)';
         document.querySelector('.popup').style.opacity = '1';

@@ -1,4 +1,4 @@
-function sendTempNotification(text, miliseconds, button=null, buttonShowAcction=null) {
+function sendTempNotification(text, miliseconds, button = null, buttonShowAcction = null) {
     ipcRenderer.removeAllListeners('update_available');
     message.innerText = text;
     notification.classList.remove('hidden');
@@ -17,6 +17,7 @@ function sendTempNotification(text, miliseconds, button=null, buttonShowAcction=
         document.querySelector('.customBtn').classList.add('hidden');
     }
 
+    // hide the notif with anim after delay indicated miliseconds
     setTimeout(() => {
         hideNotification(true)
     }, miliseconds)
@@ -24,11 +25,14 @@ function sendTempNotification(text, miliseconds, button=null, buttonShowAcction=
 
 function hideNotification(animation) {
     if (animation == false) {
+        // if not animation, just hide it :)
         notification.classList.add('hidden');
     } else if (animation == true) {
+        // exit the notif from the screen
         notification.style.transition = ".4s ease-in"
         notification.style.bottom = "-75px"
 
+        // reset the notif style.
         setTimeout(() => {
             notification.classList.add('hidden');
             notification.style.transition = ".2s ease-in"
