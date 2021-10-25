@@ -196,20 +196,22 @@ const DEFAULT_OPTIONS = '{"autoUpdate": true,"backgroundRunning": true,"backgrou
 
 function readOptionsJSON() {
   return new Promise(function (resolve, reject) {
-    if (fs.exists(fileName, () => { console.log('options.txt exists, reading...') })) {
-      let file_content = fs.readFileSync(fileName);
-      let content = file_content
-      resolve(content)
+    if (fs.existsSync(fileName)) {
+      console.log('options.txt exists, reading...')
+      let file_content = fs.readFileSync(fileName, "utf-8");
+      console.log(file_content)
+      resolve(file_content)
     } else {
       console.log('options.txt file does not exist, creating...');
       fs.writeFile(fileName, DEFAULT_OPTIONS, function (err) {
         if (err) throw err;
         console.log('file created, reading...')
-        let file_content = fs.readFileSync(fileName);
-        let content = file_content
-        resolve(content)
+        let file_content = fs.readFileSync(fileName, "utf-8");
+        console.log(file_content)
+        resolve(file_content)
       })
     }
+    reject('error')
   })
 }
 
