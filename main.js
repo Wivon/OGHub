@@ -191,28 +191,30 @@ ipcMain.on('launch-exe', (event, exePath) => {
 
 // options in options.json
 const fs = require('fs');
-const fileName = app.getPath("appData") + "\\OG Hub\\options.txt";
+const fileName = app.getPath("appData") + "\\OG Hub\\options.json";
 const DEFAULT_OPTIONS = '{"autoUpdate": true,"backgroundRunning": true,"backgroundMode": "backgroundColor","theme": "dark","backgroundColor": "#1f1f1f","textColor": "#f1f1f1","accentColor": "#0092e6","UseOnlineApp": false,"startWithWindows": false,"dragAndDrop": false,"zoomLevel": "100"}'
 
 function readOptionsJSON() {
   return new Promise(function (resolve, reject) {
     if (fs.exists(fileName, () => { console.log('options.txt exists, reading...') })) {
       let file_content = fs.readFileSync(fileName);
-      let content = JSON.parse(file_content);
+      let content = file_content
       resolve(content)
     } else {
       console.log('options.txt file does not exist, creating...');
       fs.writeFile(fileName, DEFAULT_OPTIONS, function (err) {
         if (err) throw err;
-      });
-      let file_content = fs.readFileSync(fileName);
-      let content = JSON.parse(file_content);
-      resolve(content)
+        console.log('file created, reading...')
+        let file_content = fs.readFileSync(fileName);
+        let content = file_content
+        resolve(content)
+      })
     }
   })
 }
 
 function WriteOptionsJSON(optionName, option) {
+  let file
   readOptionsJSON().then(response => {
     file = JSON.parse(response)
   })
@@ -231,16 +233,17 @@ ipcMain.on('save-options', (event, msg) => {
 })
 
 ipcMain.handle('get-options', (event) => {
-    readOptionsJSON().then(response => {
-      return response
-    })
+  return readOptionsJSON().then(response => {
+    console.log(response)
+    return response
+  })
 })
 
 console.log("appdata path: " + app.getPath("appData"))
 
-installedWinApps.getAllPaths().then(paths => {
-  console.log(paths)   //paths is an array that contains the paths of all installed apps
-})
+// installedWinApps.getAllPaths().then(paths => {
+//   console.log(paths)   //paths is an array that contains the paths of all installed apps
+// })
 
 // if (app.requestSingleInstanceLock() == false) {
 
