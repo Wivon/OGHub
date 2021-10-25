@@ -169,14 +169,12 @@ let OGHUB_CONFIG = {}
 function refreshOGHubOptions() {
     ipcRenderer.invoke('get-options').then(response => {
         console.log('config received')
-        console.log(response)
-        OGHUB_CONFIG = JSON.stringify(response)
+        OGHUB_CONFIG = JSON.parse(JSON.parse(response))
+        console.log(OGHUB_CONFIG)
     })
 }
 
-function getOGHUB_OPTION(option) {
-    return OGHUB_CONFIG[option]
-}
+const getOGHUB_OPTION = (option) => { return OGHUB_CONFIG[option] }
 
 function setOptionsProperty(option, value) {
     ipcRenderer.send('save-options', JSON.stringify([option, value]))

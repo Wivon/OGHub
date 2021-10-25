@@ -55,7 +55,7 @@ function changeBackgroundColor() {
     root.style.getPropertyValue
 }
 
-function setColorInputValue(backgroundColor = GetThemeColors()[0], textColor = GetThemeColors()[1], accentColor = GetThemeColors()[2]) {
+function setColorInputValue(backgroundColor = GetThemeColors()[0].slice(1), textColor = GetThemeColors()[1].slice(1), accentColor = GetThemeColors()[2].slice(1)) {
     console.log('setting colors input value...')
 
     document.querySelector('.appBackgrndSelector').value = backgroundColor

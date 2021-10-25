@@ -196,21 +196,19 @@ const DEFAULT_OPTIONS = '{"autoUpdate": true,"backgroundRunning": true,"backgrou
 
 function readOptionsJSON() {
   return new Promise(function (resolve, reject) {
+    let file_content
     if (fs.existsSync(fileName)) {
       console.log('options.txt exists, reading...')
-      let file_content = fs.readFileSync(fileName, "utf-8");
-      console.log(file_content)
-      resolve(file_content)
+      file_content = fs.readFileSync(fileName, "utf-8");
     } else {
       console.log('options.txt file does not exist, creating...');
       fs.writeFile(fileName, DEFAULT_OPTIONS, function (err) {
         if (err) throw err;
         console.log('file created, reading...')
-        let file_content = fs.readFileSync(fileName, "utf-8");
-        console.log(file_content)
-        resolve(file_content)
+        file_content = fs.readFileSync(fileName, "utf-8");
       })
     }
+    resolve(file_content)
     reject('error')
   })
 }
@@ -218,14 +216,14 @@ function readOptionsJSON() {
 function WriteOptionsJSON(optionName, option) {
   let file
   readOptionsJSON().then(response => {
-    file = JSON.parse(response)
-  })
-  file[optionName] = option;
+    file = response
+    file[optionName] = option;
 
-  fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
-    if (err) return console.log(err);
-    console.log('writing to ' + fileName);
-  });
+    fs.writeFile(fileName, file, function writeJSON(err) {
+      if (err) return console.log(err);
+      console.log('writing to ' + fileName);
+    });
+  })
 }
 
 ipcMain.on('save-options', (event, msg) => {
@@ -236,8 +234,8 @@ ipcMain.on('save-options', (event, msg) => {
 
 ipcMain.handle('get-options', (event) => {
   return readOptionsJSON().then(response => {
-    console.log(response)
-    return response
+    console.log(JSON.stringify(response))
+    return JSON.stringify(response)
   })
 })
 
