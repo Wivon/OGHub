@@ -183,3 +183,10 @@ function setOptionsProperty(option, value) {
 }
 
 refreshOGHubOptions()
+
+// disable cards animation after finished the first time
+// setTimeout(() => {
+//     document.querySelectorAll('.card').forEach(card => {
+//         card.style.animation = 'none';
+//     })
+// },500)

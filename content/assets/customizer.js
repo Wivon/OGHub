@@ -1,4 +1,4 @@
-// backgroundColor
+// colors
 let newBackgrndColor
 let newTextColor
 let newAccentColor
