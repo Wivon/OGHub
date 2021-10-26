@@ -83,15 +83,15 @@ function setDownloadProgress() {
         document.querySelector('.dlSpeed').innerHTML = dlProgressObj[0]
         if (dlProgressObj[1] == "100") {
             clearInterval(timer);
+            console.log('download finished ! clearing interval, changing status to "UPDATE_DL"')
             document.querySelector('.downloadProgress').classList.remove('downloading');
             setUpdaterStatus()
         }
-    }, 100)
+    }, 500)
 }
 
 let dlProgressObj = []
 
 ipcRenderer.on('download-progress', (event, progress) => {
     dlProgressObj = JSON.parse(progress)
-    console.info(dlProgressObj)
 })
