@@ -234,7 +234,6 @@ ipcMain.on('save-options', (event, msg) => {
 
 ipcMain.handle('get-options', (event) => {
   return readOptionsJSON().then(response => {
-    console.log(JSON.stringify(response))
     return JSON.stringify(response)
   })
 })

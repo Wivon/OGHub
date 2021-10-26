@@ -58,9 +58,9 @@ function changeBackgroundColor() {
 function setColorInputValue(backgroundColor = GetThemeColors()[0], textColor = GetThemeColors()[1], accentColor = GetThemeColors()[2]) {
     console.log('setting colors input value...')
 
-    document.querySelector('.appBackgrndSelector').value = backgroundColor.slice(1)
-    document.querySelector('.appTextColorSelector').value = textColor.slice(1)
-    document.querySelector('.appAccentColorSelector').value = accentColor.slice(1)
+    document.querySelector('.appBackgrndSelector').value = backgroundColor
+    document.querySelector('.appTextColorSelector').value = textColor
+    document.querySelector('.appAccentColorSelector').value = accentColor
 }
 
 function resetTheme() {
