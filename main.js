@@ -2,6 +2,8 @@ const { app, BrowserWindow, ipcMain, ipcRenderer, globalShortcut } = require('el
 const ipc = ipcRenderer
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
+const log = require('electron-log');
+autoUpdater.logger = log;
 const installedWinApps = require('installed-win-apps')
 
 let mainWindow;

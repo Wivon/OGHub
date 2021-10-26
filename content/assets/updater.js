@@ -61,6 +61,11 @@ function setUpdaterStatus() {
         document.querySelector('.parameterContent div div .checkBtn').style.opacity = 0.5;
         document.querySelector('.parameterContent div div .checkBtn').style.pointerEvents = 'none';
         document.querySelector('.parameterContent div div .checkBtn').innerHTML = "upadte ready to install";
+
+        // hide download progress indicator
+        document.querySelector('.downloadProgress').classList.remove('downloading');
+        clearInterval(dlIndicatorRefreshInterval);
+        dlIndicatorRefreshInterval=null;
     } else if (UPDATER_STATUS == 'UTD') {
         document.querySelector('.parameterContent div div h2').innerHTML = '✔️ You\'re up to date'
         document.querySelector('.parameterContent div div .buttons .restartBtn').classList.add('hidden');
@@ -74,27 +79,29 @@ function setUpdaterStatus() {
     }
 }
 
+let dlIndicatorRefreshInterval
+
 function setDownloadProgress() {
     document.querySelector('.downloadProgress').classList.add('downloading');
-    DownloadProgressIntervalFunctions()
+    dlIndicatorRefreshInterval = setInterval(DownloadProgressIntervalFunctions, 500)
 }
 
-const DownloadProgressIntervalFunctions = () => {
+function DownloadProgressIntervalFunctions() {
     if (dlProgressObj[1] == "100") {
-        CLEAR_timer_INTERVAL()
+        // if dl finished clear
+        setUpdaterStatus()
+        return
     } else {
-        document.querySelector('.dlPercent').innerHTML = dlProgressObj[1]
-        document.querySelector('.downloaded').innerHTML = dlProgressObj[2]
-        document.querySelector('.toDownload').innerHTML = dlProgressObj[3]
-        document.querySelector('.dlSpeed').innerHTML = dlProgressObj[0]
-        setTimeout(DownloadProgressIntervalFunctions, 500)
+        document.querySelector('.dlPercent').innerHTML = dlProgressObj[1];
+        document.querySelector('.downloaded').innerHTML = dlProgressObj[2];
+        document.querySelector('.toDownload').innerHTML = dlProgressObj[3];
+        document.querySelector('.dlSpeed').innerHTML = dlProgressObj[0];
+        return
     }
 }
 
 function CLEAR_timer_INTERVAL() {
     console.log('download finished ! cleared interval, changing status to "UPDATE_DL"')
-    document.querySelector('.downloadProgress').classList.remove('downloading');
-    setUpdaterStatus()
 }
 
 let dlProgressObj = []
