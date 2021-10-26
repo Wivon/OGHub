@@ -192,7 +192,7 @@ ipcMain.on('launch-exe', (event, exePath) => {
 // options in options.json
 const fs = require('fs');
 const fileName = app.getPath("appData") + "\\OG Hub\\options.json";
-const DEFAULT_OPTIONS = '{"autoUpdate": true,"backgroundRunning": true,"backgroundMode": "backgroundColor","theme": "dark","backgroundColor": "#1f1f1f","textColor": "#f1f1f1","accentColor": "#0092e6","UseOnlineApp": false,"startWithWindows": false,"dragAndDrop": false,"zoomLevel": "100"}'
+const DEFAULT_OPTIONS = '{"autoUpdate": true,"backgroundRunning": true,"backgroundMode": "backgroundColor","theme": "dark","backgroundColor": "#1f1f1f","textColor": "#f1f1f1","accentColor": "#3781f8","UseOnlineApp": false,"startWithWindows": false,"dragAndDrop": false,"zoomLevel": "100"}'
 
 function readOptionsJSON() {
   return new Promise(function (resolve, reject) {
@@ -219,6 +219,8 @@ function WriteOptionsJSON(optionName, option) {
     file = response
     file[optionName] = option;
 
+    console.log(file)
+
     fs.writeFile(fileName, file, function writeJSON(err) {
       if (err) return console.log(err);
       console.log('writing to ' + fileName);
@@ -227,9 +229,7 @@ function WriteOptionsJSON(optionName, option) {
 }
 
 ipcMain.on('save-options', (event, msg) => {
-  let newOptionName = JSON.parse(msg)[0]
-  let newOptionValue = JSON.parse(msg)[1]
-  WriteOptionsJSON(newOptionName, newOptionValue)
+  WriteOptionsJSON(JSON.parse(msg)[0], JSON.parse(msg)[1])
 })
 
 ipcMain.handle('get-options', (event) => {

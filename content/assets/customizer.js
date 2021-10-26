@@ -3,8 +3,8 @@ let newBackgrndColor
 let newTextColor
 let newAccentColor
 
-document.body.onload = () => {
-    if (getOGHUB_OPTION('backgroundColor') == "undefined" || getOGHUB_OPTION('textColor') || "undefined" || getOGHUB_OPTION('accentColor') == "undefined") {
+function initTheme()  {
+    if (getOGHUB_OPTION('backgroundColor') == "undefined" || getOGHUB_OPTION('textColor') == "undefined" || getOGHUB_OPTION('accentColor') == "undefined") {
         console.warn('custom colors not defined, using default')
         newBackgrndColor = readroot.getPropertyValue('--backgrnd-color')
         newTextColor = readroot.getPropertyValue('--text-color')
@@ -55,15 +55,15 @@ function changeBackgroundColor() {
     root.style.getPropertyValue
 }
 
-function setColorInputValue(backgroundColor = GetThemeColors()[0].slice(1), textColor = GetThemeColors()[1].slice(1), accentColor = GetThemeColors()[2].slice(1)) {
+function setColorInputValue(backgroundColor = GetThemeColors()[0], textColor = GetThemeColors()[1], accentColor = GetThemeColors()[2]) {
     console.log('setting colors input value...')
 
-    document.querySelector('.appBackgrndSelector').value = backgroundColor
-    document.querySelector('.appTextColorSelector').value = textColor
-    document.querySelector('.appAccentColorSelector').value = accentColor
+    document.querySelector('.appBackgrndSelector').value = backgroundColor.slice(1)
+    document.querySelector('.appTextColorSelector').value = textColor.slice(1)
+    document.querySelector('.appAccentColorSelector').value = accentColor.slice(1)
 }
 
 function resetTheme() {
-    setColorInputValue('#1f1f1f', '#f1f1f1', '#0092e6')
+    setColorInputValue('#1f1f1f', '#f1f1f1', '#3781f8')
     changeBackgroundColor()
 }
