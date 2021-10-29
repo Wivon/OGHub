@@ -48,11 +48,19 @@ function changeBackgroundColor() {
     refreshTheme()
 
     // save this
-    setOptionsProperty('backgroundColor', newBackgrndColor)
-    setOptionsProperty('textColor', newTextColor)
-    setOptionsProperty('accentColor', newAccentColor)
-
-    root.style.getPropertyValue
+    if (newBackgrndColor == readroot.getPropertyValue('--backgrnd-color')) {
+        setOptionsProperty('backgroundColor', newBackgrndColor)
+    }
+    if (newTextColor == readroot.getPropertyValue('--text-color')) {
+        setOptionsProperty('textColor', newTextColor)
+    }
+    if (newAccentColor == readroot.getPropertyValue('--accent-color')) {
+        setOptionsProperty('accentColor', newAccentColor)
+    }
+    // if (isLightTheme !== readroot.getPropertyValue('TO_DEFINE').slice(1)) {
+    //     setOptionsProperty('theme', isLightTheme)
+    // }
+    // WIP: coming in next updates or this option will become automatic
 }
 
 function setColorInputValue(backgroundColor = GetThemeColors()[0], textColor = GetThemeColors()[1], accentColor = GetThemeColors()[2]) {
