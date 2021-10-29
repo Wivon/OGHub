@@ -201,16 +201,15 @@ function readOptionsJSON() {
     let file_content
     if (fs.existsSync(fileName)) {
       console.log('options.txt exists, reading...')
-      file_content = fs.readFileSync(fileName, "utf-8");
+      resolve(fs.readFileSync(fileName, "utf-8"))
     } else {
       console.log('options.txt file does not exist, creating...');
       fs.writeFile(fileName, DEFAULT_OPTIONS, function (err) {
         if (err) throw err;
         console.log('file created, reading...')
-        file_content = fs.readFileSync(fileName, "utf-8");
+        resolve(fs.readFileSync(fileName, "utf-8"))
       })
     }
-    resolve(file_content)
     reject('error')
   })
 }
@@ -221,7 +220,8 @@ function WriteOptionsJSON(optionName, option) {
     file = response
     file[optionName] = option;
 
-    console.log(file)
+    console.log(`the key ${optionName} with the value ${option} will be written in ${file}`)
+    console.log(`new file content: ${file}`)
 
     fs.writeFile(fileName, file, function writeJSON(err) {
       if (err) return console.log(err);
