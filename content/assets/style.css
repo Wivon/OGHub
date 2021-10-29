@@ -405,17 +405,6 @@ header .headerBtn:active {
     animation: cardDisplay .2s ease-out;
 }
 
-.card:active {
-    position: absolute;
-    z-index: 999999;
-    backdrop-filter: blur(255px);
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    border-radius: 0;
-}
-
 .editing .card .handle {
     pointer-events: all;
     cursor: grab;
