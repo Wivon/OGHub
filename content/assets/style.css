@@ -405,7 +405,7 @@ header .headerBtn:active {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    animation: cardDisplay .2s ease-out;
+    animation: cardDisplay .3s ease-out;
 }
 
 .editing .card .handle {
@@ -554,8 +554,8 @@ footer a:hover {
 
 .parameterIcon {
     filter: invert();
-    width: 28px;
-    height: 28px;
+    width: 35px;
+    height: 35px;
     margin-right: 15px;
 }
 
@@ -751,48 +751,56 @@ option {
     flex-direction: column;
     border-radius: 8px;
     z-index: 1000;
-    backdrop-filter: blur(255px);
+    backdrop-filter: blur(15px);
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 3px;
+    padding: 5px;
+    background: rgba( 0, 0, 0, 0.5);
+    animation: contextMenuDisplay .2s;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.89);
+    animation-timing-function: cubic-bezier(0, 1, 0.5, 1.08);
+    border: 1.5px solid rgba(255, 255, 255, .6);
+}
+
+@keyframes contextMenuDisplay {
+    from {
+        transform-origin: top left;
+        transform: scale(.7);
+        opacity: .8;
+    }
+    50% {
+        transform-origin: top left;
+        transform: scale(1.02);
+        opacity: 1;
+    }
+    to {
+        transform-origin: top left;
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .cardContextMenu .CtxMenubutton {
     display: flex;
     justify-content: start;
-    flex-direction: row;
+    vertical-align: middle;
     height: max-content;
     min-width: 100px;
     padding: 5px;
     vertical-align: middle;
-    border-bottom: 1px solid rgba(255, 255, 255, .4);
-}
-
-.cardContextMenu .CtxMenubutton:last-child {
-    border-bottom: none;
 }
 
 .cardContextMenu .CtxMenubutton img {
+    filter: invert();
     height: 25px;
+    margin-right: 20px;
 }
 
 .cardContextMenu .CtxMenubutton button {
     background: transparent;
     color: var(--text-color);
     border: none;
-    margin-bottom: 5px;
-    margin-left: 20px;
-    text-align: start;
-}
-
-.cardContextMenu .CtxMenubutton::after {
-    content: '';
-    background-image: url(../img/settings_open_icon.png);
-    background-position: center;
-    background-size: 100%;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    right: 20px;
+    text-align: center;
+    font-size: 18px;
 }
 
 .invert {
