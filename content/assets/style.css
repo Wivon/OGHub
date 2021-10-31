@@ -756,7 +756,7 @@ option {
     padding: 5px;
     background: rgba( 0, 0, 0, 0.5);
     animation: contextMenuDisplay .2s;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.89);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 1);
     animation-timing-function: cubic-bezier(0, 1, 0.5, 1.08);
     border: 1.5px solid rgba(255, 255, 255, .6);
 }
@@ -764,12 +764,12 @@ option {
 @keyframes contextMenuDisplay {
     from {
         transform-origin: top left;
-        transform: scale(.7);
+        transform: scale(.6);
         opacity: .8;
     }
     50% {
         transform-origin: top left;
-        transform: scale(1.02);
+        transform: scale(1.01);
         opacity: 1;
     }
     to {
