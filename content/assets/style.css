@@ -172,7 +172,7 @@ header {
         opacity: 0.5;
         transform: scale(.2);
     }
-    75% {
+    20% {
         opacity: 1;
         transform: scale(.8);
     }
@@ -383,7 +383,6 @@ header .headerBtn:active {
 .container.editing .card {
     transform: scale(0.9);
     opacity: 0.75;
-    animation: editing ease-in-out infinite;
 }
 
 .container {

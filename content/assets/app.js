@@ -170,7 +170,7 @@ function refreshOGHubOptions() {
     ipcRenderer.invoke('get-options').then(response => {
         console.log('config received')
         OGHUB_CONFIG = JSON.parse(JSON.parse(response))
-        console.log('OGHUB_CONFIG: '+OGHUB_CONFIG)
+        console.log('OGHUB_CONFIG: ' + OGHUB_CONFIG)
         onConfigReceived()
     })
 }
@@ -187,9 +187,14 @@ function onConfigReceived() {
 
 refreshOGHubOptions()
 
-// disable cards animation after finished the first time
-// setTimeout(() => {
-//     document.querySelectorAll('.card').forEach(card => {
-//         card.style.animation = 'none';
-//     })
-// },500)
+// enable card animation
+document.querySelectorAll('.card').forEach(card => {
+    card.style.animation = 'cardDisplay .3s ease-out';
+
+    // disable cards animation after finished the first time
+    setTimeout(() => {
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.animation = 'none';
+        })
+    }, 500)
+})
