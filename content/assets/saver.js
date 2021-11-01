@@ -8,7 +8,7 @@ document.body.onblur = () => {
 
 function savePageState(htmlcontent) {
     localStorage.setItem('page_html', htmlcontent);
-    console.log('saved cards')
+    console.debug('saved cards')
 }
 
 if (localStorage.getItem('page_html')) {

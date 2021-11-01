@@ -29,7 +29,7 @@ function setCardCtxMenuEvent() {
 
 function hideContextMenus() {
     document.querySelector('.cardContextMenu').style.display = "none";
-    console.log('hide contextMenus')
+    console.debug('hide contextMenus')
 }
 
 setCardCtxMenuEvent()
