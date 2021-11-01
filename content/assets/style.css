@@ -753,6 +753,7 @@ option {
     backdrop-filter: blur(15px);
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5px;
+    padding-right: 5px;
     background: rgba( 0, 0, 0, 0.5);
     animation: contextMenuDisplay .2s;
     box-shadow: 0 0 15px rgba(0, 0, 0, 1);
@@ -786,6 +787,12 @@ option {
     min-width: 100px;
     padding: 5px;
     vertical-align: middle;
+}
+
+.cardContextMenu .CtxMenubutton:hover {
+    background: rgba(255, 255, 255, .05);
+    border-radius: 5px;
+    transition: .2s background;
 }
 
 .cardContextMenu .CtxMenubutton img {
