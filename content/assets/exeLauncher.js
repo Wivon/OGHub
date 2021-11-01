@@ -1,3 +1,5 @@
 function launchExe (exePath) {
-    ipcRenderer.send('launch-exe', exePath)
+    if (!cardsContainer.classList.contains('editing')) {
+        ipcRenderer.send('launch-exe', exePath)
+    }
 }
