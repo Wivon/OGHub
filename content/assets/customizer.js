@@ -3,7 +3,7 @@ let newBackgrndColor
 let newTextColor
 let newAccentColor
 
-function initTheme()  {
+function initTheme() {
     if (getOGHUB_OPTION('backgroundColor') == "undefined" || getOGHUB_OPTION('textColor') == "undefined" || getOGHUB_OPTION('accentColor') == "undefined") {
         console.warn('custom colors not defined, using default')
         newBackgrndColor = readroot.getPropertyValue('--backgrnd-color')
@@ -39,28 +39,28 @@ function GetThemeColors() {
 }
 
 function changeBackgroundColor() {
-    // get colors from inputs
     newBackgrndColor = document.querySelector('.appBackgrndSelector').value
     newTextColor = document.querySelector('.appTextColorSelector').value
     newAccentColor = document.querySelector('.appAccentColorSelector').value
     isLightTheme = document.querySelector('.isLightTheme')
 
-    refreshTheme()
-
     // save this
-    if (newBackgrndColor == readroot.getPropertyValue('--backgrnd-color')) {
+    if (newBackgrndColor != readroot.getPropertyValue('--backgrnd-color')) {
         setOptionsProperty('backgroundColor', newBackgrndColor)
     }
-    if (newTextColor == readroot.getPropertyValue('--text-color')) {
+    if (newTextColor != readroot.getPropertyValue('--text-color')) {
         setOptionsProperty('textColor', newTextColor)
     }
-    if (newAccentColor == readroot.getPropertyValue('--accent-color')) {
+    if (newAccentColor != readroot.getPropertyValue('--accent-color')) {
         setOptionsProperty('accentColor', newAccentColor)
     }
     // if (isLightTheme !== readroot.getPropertyValue('TO_DEFINE').slice(1)) {
     //     setOptionsProperty('theme', isLightTheme)
     // }
     // WIP: coming in next updates or this option will become automatic
+
+    // get colors from inputs
+    refreshTheme()
 }
 
 function setColorInputValue(backgroundColor = GetThemeColors()[0], textColor = GetThemeColors()[1], accentColor = GetThemeColors()[2]) {
