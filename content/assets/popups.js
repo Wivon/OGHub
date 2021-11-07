@@ -31,6 +31,6 @@ function hidePopup() {
         document.querySelector('.popup').style.transform = 'scale(1)';
         document.querySelector('.popup').style.opacity = '1';
         document.querySelector('.popup').style.display = 'none';
-    }, 1000)
+    }, 200)
     document.querySelector('.popupBackground').classList.add('popHidden')
 }
