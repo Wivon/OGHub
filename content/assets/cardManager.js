@@ -53,3 +53,9 @@ function CreateShortcut() {
 
 }
 
+function deleteCard(elementSelector) {
+    let element = document.querySelector(elementSelector)
+
+    // remove element obviously :)
+    element.remove()
+}

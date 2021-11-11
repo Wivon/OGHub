@@ -23,6 +23,10 @@ function setCardCtxMenuEvent() {
                 cardContextMenu.style.left = (event.clientX - cardContextMenu.offsetWidth) + "px";
                 console.log(`showing card context menu (moved) (event.clientY ${event.clientY})`)
             }
+
+            cardContextMenu.querySelector('.deleteBtn').onclick = () => {
+                openPopup('Delete ?','You can\'t undo this action.', true, '<button class=\'Popupbutton destructive\' onclick=\"deleteCard(\''+getSelector(card)+'\')">Confirm</button><button onclick=\'hidePopup()\' class=\'Popupbutton accent\'>Cancel</button>', {'path': 'img/delete_icon.png', 'invert': true})
+            }
         })
     })
 }
