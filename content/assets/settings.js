@@ -25,55 +25,62 @@ const appVersionPromise = ipcRenderer.invoke('og-hub-version')
         appVersion = version;
     })
 // last release description
-let settingsContent = ""
+let settingsContent = []
 
 let lastReleaseDescription = ""
 fetch('https://api.github.com/repos/Wivon/OGHub/releases/latest').then(response => {
     response.json().then(response => {
         lastReleaseDescription = response.body
-
-        settingsContent = [
-            {
-                "paramId": "addApp",
-                "paramName": "Add new app",
-                "paramContent": '<div class="addApp"><button class="selectExeBtn" onclick="SelectExecutable()">Select Executable</button><button class="selectIconBtn">Selected icon: default</button><input class="shortcutNameInput" type="text" placeholder="shortcut name"></input><button class="CreateShortcutBtn" onclick="CreateShortcut()">Create Shortcut</button></div>',
-                "openWith": "settings"
-            }, {
-                "paramId": "customize",
-                "paramName": "Customization",
-                "paramContent": `<h2 class="themeTitle">Colors</h2><h3>Background color: </h3><input class="appBackgrndSelector" type="color" value="${GetThemeColors()[0]}"></input><br><h3>Text color: </h3><input class="appTextColorSelector" type="color" value="${GetThemeColors()[1]}"></input><br><h3>Accent color: </h3><input class="appAccentColorSelector" type="color" value="${GetThemeColors()[2]}"></input><br><label for="ThemeSelector">Icons theme</label><select name="ThemeSelector" class="ThemeSelector"><option value="light">Light</option><option value="dark">Dark</option></select><br><button onclick="changeBackgroundColor()">Apply</button><button onclick="resetTheme()">Reset</button>`,
-                "openWith": "settings",
-                "displayAction": setColorInputValue
-            }, {
-                "paramId": "updates",
-                "paramName": "Updates",
-                "paramContent": '<div class="updateHeader"><img src="img/settings_update_icon.png"><div><h2>✔️ You\'re up to date</h2><h4>Last check: <span>' + LastUpdateCheckDate + '</span></h4><div class="buttons"><button class="checkBtn" onclick="CheckForUpdatesButton()">Check for Updates</button><button class="hidden restartBtn" onclick="restartApp()">restart</button></div></div></div><p class="downloadProgress">Downloaded <span class="dlPercent"></span>% (<span class="downloaded"></span>/<span class="toDownload"></span>), speed : <span class="dlSpeed"></span></p><h3 class="appVersionIndicator">Current version: ' + appVersion + '</h3><div class="updateInfo">Last release changelog :<br><br><p class="changelog">' + lastReleaseDescription + '</p></div><br><a onclick="shell.openExternal(\'https://forms.gle/jmFMQZCknfSwKmmN6\')">report bug, idea, comment</a> - &copy <a onclick="shell.openExternal(\'https://wivon-hub.tk\')">Wivon Hub</a> Technologies',
-                "openWith": "settings",
-                "displayAction": setUpdaterStatus
-            }, {
-                "paramId": "shortcuts",
-                "paramName": "Shortcuts",
-                "paramContent": '<div class="shortcuts"><ul><li>Show OG Hub (tips: set as macro): <kbd>Ctrl + Maj + i</kbd></li><br><li>Hide OG Hub: <kbd>Esc</kbd></li><br><li>Refresh: <kbd>F5</kbd></li><br><li>Restart OG Hub: <kbd>Ctrl + F5</kbd></li><br><li>Dev tools: <kbd>F12</kbd></li><br><li>Quit OG Hub: <kbd>Ctrl + Q</kbd></li></ul></div>',
-                "openWith": "settings"
-            }, {
-                "paramId": "signin",
-                "paramName": "Sign in",
-                "paramContent": 'sign in...',
-                "openWith": "account"
-            }, {
-                "paramId": "signup",
-                "paramName": "Sign up",
-                "paramContent": 'sign up...',
-                "openWith": "account"
-            }, {
-                "paramId": "logout",
-                "paramName": "Logout",
-                "paramContent": 'logout...',
-                "openWith": "account"
-            }
-        ]
+        setSettingsContent()
     })
+}).catch(error => {
+    lastReleaseDescription = error
+    console.error('OG Hub is offline,', error)
+    setSettingsContent()
 })
+
+function setSettingsContent() {
+    settingsContent = [
+        {
+            "paramId": "addApp",
+            "paramName": "Add new app",
+            "paramContent": '<div class="addApp"><button class="selectExeBtn" onclick="SelectExecutable()">Select Executable</button><button class="selectIconBtn">Selected icon: default</button><input class="shortcutNameInput" type="text" placeholder="shortcut name"></input><button class="CreateShortcutBtn" onclick="CreateShortcut()">Create Shortcut</button></div>',
+            "openWith": "settings"
+        }, {
+            "paramId": "customize",
+            "paramName": "Customization",
+            "paramContent": `<h2 class="themeTitle">Colors</h2><h3>Background color: </h3><input class="appBackgrndSelector" type="color" value="${GetThemeColors()[0]}"></input><br><h3>Text color: </h3><input class="appTextColorSelector" type="color" value="${GetThemeColors()[1]}"></input><br><h3>Accent color: </h3><input class="appAccentColorSelector" type="color" value="${GetThemeColors()[2]}"></input><br><label for="ThemeSelector">Icons theme</label><select name="ThemeSelector" class="ThemeSelector"><option value="light">Light</option><option value="dark">Dark</option></select><br><button onclick="changeBackgroundColor()">Apply</button><button onclick="resetTheme()">Reset</button>`,
+            "openWith": "settings",
+            "displayAction": setColorInputValue
+        }, {
+            "paramId": "updates",
+            "paramName": "Updates",
+            "paramContent": '<div class="updateHeader"><img src="img/settings_update_icon.png"><div><h2>✔️ You\'re up to date</h2><h4>Last check: <span>' + LastUpdateCheckDate + '</span></h4><div class="buttons"><button class="checkBtn" onclick="CheckForUpdatesButton()">Check for Updates</button><button class="hidden restartBtn" onclick="restartApp()">restart</button></div></div></div><p class="downloadProgress">Downloaded <span class="dlPercent"></span>% (<span class="downloaded"></span>/<span class="toDownload"></span>), speed : <span class="dlSpeed"></span></p><h3 class="appVersionIndicator">Current version: ' + appVersion + '</h3><div class="updateInfo">Last release changelog :<br><br><p class="changelog">' + lastReleaseDescription + '</p></div><br><a onclick="shell.openExternal(\'https://forms.gle/jmFMQZCknfSwKmmN6\')">report bug, idea, comment</a> - &copy <a onclick="shell.openExternal(\'https://wivon-hub.tk\')">Wivon Hub</a> Technologies',
+            "openWith": "settings",
+            "displayAction": setUpdaterStatus
+        }, {
+            "paramId": "shortcuts",
+            "paramName": "Shortcuts",
+            "paramContent": '<div class="shortcuts"><ul><li>Show OG Hub (tips: set as macro): <kbd>Ctrl + Maj + i</kbd></li><br><li>Hide OG Hub: <kbd>Esc</kbd></li><br><li>Refresh: <kbd>F5</kbd></li><br><li>Restart OG Hub: <kbd>Ctrl + F5</kbd></li><br><li>Dev tools: <kbd>F12</kbd></li><br><li>Quit OG Hub: <kbd>Ctrl + Q</kbd></li></ul></div>',
+            "openWith": "settings"
+        }, {
+            "paramId": "signin",
+            "paramName": "Sign in",
+            "paramContent": 'sign in...',
+            "openWith": "account"
+        }, {
+            "paramId": "signup",
+            "paramName": "Sign up",
+            "paramContent": 'sign up...',
+            "openWith": "account"
+        }, {
+            "paramId": "logout",
+            "paramName": "Logout",
+            "paramContent": 'logout...',
+            "openWith": "account"
+        }
+    ]
+}
 
 // add event listeners for openWithg parameters
 parameterBoxes.forEach(paramBox => {
