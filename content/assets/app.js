@@ -142,7 +142,7 @@ AccountBtn.addEventListener('click', () => {
 })
 
 function quitApp() {
-    savePageState(cardsContainer.innerHTML)
+    saveCards()
     ipcRenderer.send('quitApp')
 }
 
