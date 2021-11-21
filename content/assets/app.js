@@ -160,7 +160,7 @@ function setZoomLevel(level) {
 }
 
 document.body.onclick = () => {
-    savePageState(content.innerHTML)
+    saveCards()
     hideContextMenus()
 }
 

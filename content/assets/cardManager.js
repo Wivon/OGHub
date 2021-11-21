@@ -34,17 +34,17 @@ function CreateShortcut() {
 
     // iconExtractor.getIcon(newImgIconName, SelectedExePath);
 
-    let newCard  = document.createElement("div");
+    let newCard = document.createElement("div");
     // et lui donne un peu de contenu
-    newCard.innerHTML = '<div class="handle"></div><img src="img/logoX1024.png" alt="app icon" class="icon"><h3>'+newShortcutName+'</h3>'
+    newCard.innerHTML = '<div class="handle"></div><img src="img/logoX1024.png" alt="app icon" class="icon"><h3>' + newShortcutName + '</h3>'
     newCard.classList.add('card')
-    newCard.setAttribute('onclick', 'launchExe(\''+addslashes(SelectedExePath)+'\')')
+    newCard.setAttribute('onclick', 'launchExe(\'' + addslashes(SelectedExePath) + '\')')
     // add in HTML
     cardsContainer.appendChild(newCard);
 
     setTimeout(() => {
         // save in cards/cards.json
-            ipcRenderer.send('save-new-card', newShortcutName + "$$--$$" + SelectedExePath + "$$--$$")
+        ipcRenderer.send('save-new-card', newShortcutName + "$$--$$" + SelectedExePath + "$$--$$")
     }, 2000)
 
     sendTempNotification('✔️ card added !', 3000, 'show', () => {
@@ -56,6 +56,18 @@ function CreateShortcut() {
 function deleteCard(elementSelector) {
     let element = document.querySelector(elementSelector)
 
-    // remove element obviously :)
-    element.remove()
+    element.style.transition = 'all .3s ease-in'
+    element.style.transform = "translateX(-80%)"
+    element.style.opacity = "0"
+    element.style.pointerEvents = "none"
+
+    setTimeout(() => {
+        // remove element obviously :)
+        element.remove()
+        saveCards()
+        console.log('card removed & saved !')
+    }, 350)
+
+    // and hide the popup
+    hidePopup()
 }

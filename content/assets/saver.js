@@ -1,12 +1,12 @@
 // temp
-var content = document.querySelector('.container')
+var content = document.querySelector('.container').innerHTML
 
 // save the page's state after you're done with editing and clicked outside the content
 document.body.onblur = () => {
-    savePageState(content.innerHTML)
+    saveCards()
 }
 
-function savePageState(htmlcontent) {
+function saveCards(htmlcontent=content) {
     localStorage.setItem('page_html', htmlcontent);
     console.debug('saved cards')
 }
