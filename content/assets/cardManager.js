@@ -51,6 +51,8 @@ function CreateShortcut() {
         showPannel('.settings', 'Settings', '<!-- no footer for this pannel (settings) -->')
     })
 
+    // set events listener for the new card
+    setCardCtxMenuEvent()
 }
 
 function deleteCard(elementSelector) {
