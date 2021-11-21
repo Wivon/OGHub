@@ -1,14 +1,23 @@
 // temp
-var content = document.querySelector('.container').innerHTML
+var content = document.querySelector('.container')
 
-// save the page's state after you're done with editing and clicked outside the content
+// events who save the card
 document.body.onblur = () => {
     saveCards()
 }
 
-function saveCards(htmlcontent=content) {
-    localStorage.setItem('page_html', htmlcontent);
-    console.debug('saved cards')
+document.body.onclick = () => {
+    saveCards()
+    hideContextMenus()
+}
+
+function saveCards(htmlcontent=content.innerHTML) {
+    try {
+        localStorage.setItem('page_html', htmlcontent);
+        console.debug('saved cards')
+    } catch (error) {
+        console.error(error)
+    }
 }
 
 if (localStorage.getItem('page_html')) {

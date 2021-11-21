@@ -159,11 +159,6 @@ function setZoomLevel(level) {
     console.log('zoom level changed to ' + level)
 }
 
-document.body.onclick = () => {
-    saveCards()
-    hideContextMenus()
-}
-
 let OGHUB_CONFIG = {}
 
 function refreshOGHubOptions() {
