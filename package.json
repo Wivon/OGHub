@@ -1,7 +1,7 @@
 {
   "name": "og-hub",
   "productName": "OG Hub",
-  "version": "0.4.0",
+  "version": "0.4.5",
   "description": "Free up Space in your Taskbar",
   "main": "main.js",
   "scripts": {
@@ -41,7 +41,6 @@
     "electron-updater": "^4.3.9",
     "exe-icon-extractor": "^1.0.8",
     "icon-extractor": "^1.0.3",
-    "installed-win-apps": "^1.0.12",
     "path": "^0.12.7"
   }
 }
