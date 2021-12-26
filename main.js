@@ -27,6 +27,18 @@ function createWindow() {
   });
 }
 
+if (!app.requestSingleInstanceLock()) {
+  app.quit()
+} else {
+  app.on('second-instance', (event, commandLine, workingDirectory) => {
+    // Someone tried to run a second instance, we should focus our window.
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore()
+      mainWindow.focus()
+    }
+  })
+}
+
 autoUpdater.on('download-progress', (progressObj) => {
   let bytePerSecond = progressObj.bytesPerSecond
   let dlPercent = progressObj.percent
@@ -243,7 +255,3 @@ console.log("appdata path: " + app.getPath("appData"))
 // installedWinApps.getAllPaths().then(paths => {
 //   console.log(paths)   //paths is an array that contains the paths of all installed apps
 // })
-
-// if (app.requestSingleInstanceLock() == false) {
-
-// }
