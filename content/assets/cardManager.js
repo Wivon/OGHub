@@ -16,7 +16,7 @@ function CreateShortcut() {
     console.log('creating shortcut')
     let newShortcutName = document.querySelector('.shortcutNameInput').value
 
-    // // get exe img and write it in img/exeimg/
+    // get exe img and write it in a folder
     // const iconExtractor = require('icon-extractor');
     // const fs = require('fs');
 
@@ -27,7 +27,7 @@ function CreateShortcut() {
     //     console.log('Here is the path it was for: ' + data.Path);
     //     var icon = data.Base64ImageData;
 
-    //     fs.writeFile(`${appdata}/og-hub/cards/cards-img/` + newImgIconName, icon, 'base64', (err) => {
+    //     fs.writeFile(`${appdata}/OG Hub/cards/cards-img/` + newImgIconName, icon, 'base64', (err) => {
     //         console.error(err);
     //     });
     // });
