@@ -115,6 +115,7 @@ body {
         opacity: 0;
         transform: scale(1.15);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -148,7 +149,7 @@ header {
     padding-left: 40px;
     padding-right: 40px;
     width: 100%;
-    margin-top: 75px;
+    margin-top: 60px;
     vertical-align: middle;
     align-items: center;
     animation: headerdisplay 0.2s ease-out;
@@ -160,6 +161,7 @@ header {
         opacity: 0;
         transform: translateY(-50px) scale(.8);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -171,10 +173,12 @@ header {
         opacity: 0.5;
         transform: scale(.2);
     }
+
     20% {
         opacity: 1;
         transform: scale(.8);
     }
+
     100% {
         opacity: 1;
         transform: scale(1);
@@ -187,6 +191,7 @@ header {
         transform-origin: bottom;
         transform: translateY(50px) scale(.8);
     }
+
     100% {
         opacity: 1;
         transform-origin: bottom;
@@ -199,6 +204,7 @@ h1 {
     color: var(--text-color);
     font-family: 'samsung_sharp_sansbold', 'Inter';
     vertical-align: middle;
+    font-size: 45px;
 }
 
 header .headerBtn {
@@ -240,20 +246,20 @@ header .headerBtn:active {
     top: 0;
     left: 0;
     right: 0;
-    height: 20px;
+    height: 22px;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     background: rgba(255, 255, 255, 0.3);
     -webkit-app-region: drag;
     vertical-align: middle;
-    z-index: 100000;
+    z-index: 99999999;
 }
 
 .titleBar span.title {
     color: var(--text-color);
     opacity: .7;
-    font-size: 12px;
+    font-size: 14px;
     vertical-align: middle;
     padding-left: 10px;
     width: max-content;
@@ -270,6 +276,7 @@ header .headerBtn:active {
     from {
         opacity: .2;
     }
+
     to {
         opacity: 1;
     }
@@ -386,6 +393,10 @@ header .headerBtn:active {
 
 .container {
     overflow: hidden;
+}
+
+.container.active {
+    height: 300px !important;
 }
 
 .card {
@@ -621,6 +632,7 @@ footer a:hover {
         transform: rotate(0deg);
         cursor: wait;
     }
+
     to {
         transform: rotate(360deg);
         cursor: wait;
@@ -753,7 +765,7 @@ option {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5px;
     padding-right: 5px;
-    background: rgba( 0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
     animation: contextMenuDisplay .2s;
     transform-origin: top left;
     box-shadow: 0 0 15px rgba(0, 0, 0, 1);
@@ -766,10 +778,12 @@ option {
         transform: scale(.6);
         opacity: .8;
     }
+
     50% {
         transform: scale(1.01);
         opacity: 1;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -847,4 +861,33 @@ kbd:active {
 
 .shortcuts {
     padding-left: 25px;
+}
+
+button.ftPlug {
+    background: #1A2540 !important;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+    padding-left: 50px;
+    color: #f1f1f1;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+button.ftPlug:hover {
+    opacity: 1;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.6);
+}
+
+button.ftPlug:before {
+    content: '';
+    background: url('https://plug-sc.tk/assets/img/logo.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: calc(50% - 9%);
+    left: 10px;
+    transition: none;
 }

@@ -66,17 +66,17 @@ function setSettingsContent() {
         }, {
             "paramId": "signin",
             "paramName": "Sign in",
-            "paramContent": 'sign in...',
+            "paramContent": 'sign in coming soon<br><button class="ftPlug">connect with Plug</button>',
             "openWith": "account"
         }, {
             "paramId": "signup",
             "paramName": "Sign up",
-            "paramContent": 'sign up...',
+            "paramContent": 'sign up coming soon<br><button class="ftPlug">connect with Plug</button>',
             "openWith": "account"
         }, {
             "paramId": "logout",
             "paramName": "Logout",
-            "paramContent": 'logout...',
+            "paramContent": '<button>Logout</button>',
             "openWith": "account"
         }
     ]
