@@ -21,6 +21,8 @@ function createWindow() {
     icon: path.join(__dirname, 'src/img/logoX512.png')
   });
 
+  mainWindow.hide()
+
   mainWindow.loadFile('content/index.html');
   mainWindow.on('closed', function () {
     mainWindow = null;
@@ -76,6 +78,10 @@ ipcMain.on('set-fullscrenable', (event, msg) => {
   } else {
     mainWindow.setResizable(false);
   }
+})
+
+ipcMain.on('app-ready', (event, arg) => {
+  mainWindow.show()
 })
 
 app.on('window-all-closed', function () {

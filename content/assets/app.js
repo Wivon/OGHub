@@ -6,6 +6,11 @@ let footer = document.querySelector('footer')
 
 let CTRL_IS_PRESSED = false
 
+window.onload = () => {
+    console.log('app ready, showing...')
+    ipcRenderer.send('app-ready');
+}
+
 minimizeBtn.addEventListener('click', () => {
     ipcRenderer.send('minimizeApp');
 })

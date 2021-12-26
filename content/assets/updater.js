@@ -8,7 +8,7 @@ let UPDATER_STATUS = "UTD";
 
 ipcRenderer.on('update_available', () => {
     ipcRenderer.removeAllListeners('update_available');
-    message.innerText = 'ℹ️ Update available ! downloading...';
+    message.innerText = '🔃Update available ! downloading...';
     notification.classList.remove('hidden');
 
     // update in settings
@@ -22,7 +22,7 @@ ipcRenderer.on('update_available', () => {
 
 ipcRenderer.on('update_downloaded', () => {
     ipcRenderer.removeAllListeners('update_downloaded');
-    message.innerText = 'ℹ️ New Update Downloaded. install on restart';
+    message.innerText = '🔃New Update Downloaded. install on restart';
     restartButton.classList.remove('hidden');
     notification.classList.remove('hidden');
 
