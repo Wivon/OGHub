@@ -92,10 +92,10 @@ function DownloadProgressIntervalFunctions() {
         setUpdaterStatus()
         return
     } else {
-        document.querySelector('.dlPercent').innerHTML = dlProgressObj[1];
-        document.querySelector('.downloaded').innerHTML = dlProgressObj[2];
-        document.querySelector('.toDownload').innerHTML = dlProgressObj[3];
-        document.querySelector('.dlSpeed').innerHTML = dlProgressObj[0];
+        document.querySelector('.dlPercent').textContent = dlProgressObj[1] + '%';
+        document.querySelector('.downloaded').textContent = dlProgressObj[2];
+        document.querySelector('.toDownload').textContent = dlProgressObj[3];
+        document.querySelector('.dlSpeed').textContent = dlProgressObj[0];
         return
     }
 }
