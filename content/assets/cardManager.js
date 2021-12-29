@@ -36,7 +36,7 @@ function CreateShortcut() {
 
     let newCard = document.createElement("div");
     // et lui donne un peu de contenu
-    newCard.innerHTML = `\n<div class="handle"></div><img src="img/logoX1024.png" alt="app icon" class="icon"><h3>${newShortcutName}</h3>`
+    newCard.innerHTML = `\n<div class="handle"></div><img src="img/logoX512.png" alt="app icon" class="icon"><h3>${newShortcutName}</h3>`
     newCard.classList.add('card')
     newCard.setAttribute('onclick', 'launchExe(\'' + addslashes(SelectedExePath) + '\')')
     // add in HTML
@@ -59,7 +59,8 @@ function deleteCard(elementSelector) {
     let element = document.querySelector(elementSelector)
 
     element.style.transition = 'all .3s ease-in'
-    element.style.transform = "translateX(-80%)"
+    element.style.transform = "scale(0) translateX(-80%)"
+    element.style.transformOrigin = 'left'
     element.style.opacity = "0"
     element.style.pointerEvents = "none"
 
