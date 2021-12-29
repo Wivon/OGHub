@@ -108,8 +108,14 @@ function showPannel(Displaypannel, pannelStatusName, newFooterContent) {
 
     if (DisplayPannelInHtml.classList.contains('active')) {
         // hide pannel
-        DisplayPannelInHtml.classList.remove('active')
         cardsContainer.classList.add('active')
+        DisplayPannelInHtml.classList.remove('active')
+
+        setTimeout(() => {
+            // go back in settings and account options after the animation
+            backSettings()
+            backAccOptions()
+        }, 200)
 
         changeTitleStatus(pannelStatusName)
         updateFooterContent(newFooterContent)
