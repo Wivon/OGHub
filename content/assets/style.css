@@ -214,13 +214,46 @@ header .headerBtn {
     vertical-align: middle;
     border-radius: 50%;
     background: var(--accent-color);
-    box-shadow: inset -6px -6px 10px var(--text-color);
     transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
     cursor: pointer;
+    position: relative;
 }
 
-header .headerBtn:hover {
-    box-shadow: inset -8px -8px 10px var(--text-color);
+header .AccountBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    filter: invert() brightness(150%) saturate(0.85);
+    box-shadow: inset -8px -8px 15px var(--accent-color);
+    background: transparent;
+    border-radius: 50%;
+    transition: 0.2s all;
+    z-index: 98;
+}
+
+header .AccountBtn:hover::before {
+    box-shadow: inset -10px -10px 15px var(--accent-color);
+}
+
+header .AccountBtn::after {
+    content: 'OG';
+    font-family: 'samsung_sharp_sansbold';
+    font-size: 28px;
+    text-align: center;
+    padding-top: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    transition: 0.2s all;
+    z-index: 99;
+    color: var(--backgrnd-color);
+    opacity: 0.9;
 }
 
 header .settingsBtn {
