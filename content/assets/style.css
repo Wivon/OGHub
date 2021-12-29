@@ -213,19 +213,21 @@ header .headerBtn {
     background: #f1f1f15e;
     vertical-align: middle;
     border-radius: 50%;
-    background: linear-gradient(45deg, tomato, aquamarine);
+    background: var(--accent-color);
+    box-shadow: inset -6px -6px 10px var(--text-color);
     transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
     cursor: pointer;
 }
 
 header .headerBtn:hover {
-    transform: rotate(30deg) scale(1.05);
+    box-shadow: inset -8px -8px 10px var(--text-color);
 }
 
 header .settingsBtn {
     background: transparent;
     border-radius: 0%;
     background-image: url(../img/settingsX256.png);
+    box-shadow: none;
     background-position: center;
     background-size: 100%;
     transform: scale(.9);
@@ -233,6 +235,7 @@ header .settingsBtn {
 
 header .settingsBtn:hover {
     transform: rotate(0deg) scale(1);
+    box-shadow: none;
 }
 
 header .headerBtn:active {
@@ -367,10 +370,10 @@ header .headerBtn:active {
     margin-left: auto;
     flex-wrap: wrap;
     padding-left: 15px;
-    transition: 0.3s all;
+    transition: 0.45s all;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(5px);
+    transform: translateY(5px) scale(0.95);
     height: 0;
     margin-bottom: 0;
     margin-top: 0px;
@@ -380,7 +383,7 @@ header .headerBtn:active {
 .pannel.active {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     height: max-content;
     margin-top: 50px;
     transition: 0.3s all;
