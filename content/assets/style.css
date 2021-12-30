@@ -906,6 +906,7 @@ button.ftPlug {
     color: #f1f1f1;
     height: 40px;
     margin-bottom: 15px;
+    position: relative;
 }
 
 button.ftPlug:hover {
@@ -915,7 +916,7 @@ button.ftPlug:hover {
 
 button.ftPlug:before {
     content: '';
-    background: url('https://plug-sc.tk/assets/img/logo.png');
+    background: url('../img/ext/plug_logo.png');
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -923,7 +924,8 @@ button.ftPlug:before {
     width: 30px;
     aspect-ratio: 1/1;
     position: absolute;
-    top: calc(50% - 9%);
+    top: 50%;
+    transform: translateY(-50%);
     left: 10px;
     transition: none;
 }
