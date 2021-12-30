@@ -10,6 +10,7 @@
 
 .debug div:hover, .debug button:hover, .debug img:hover, .debug p:hover, .debug span:hover, .debug a:hover {
     background: #ff00003b;
+    border: solid 2px #0f0;
 }
 
 body {
@@ -154,6 +155,10 @@ header {
     align-items: center;
     animation: headerdisplay 0.2s ease-out;
     transform-origin: top;
+}
+
+img {
+    -webkit-user-drag: none;
 }
 
 @keyframes headerdisplay {
@@ -694,7 +699,7 @@ footer a:hover {
 
 .parameterContent button {
     background: var(--accent-color);
-    border-radius: 5px;
+    border-radius: 9px;
     color: var(--backgrnd-color);
     border: none;
     outline-color: var(--backgrnd-color);
@@ -928,4 +933,54 @@ button.ftPlug:before {
     transform: translateY(-50%);
     left: 10px;
     transition: none;
+}
+
+.containerANA {
+    background: rgba(255, 255, 255, 0.05);
+    height: 333px;
+    border-radius: 25px;
+    border: solid 1px rgba(255, 255, 255, .5);
+    position: relative;
+}
+
+.containerANA h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 35px;
+    margin-top: 15px;
+}
+
+.containerANA h5 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.containerANA img {
+    margin-top: 30px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 99px;
+    height: 99px;
+}
+
+.containerANA p {
+    text-align: center;
+    opacity: 0.5;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.containerANA .buttons {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.containerANA .buttons .btn-small {
+    font-weight: 900;
+    aspect-ratio: 1/1;
 }

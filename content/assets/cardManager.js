@@ -3,11 +3,9 @@ const appdata = process.env.APPDATA
 let SelectedExePath = ""
 
 function SelectExecutable() {
-    document.querySelector('.selectExeBtn').innerHTML = "Select Executable"
-
     ipcRenderer.invoke("select-exe").then(response => {
         SelectedExePath = response.filePaths[0]
-        document.querySelector('.selectExeBtn').innerHTML = document.querySelector('.selectExeBtn').innerHTML + ' (' + SelectedExePath.split('\\')[[SelectedExePath.split('\\').length - 1]] + ')'
+        document.querySelector('.containerANA p').innerHTML = SelectedExePath.split('\\')[[SelectedExePath.split('\\').length - 1]]
     })
 }
 
