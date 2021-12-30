@@ -174,7 +174,7 @@ let OGHUB_CONFIG = {}
 
 function refreshOGHubOptions() {
     ipcRenderer.invoke('get-options').then(response => {
-        console.log('config received')
+        console.log('config received', response)
         OGHUB_CONFIG = JSON.parse(JSON.parse(response))
         console.log('OGHUB_CONFIG: ' + OGHUB_CONFIG)
         onConfigReceived()
