@@ -67,7 +67,7 @@ function setUpdaterStatus() {
         clearInterval(dlIndicatorRefreshInterval);
         dlIndicatorRefreshInterval=null;
     } else if (UPDATER_STATUS == 'UTD') {
-        document.querySelector('.parameterContent div div h2').innerHTML = '✔️ You\'re up to date'
+        document.querySelector('.parameterContent div div h2').innerHTML = '✅ You\'re up to date'
         document.querySelector('.parameterContent div div .buttons .restartBtn').classList.add('hidden');
         document.querySelector('.parameterContent div div .buttons .checkBtn').classList.remove('hidden');
 

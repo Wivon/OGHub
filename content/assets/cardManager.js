@@ -47,7 +47,7 @@ function CreateShortcut() {
         ipcRenderer.send('save-new-card', newShortcutName + "$$--$$" + SelectedExePath + "$$--$$")
     }, 2000)
 
-    sendTempNotification('✔️ card added !', 3000, 'show', () => {
+    sendTempNotification('✅ card added !', 3000, 'show', () => {
         showPannel('.settings', 'Settings', '<!-- no footer for this pannel (settings) -->')
     })
 
