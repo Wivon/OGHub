@@ -44,7 +44,7 @@ function setSettingsContent() {
         {
             "paramId": "addApp",
             "paramName": "Add new app",
-            "paramContent": '<div class="addApp"><button class="selectExeBtn" onclick="SelectExecutable()">Select Executable</button><button class="selectIconBtn">Selected icon: default</button><input class="shortcutNameInput" type="text" placeholder="shortcut name"></input><button class="CreateShortcutBtn" onclick="CreateShortcut()">Create Shortcut</button></div>',
+            "paramContent": '<div class="containerANA"><h2>Let\'s add an App !</h2><h5>Select the app you want to add</h5><img src="img/logoX512.png"></img><p>your-app.exe</p><div class="buttons"><button class="selectExeBtn" onclick="SelectExecutable()">Select an app</button><button class="btn-small disabled">></button></div></div>',
             "openWith": "settings"
         }, {
             "paramId": "customize",
@@ -55,7 +55,7 @@ function setSettingsContent() {
         }, {
             "paramId": "updates",
             "paramName": "Updates",
-            "paramContent": `<div class="updateHeader"><img src="img/settings_update_icon.png"><div><h2>✅ You\'re up to date</h2><h4>Last check: <span>${LastUpdateCheckDate}</span></h4><div class="buttons"><button class="checkBtn" onclick="CheckForUpdatesButton()">Check for Updates</button><button class="hidden restartBtn" onclick="restartApp()">restart</button></div></div></div><p class="downloadProgress">Downloaded <span class="dlPercent"></span>% (<span class="downloaded"></span>/<span class="toDownload"></span>), speed : <span class="dlSpeed"></span></p><h3 class="appVersionIndicator">Current version: ${appVersion}</h3><div class="updateInfo">Last release changelog :<br><br><p class="changelog">${lastReleaseDescription}</p></div><br><a onclick="shell.openExternal(\'https://forms.gle/jmFMQZCknfSwKmmN6\')">report bug, idea, comment</a> - &copy <a onclick="shell.openExternal(\'https://wivon-hub.tk\')">Wivon Hub</a> Technologies`,
+            "paramContent": `<div class="updateHeader"><img src="img/settings_update_icon.png"><div><h2>✅ You\'re up to date</h2><h4>Last check: <span>${LastUpdateCheckDate}</span></h4><div class="buttons"><button class="checkBtn" onclick="CheckForUpdatesButton()">Check for Updates</button><button class="hidden restartBtn" onclick="restartApp()">restart</button><p class="downloadProgress"><span class="dlPercent"></span><progress class="dlProg" value="0" max="0" style="width:325px; height: 22px; margin-right: 12px; margin-left: 12px;"></progress><span class="dlSpeed"></span></p></div></div></div><h3 class="appVersionIndicator">Current version: ${appVersion}</h3><div class="updateInfo">Last release changelog :<br><br><p class="changelog">${lastReleaseDescription}</p></div><br><a onclick="shell.openExternal(\'https://forms.gle/jmFMQZCknfSwKmmN6\')">report bug, idea, comment</a> - &copy <a onclick="shell.openExternal(\'https://wivon-hub.tk\')">Wivon Hub</a> Technologies`,
             "openWith": "settings",
             "displayAction": setUpdaterStatus
         }, {

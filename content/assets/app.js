@@ -95,6 +95,7 @@ function toggleEditCards() {
     cardsContainer.classList.toggle('editing')
     changeTitleStatus('Editing cards')
     console.log('toggle edit mode')
+    
 }
 
 function quitApp() {
