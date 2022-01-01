@@ -60,6 +60,7 @@ app.on('ready', () => {
 
   globalShortcut.register('Alt+CommandOrControl+I', () => {
     mainWindow.show()
+    mainWindows.webContents.send('goto-main-panel')
   })
 });
 

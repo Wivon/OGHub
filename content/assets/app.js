@@ -102,15 +102,15 @@ function quitApp() {
     ipcRenderer.send('quitApp')
 }
 
-// show showPannel
-function showPannel(Displaypannel, pannelStatusName, newFooterContent) {
-    let DisplayPannelInHtml = document.querySelector(Displaypannel)
-    let pannels = document.querySelectorAll('.pannel')
+// show showpanel
+function showpanel(Displaypanel, panelStatusName, newFooterContent) {
+    let DisplaypanelInHtml = document.querySelector(Displaypanel)
+    let panels = document.querySelectorAll('.panel')
 
-    if (DisplayPannelInHtml.classList.contains('active')) {
-        // hide pannel
+    if (DisplaypanelInHtml.classList.contains('active')) {
+        // hide panel
         cardsContainer.classList.add('active')
-        DisplayPannelInHtml.classList.remove('active')
+        DisplaypanelInHtml.classList.remove('active')
 
         setTimeout(() => {
             // go back in settings and account options after the animation
@@ -118,23 +118,23 @@ function showPannel(Displaypannel, pannelStatusName, newFooterContent) {
             backAccOptions()
         }, 200)
 
-        changeTitleStatus(pannelStatusName)
+        changeTitleStatus(panelStatusName)
         updateFooterContent(newFooterContent)
     }
     else {
-        // show pannel
-        pannels.forEach(pannel => {
-            if (pannel.classList.contains('active')) {
-                pannel.classList.remove('active')
+        // show panel
+        panels.forEach(panel => {
+            if (panel.classList.contains('active')) {
+                panel.classList.remove('active')
             }
         })
-        DisplayPannelInHtml.classList.add('active')
+        DisplaypanelInHtml.classList.add('active')
 
         if (cardsContainer.classList.contains('editing')) {
             toggleEditCards()
         }
 
-        changeTitleStatus(pannelStatusName)
+        changeTitleStatus(panelStatusName)
         updateFooterContent(newFooterContent)
     }
 }
@@ -143,14 +143,14 @@ function showPannel(Displaypannel, pannelStatusName, newFooterContent) {
 let settingsBtn = document.querySelector('.settingsBtn')
 
 settingsBtn.addEventListener('click', () => {
-    showPannel('.settings', 'Settings', '<!-- no footer for this pannel (settings) -->')
+    showpanel('.settings', 'Settings', '<!-- no footer for this panel (settings) -->')
 })
 
 // account
 let AccountBtn = document.querySelector('.AccountBtn')
 
 AccountBtn.addEventListener('click', () => {
-    showPannel('.account', 'Account options', '<!-- no footer for this pannel (account options) -->')
+    showpanel('.account', 'Account options', '<!-- no footer for this panel (account options) -->')
 })
 
 function quitApp() {

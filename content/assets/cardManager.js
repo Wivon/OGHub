@@ -46,7 +46,7 @@ function CreateShortcut() {
     }, 2000)
 
     sendTempNotification('✅ card added !', 3000, 'show', () => {
-        showPannel('.settings', 'Settings', '<!-- no footer for this pannel (settings) -->')
+        showpanel('.settings', 'Settings', '<!-- no footer for this panel (settings) -->')
     })
 
     // set events listener for the new card

@@ -88,7 +88,7 @@ parameterBoxes.forEach(paramBox => {
         let paramBoxId = paramBox.getAttribute('param-id')
         settingsContent.forEach(ParamContentObj => {
             if (paramBoxId == ParamContentObj.paramId) {
-                console.log('opening ' + ParamContentObj.paramName + ' in settings pannel')
+                console.log('opening ' + ParamContentObj.paramName + ' in settings panel')
                 if (ParamContentObj.openWith === 'settings') {
                     HTMLParameterContent.classList.add('active')
                     parametersBoxesBox.classList.add('paramHidden')
@@ -103,12 +103,12 @@ parameterBoxes.forEach(paramBox => {
                     if (typeof ParamContentObj.displayAction === 'undefined') {
 
                     } else {
-                        console.log('this pannel has a displayAction, running it')
+                        console.log('this panel has a displayAction, running it')
                         ParamContentObj.displayAction()
                     }
                 }
                 else {
-                    console.log('opening ' + ParamContentObj.paramName + ' in account pannel')
+                    console.log('opening ' + ParamContentObj.paramName + ' in account panel')
                     HTMLAccountParameterContent.classList.add('active')
                     AccountparametersBoxesBox.classList.add('paramHidden')
                     AccbackButton.classList.add('active')
@@ -140,7 +140,7 @@ function backSettings() {
     backButton.classList.remove('active')
     SettingsTitle.innerHTML = "Settings"
     SettingsTitle.style.cursor = 'default';
-    console.log('closing pannel')
+    console.log('closing panel')
 }
 // add listeners for close parameters for acc
 AccbackButton.onclick = () => {
@@ -158,7 +158,7 @@ function backAccOptions() {
     AccbackButton.classList.remove('active')
     AccSettingsTitle.innerHTML = "Account Options"
     AccSettingsTitle.style.cursor = 'default';
-    console.log('closing pannel')
+    console.log('closing panel')
 }
 
 // update
@@ -174,7 +174,7 @@ function CheckForUpdatesButton() {
     document.querySelector('.parameterContent div div .checkBtn').style.pointerEvents = 'none';
     document.querySelector('.parameterContent div div .checkBtn').innerHTML = "Checking for Updates...";
     document.querySelector('.parameterContent div div h4 span').innerHTML = LastUpdateCheckDate;
-    console.log('updating pannel view')
+    console.log('updating panel view')
 
     sendCheckForUpdate()
     console.log('sending with ipc')
