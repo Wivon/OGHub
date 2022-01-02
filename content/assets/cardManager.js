@@ -5,7 +5,15 @@ let SelectedExePath = ""
 function SelectExecutable() {
     ipcRenderer.invoke("select-exe").then(response => {
         SelectedExePath = response.filePaths[0]
-        document.querySelector('.containerANA p').innerHTML = SelectedExePath.split('\\')[[SelectedExePath.split('\\').length - 1]]
+        document.querySelector("div.parameterContent div img").style.transform = "translateX(-50%) scale(.85)"
+        document.querySelector(".containerANA p").style.opacity = "0"
+        setTimeout(() => {
+            document.querySelector("div.parameterContent div div button.next").classList.remove('disabled')
+            document.querySelector("div.parameterContent div img").style.transform = "translateX(-50%) scale(1)"
+            document.querySelector('.containerANA p').innerHTML = SelectedExePath.split('\\')[[SelectedExePath.split('\\').length - 1]]
+            document.querySelector("div.parameterContent div img").style.opacity = "1"
+            document.querySelector(".containerANA p").style.opacity = ".75"
+        }, 450)
     })
 }
 

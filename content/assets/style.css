@@ -960,17 +960,20 @@ button.ftPlug:before {
 .containerANA img {
     margin-top: 30px;
     margin-left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(.85);
     width: 99px;
     height: 99px;
+    transition: 0.3s all;
+    opacity: .75;
 }
 
 .containerANA p {
     text-align: center;
-    opacity: 0.5;
+    opacity: .75;
     font-weight: 500;
     font-size: 18px;
     margin-top: 5px;
+    transition: 0.2s all;
 }
 
 .containerANA .buttons {

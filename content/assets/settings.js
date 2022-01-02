@@ -44,7 +44,7 @@ function setSettingsContent() {
         {
             "paramId": "addApp",
             "paramName": "Add new app",
-            "paramContent": '<div class="containerANA"><h2>Let\'s add an App !</h2><h5>Select the app you want to add</h5><img src="img/logoX512.png"></img><p>your-app.exe</p><div class="buttons"><button class="selectExeBtn" onclick="SelectExecutable()">Select an app</button><button class="btn-small disabled">></button></div></div>',
+            "paramContent": '<div class="containerANA"><h2>Let\'s add an App !</h2><h5>Select the app you want to add</h5><img src="img/logoX512.png"></img><p>your-app.exe</p><div class="buttons"><button class="selectExeBtn" onclick="SelectExecutable()">Select an app</button><button class="btn-small disabled next">></button></div></div>',
             "openWith": "settings"
         }, {
             "paramId": "customize",
