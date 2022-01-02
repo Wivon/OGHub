@@ -25,7 +25,13 @@ function setCardCtxMenuEvent() {
             }
 
             cardContextMenu.querySelector('.deleteBtn').onclick = () => {
-                openPopup('Delete ?','You can\'t undo this action.', true, '<button class=\'Popupbutton destructive\' onclick=\"deleteCard(\''+getSelector(card)+'\')">Confirm</button><button onclick=\'hidePopup()\' class=\'Popupbutton accent\'>Cancel</button>', {'path': 'img/delete_icon.png', 'invert': true})
+                openPopup('Delete ?', 'You can\'t undo this action.', true, '<button class=\'Popupbutton destructive\' onclick=\"deleteCard(\'' + getSelector(card) + '\')">Confirm</button><button onclick=\'hidePopup()\' class=\'Popupbutton accent\'>Cancel</button>', { 'path': 'img/delete_icon.png', 'invert': true })
+            }
+            cardContextMenu.querySelector('.editBtn').onclick = () => {
+                openSettings('addApp')
+                setTimeout(() => {
+                    showpanel('.settings', 'Settings', '<!-- no footer for this panel (settings) -->')
+                }, 400)
             }
         })
     })

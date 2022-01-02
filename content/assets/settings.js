@@ -86,43 +86,47 @@ function setSettingsContent() {
 parameterBoxes.forEach(paramBox => {
     paramBox.onclick = () => {
         let paramBoxId = paramBox.getAttribute('param-id')
-        settingsContent.forEach(ParamContentObj => {
-            if (paramBoxId == ParamContentObj.paramId) {
-                console.log('opening ' + ParamContentObj.paramName + ' in settings panel')
-                if (ParamContentObj.openWith === 'settings') {
-                    HTMLParameterContent.classList.add('active')
-                    parametersBoxesBox.classList.add('paramHidden')
-                    backButton.classList.add('active')
-                    HTMLParameterContent.innerHTML = ParamContentObj.paramContent
-                    SettingsTitle.innerHTML = SettingsTitle.innerHTML + ' <span> > ' + ParamContentObj.paramName + '</span>'
-                    SettingsTitle.style.cursor = 'pointer';
-                    setTimeout(() => {
-                        parametersBoxesBox.style.height = "0";
-                    }, 190)
-
-                    if (typeof ParamContentObj.displayAction === 'undefined') {
-
-                    } else {
-                        console.log('this panel has a displayAction, running it')
-                        ParamContentObj.displayAction()
-                    }
-                }
-                else {
-                    console.log('opening ' + ParamContentObj.paramName + ' in account panel')
-                    HTMLAccountParameterContent.classList.add('active')
-                    AccountparametersBoxesBox.classList.add('paramHidden')
-                    AccbackButton.classList.add('active')
-                    HTMLAccountParameterContent.innerHTML = ParamContentObj.paramContent
-                    AccSettingsTitle.innerHTML = AccSettingsTitle.innerHTML + ' <span> > ' + ParamContentObj.paramName + '</span>'
-                    AccSettingsTitle.style.cursor = 'pointer';
-                    setTimeout(() => {
-                        AccountparametersBoxesBox.style.height = "0";
-                    }, 190)
-                }
-            }
-        })
+        openSettings(paramBoxId)
     }
 })
+
+function openSettings(paramBoxId) {
+    settingsContent.forEach(ParamContentObj => {
+        if (paramBoxId == ParamContentObj.paramId) {
+            console.log('opening ' + ParamContentObj.paramName + ' in settings panel')
+            if (ParamContentObj.openWith === 'settings') {
+                HTMLParameterContent.classList.add('active')
+                parametersBoxesBox.classList.add('paramHidden')
+                backButton.classList.add('active')
+                HTMLParameterContent.innerHTML = ParamContentObj.paramContent
+                SettingsTitle.innerHTML = SettingsTitle.innerHTML + ' <span> > ' + ParamContentObj.paramName + '</span>'
+                SettingsTitle.style.cursor = 'pointer';
+                setTimeout(() => {
+                    parametersBoxesBox.style.height = "0";
+                }, 190)
+
+                if (typeof ParamContentObj.displayAction === 'undefined') {
+
+                } else {
+                    console.log('this panel has a displayAction, running it')
+                    ParamContentObj.displayAction()
+                }
+            }
+            else {
+                console.log('opening ' + ParamContentObj.paramName + ' in account panel')
+                HTMLAccountParameterContent.classList.add('active')
+                AccountparametersBoxesBox.classList.add('paramHidden')
+                AccbackButton.classList.add('active')
+                HTMLAccountParameterContent.innerHTML = ParamContentObj.paramContent
+                AccSettingsTitle.innerHTML = AccSettingsTitle.innerHTML + ' <span> > ' + ParamContentObj.paramName + '</span>'
+                AccSettingsTitle.style.cursor = 'pointer';
+                setTimeout(() => {
+                    AccountparametersBoxesBox.style.height = "0";
+                }, 190)
+            }
+        }
+    })
+}
 
 // add listeners for close parameters
 backButton.onclick = () => {
