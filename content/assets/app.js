@@ -95,7 +95,7 @@ function toggleEditCards() {
     cardsContainer.classList.toggle('editing')
     changeTitleStatus('Editing cards')
     console.log('toggle edit mode')
-    
+
 }
 
 function quitApp() {
@@ -204,4 +204,11 @@ document.querySelectorAll('.card').forEach(card => {
             card.style.animation = 'none';
         })
     }, 500)
+})
+
+ipcRenderer.on('goto-main-panel', () => {
+    // show cards container if not active
+    if (!cardsContainer.classList.contains('active')) {
+        showpanel('.container', '', '<a onclick="toggleEditCards()">edit</a> - <a onclick="quitApp()">quit</a>')
+    }
 })

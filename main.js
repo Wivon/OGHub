@@ -59,8 +59,8 @@ app.on('ready', () => {
   console.log(`app version: ${app.getVersion()}`)
 
   globalShortcut.register('Alt+CommandOrControl+I', () => {
+    mainWindow.webContents.send('goto-main-panel')
     mainWindow.show()
-    mainWindows.webContents.send('goto-main-panel')
   })
 });
 
