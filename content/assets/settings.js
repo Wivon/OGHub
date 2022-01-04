@@ -44,7 +44,7 @@ function setSettingsContent() {
         {
             "paramId": "addApp",
             "paramName": "Add new app",
-            "paramContent": '<div class="containerANA"><h2>Let\'s add an App !</h2><h5>Select the app you want to add</h5><img src="img/logoX512.png"></img><p>your-app.exe</p><div class="buttons"><button class="selectExeBtn" onclick="SelectExecutable()">Select an app</button><button class="btn-small disabled next">></button></div></div>',
+            "paramContent": '<div class="containerANA stepOne"><h2>Let\'s add an App !</h2><h5>Select the app you want to add</h5><div class="mainContainer"><div class="fakeCard"><img src="img/logoX512.png"></img><p>your-app.exe</p></div><div class="editor"><input class="newCardNameInput" onkeyup="document.querySelector(\'.containerANA p\').textContent = this.value" type="text"></input><input type="text"></input></div></div><div class="buttons"><button onclick="backANA()" class="btn-small hidden back"><</button><button class="selectExeBtn ActionBtnANA" onclick="SelectExecutable()">Select an app</button><button onclick="NextANA()" class="btn-small disabled next">></button></div></div>',
             "openWith": "settings"
         }, {
             "paramId": "customize",
@@ -101,6 +101,7 @@ function openSettings(paramBoxId) {
                 HTMLParameterContent.innerHTML = ParamContentObj.paramContent
                 SettingsTitle.innerHTML = SettingsTitle.innerHTML + ' <span> > ' + ParamContentObj.paramName + '</span>'
                 SettingsTitle.style.cursor = 'pointer';
+                document.querySelector('.panTitle').style.marginLeft = '22px'
                 setTimeout(() => {
                     parametersBoxesBox.style.height = "0";
                 }, 190)
@@ -120,6 +121,7 @@ function openSettings(paramBoxId) {
                 HTMLAccountParameterContent.innerHTML = ParamContentObj.paramContent
                 AccSettingsTitle.innerHTML = AccSettingsTitle.innerHTML + ' <span> > ' + ParamContentObj.paramName + '</span>'
                 AccSettingsTitle.style.cursor = 'pointer';
+                document.querySelector('.panTitle').style.marginLeft = '22px'
                 setTimeout(() => {
                     AccountparametersBoxesBox.style.height = "0";
                 }, 190)
@@ -144,6 +146,7 @@ function backSettings() {
     backButton.classList.remove('active')
     SettingsTitle.innerHTML = "Settings"
     SettingsTitle.style.cursor = 'default';
+    document.querySelector('.panTitle').style.marginLeft = '0'
     console.log('closing panel')
 }
 // add listeners for close parameters for acc
@@ -162,6 +165,7 @@ function backAccOptions() {
     AccbackButton.classList.remove('active')
     AccSettingsTitle.innerHTML = "Account Options"
     AccSettingsTitle.style.cursor = 'default';
+    document.querySelector('.panTitle').style.marginLeft = '0'
     console.log('closing panel')
 }
 

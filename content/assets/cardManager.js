@@ -80,3 +80,48 @@ function deleteCard(elementSelector) {
     // and hide the popup
     hidePopup()
 }
+
+function NextANA() {
+    if (document.querySelector('.containerANA').classList.contains('stepOne')) {
+        document.querySelector('.containerANA').classList.remove('stepOne')
+        document.querySelector('.containerANA').classList.add('stepTwo')
+
+        document.querySelector('.containerANA h5').style.opacity = "0"
+        document.querySelector('.ActionBtnANA').style.transform = "scale(.90)"
+        document.querySelector("div.parameterContent div div button.back").classList.remove('hidden')
+        setTimeout(() => {
+            document.querySelector('.ActionBtnANA').textContent = "Select an icon"
+            document.querySelector('.ActionBtnANA').style.transform = "scale(1)"
+        }, 250)
+
+        document.querySelector('.containerANA .editor input.newCardNameInput').value = document.querySelector('.containerANA p').innerHTML
+        document.querySelector('.ActionBtnANA').classList.remove('selectExeBtn')
+    } else if (document.querySelector('.containerANA').classList.contains('stepTwo')) {
+        document.querySelector('.containerANA').classList.remove('stepTwo')
+        document.querySelector('.containerANA').classList.add('stepThree')
+
+
+    } else if (document.querySelector('.containerANA').classList.contains('stepThree')) {
+        showpanel('.settings', 'Settings', '<!-- no footer for this panel (settings) -->')
+    }
+}
+
+function backANA() {
+    if (document.querySelector('.containerANA').classList.contains('stepTwo')) {
+        document.querySelector('.containerANA').classList.remove('stepTwo')
+        document.querySelector('.containerANA').classList.add('stepOne')
+        
+        document.querySelector('.containerANA h5').style.opacity = "1"
+        document.querySelector('.ActionBtnANA').style.transform = "scale(.90)"
+        document.querySelector("div.parameterContent div div button.back").classList.add('hidden')
+        setTimeout(() => {
+            document.querySelector('.ActionBtnANA').textContent = "Select an app"
+            document.querySelector('.ActionBtnANA').style.transform = "scale(1)"
+        }, 250)
+
+        document.querySelector('.ActionBtnANA').classList.add('selectExeBtn')
+    } else if (document.querySelector('.containerANA').classList.contains('stepThree')) {
+        document.querySelector('.containerANA').classList.remove('stepThree')
+        document.querySelector('.containerANA').classList.add('stepTwo')
+    }
+}

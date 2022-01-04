@@ -9,8 +9,15 @@
 }
 
 .debug div:hover, .debug button:hover, .debug img:hover, .debug p:hover, .debug span:hover, .debug a:hover {
-    background: #ff00003b;
-    border: solid 2px #0f0;
+    /* styles for debugging */
+    /* background: #ff000009; */
+    box-shadow: 0 0 10px #0f0;
+}
+
+.debug .disabled {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    border: solid 1px #0f0 !important;
 }
 
 body {
@@ -525,6 +532,7 @@ footer a:hover {
 
 .panTitle {
     margin-bottom: 14px;
+    transition: 0.3s all;
 }
 
 .panTitle span {
@@ -567,6 +575,7 @@ footer a:hover {
     justify-content: start;
     align-items: center;
     vertical-align: middle;
+    transition: 0.1s;
 }
 
 .parameters {
@@ -955,6 +964,7 @@ button.ftPlug:before {
     font-weight: 500;
     font-size: 18px;
     margin-top: 15px;
+    transition: 0.2s all;
 }
 
 .containerANA img {
@@ -962,7 +972,6 @@ button.ftPlug:before {
     margin-left: 50%;
     transform: translateX(-50%) scale(.85);
     width: 99px;
-    height: 99px;
     transition: 0.3s all;
     opacity: .75;
 }
@@ -986,4 +995,75 @@ button.ftPlug:before {
 .containerANA .buttons .btn-small {
     font-weight: 900;
     aspect-ratio: 1/1;
+}
+
+.containerANA.stepTwo .mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    transition: 0.2s all;
+}
+
+.containerANA.stepOne .editor {
+    margin-top: 15px;
+    display: none;
+    opacity: 0;
+    transform: scale(.8);
+    pointer-events: none;
+    transition: 0.3s all;
+}
+
+.containerANA.stepTwo .editor {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    margin-left: 40px;
+}
+
+.containerANA.stepTwo .fakeCard {
+    width: 106px;
+    height: 127px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(1.15);
+}
+
+.containerANA.stepTwo .fakeCard img {
+    width: 70px;
+    margin-bottom: 10px;
+    margin: 0;
+    margin-top: 0;
+    transform: translateX(0px) !important;
+}
+
+.containerANA.stepTwo .fakeCard img:hover {
+    opacity: 0.85 !important;
+    cursor: pointer;
+}
+
+.containerANA.stepTwo .fakeCard p {
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    opacity: 1;
+}
+
+.containerANA .editor input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    width: 250px;
+    height: 42px;
+    font-size: 18px;
+    padding-left: 10px;
+    margin-bottom: 10px;
 }
