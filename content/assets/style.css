@@ -294,14 +294,17 @@ header .headerBtn:active {
     top: 0;
     left: 0;
     right: 0;
-    height: 22px;
+    height: 29px;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    background: rgba(255, 255, 255, 0.3);
-    -webkit-app-region: drag;
-    vertical-align: middle;
     z-index: 99999999;
+    vertical-align: middle;
+    padding: 3px;
+    background: rgba(255, 255, 255, 0.135);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    animation: titleDisplay .2s ease-in;
+    -webkit-app-region: drag;
 }
 
 .titleBar span.title {
@@ -323,33 +326,42 @@ header .headerBtn:active {
 @keyframes titleDisplay {
     from {
         opacity: .2;
+        transform: translateY(-18px);
     }
 
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
 .titleBar .TitleBarActionButton {
-    background: tomato;
+    --bckgrnd: #ff5f56;
+    border-radius: 5px;
+    background: var(--bckgrnd);
     font-weight: 700;
     font-size: 15px;
-    color: var(--backgrnd-color);
+    color: var(--bckgrnd);
     border: none;
     width: 20px;
-    height: 100%;
     cursor: pointer;
     -webkit-app-region: none;
+    border-radius: 50%;
+    transition: 0.06s transform;
+    margin-right: 3px;
+    margin-top: 1.5px;
 }
 
 .titleBar .minimizeBtn {
-    color: #fff;
-    background: transparent;
-    padding-bottom: 3px;
+    --bckgrnd: #ffbd2e;
+    background: var(--bckgrnd);
+    color: var(--bckgrnd);
+    border-radius: 50%;
 }
 
-.titleBar .minimizeBtn:hover {
-    background: rgba(0, 0, 0, 0.2);
+.titleBar .TitleBarActionButton:hover {
+    color: var(--backgrnd-color);
+    transform: scale(1.08);
 }
 
 #notification {
@@ -1010,7 +1022,7 @@ button.ftPlug:before {
     opacity: 0;
     transform: scale(.8);
     pointer-events: none;
-    transition: 0.3s all;
+    transition: 0.3s all !important;
 }
 
 .containerANA.stepTwo .editor {
@@ -1020,7 +1032,8 @@ button.ftPlug:before {
     opacity: 1;
     transform: scale(1);
     pointer-events: auto;
-    margin-left: 40px;
+    margin-left: 60px;
+    transition: 0.3s all !important;
 }
 
 .containerANA.stepTwo .fakeCard {
@@ -1033,7 +1046,6 @@ button.ftPlug:before {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    transform: scale(1.15);
 }
 
 .containerANA.stepTwo .fakeCard img {
