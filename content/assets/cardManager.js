@@ -20,7 +20,7 @@ function SelectExecutable() {
 
 function CreateShortcut() {
     console.log('creating shortcut')
-    let newShortcutName = document.querySelector('.shortcutNameInput').value
+    let newShortcutName = document.querySelector('.newCardNameInput').value
 
     // get exe img and write it in a folder
     // const iconExtractor = require('icon-extractor');
@@ -102,7 +102,7 @@ function NextANA() {
 
 
     } else if (document.querySelector('.containerANA').classList.contains('stepThree')) {
-        showpanel('.settings', 'Settings', '<!-- no footer for this panel (settings) -->')
+        CreateShortcut()
     }
 }
 
@@ -110,7 +110,7 @@ function backANA() {
     if (document.querySelector('.containerANA').classList.contains('stepTwo')) {
         document.querySelector('.containerANA').classList.remove('stepTwo')
         document.querySelector('.containerANA').classList.add('stepOne')
-        
+
         document.querySelector('.containerANA h5').style.opacity = "1"
         document.querySelector('.ActionBtnANA').style.transform = "scale(.90)"
         document.querySelector("div.parameterContent div div button.back").classList.add('hidden')
