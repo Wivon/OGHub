@@ -24,6 +24,14 @@ Free up **SPACE** in your **Taskbar**
 - let it run in the background
 - OG Hub updates automatically, just restart the app when prompted
 <br>
+
+## design
+OG Hub is designed to be fast and easy to use, updated to be ever more fluid and consistent.
+<br>
+<img src="https://wivon-hub.tk/assets/img/github_readme/oghub_design_1.png" height="100px">
+<br>
+<br>
+<br>
 <img src="src/img/logoX512.png" width="150px">
 
 ## ⚠️ OG Hub is in development ⚠️
