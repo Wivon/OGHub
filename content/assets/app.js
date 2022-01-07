@@ -154,8 +154,29 @@ AccountBtn.addEventListener('click', () => {
 })
 
 function quitApp() {
-    saveCards()
-    ipcRenderer.send('quitApp')
+    document.querySelector('.titleBar').style.transform = 'translateY(-35px)';
+    document.querySelector('.titleBar').style.transition = '0.3s all ease-in-out';
+    document.querySelector('footer').style.transform = 'translateY(75px)';
+    document.querySelector('footer').style.transition = '0.3s all ease-in-out';
+
+    cardsContainer.style.transition = '0.3s all ease-in-out';
+    cardsContainer.style.transform = 'translateY(30px)';
+    cardsContainer.style.opacity = 0;
+    document.querySelector('header h1').style.transition = '0.3s all ease-in-out';
+    document.querySelector('header h1').style.transform = 'translateY(30px)';
+    document.querySelector('header h1').style.opacity = 0;
+
+    document.querySelector('.settingsBtn').style.transition = '0.3s all ease-in-out';
+    document.querySelector('.settingsBtn').style.transform = 'translateX(-30px)';
+    document.querySelector('.settingsBtn').style.opacity = 0;
+
+    document.querySelector('.AccountBtn').style.transition = '0.3s all ease-in-out';
+    document.querySelector('.AccountBtn').style.transform = 'translateX(30px)';
+    document.querySelector('.AccountBtn').style.opacity = 0;
+    setTimeout(() => {
+        saveCards()
+        ipcRenderer.send('quitApp')
+    }, 300)
 }
 
 function setResizable() {
