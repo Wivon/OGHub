@@ -31,7 +31,13 @@ function setCardCtxMenuEvent() {
                 openSettings('addApp')
                 setTimeout(() => {
                     showpanel('.settings', 'Settings', '<!-- no footer for this panel (settings) -->')
-                }, 400)
+                    NextANA()
+
+                    // set the card values to preview and editor
+                    document.querySelector('.containerANA .editor input.newCardNameInput').value = card.querySelector('h3').textContent
+                    document.querySelector('.containerANA p').textContent = card.querySelector('h3').textContent
+                    document.querySelector('.containerANA img').src = card.querySelector('img').src
+                }, 200)
             }
         })
     })
