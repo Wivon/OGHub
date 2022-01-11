@@ -1031,17 +1031,17 @@ button.ftPlug:before {
     aspect-ratio: 1/1;
 }
 
-.containerANA.stepTwo .mainContainer {
+.containerANA.stepTwo .mainContainer, .containerANA.stepThree .mainContainer{
     display: flex;
     flex-direction: row;
     justify-content: center;
     transition: 0.2s all;
 }
 
-.containerANA.stepOne .editor {
+.containerANA.stepOne .editor, .containerANA.stepThree .editor {
     margin-top: 15px;
     display: none;
-    opacity: 0;
+    opacity: 0; 
     transform: scale(.8);
     pointer-events: none;
     transition: 0.3s all !important;
@@ -1058,7 +1058,7 @@ button.ftPlug:before {
     transition: 0.3s all !important;
 }
 
-.containerANA.stepTwo .fakeCard {
+.containerANA.stepTwo .fakeCard, .containerANA.stepThree .fakeCard {
     width: 106px;
     height: 127px;
     background: rgba(255, 255, 255, 0.1);
@@ -1068,9 +1068,14 @@ button.ftPlug:before {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    transition: 0.2s all !important;
 }
 
-.containerANA.stepTwo .fakeCard img {
+.containerANA.stepThree .fakeCard {
+    transform: scale(1.2);
+}
+
+.containerANA.stepTwo .fakeCard img, .containerANA.stepThree .fakeCard img {
     width: 70px;
     margin-bottom: 10px;
     margin: 0;
@@ -1083,7 +1088,7 @@ button.ftPlug:before {
     cursor: pointer;
 }
 
-.containerANA.stepTwo .fakeCard p {
+.containerANA.stepTwo .fakeCard p, .containerANA.stepThree .fakeCard p {
     color: #fff;
     text-align: center;
     font-size: 15px;
@@ -1102,11 +1107,11 @@ button.ftPlug:before {
     margin-bottom: 10px;
 }
 
-.customizePanel .colorSelectors{
+.customizePanel .colorSelectors {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    flex-direction:row;
+    flex-direction: row;
     margin-top: 65px;
 }
 
@@ -1114,7 +1119,7 @@ button.ftPlug:before {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction:column-reverse;
+    flex-direction: column-reverse;
 }
 
 .customizePanel .colorSelector input[type="color"] {

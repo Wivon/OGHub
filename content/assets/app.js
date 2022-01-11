@@ -228,8 +228,13 @@ document.querySelectorAll('.card').forEach(card => {
 })
 
 ipcRenderer.on('goto-main-panel', () => {
-    // show cards container if not active
-    if (!cardsContainer.classList.contains('active')) {
-        showpanel('.container', '', '<a onclick="toggleEditCards()">edit</a> - <a onclick="quitApp()">quit</a>')
+    // hide OG Hub if is already visible
+    if (document.hasFocus()) {
+        ipcRenderer.send('minimizeApp');
+    } else {
+        // else show cards container if not active
+        if (!cardsContainer.classList.contains('active')) {
+            showpanel('.container', '', '<a onclick="toggleEditCards()">edit</a> - <a onclick="quitApp()">quit</a>')
+        }
     }
 })

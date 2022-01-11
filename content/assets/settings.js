@@ -44,7 +44,7 @@ function setSettingsContent() {
         {
             "paramId": "addApp",
             "paramName": "Add new app",
-            "paramContent": '<div class="panelContainer containerANA stepOne"><h2>Let\'s add an App !</h2><h5>Select the app you want to add</h5><div class="mainContainer"><div class="fakeCard"><img src="img/logoX512.png"></img><p>your-app.exe</p></div><div class="editor"><input class="newCardNameInput" onkeyup="document.querySelector(\'.containerANA p\').textContent = this.value" type="text"></input><input type="text"></input></div></div><div class="buttons"><button onclick="backANA()" class="btn-small hidden back"><</button><button class="selectExeBtn ActionBtnANA" onclick="SelectExecutable()">Select an app</button><button onclick="NextANA()" class="btn-small disabled next">></button></div></div>',
+            "paramContent": '<div class="panelContainer containerANA stepOne"><h2>Let\'s add an App !</h2><h5>Select the app you want to add</h5><div class="mainContainer"><div class="fakeCard"><img src="img/logoX512.png"></img><p>your-app.exe</p></div><div class="editor"><input class="newCardNameInput" onkeyup="document.querySelector(\'.containerANA p\').textContent = this.value" type="text"></input><input type="text" class="disabled" value="coming soon !" readonly="readonly"></input></div></div><div class="buttons"><button onclick="backANA()" class="btn-small hidden back"><</button><button class="selectExeBtn ActionBtnANA" onclick="SelectExecutable()">Select an app</button><button onclick="NextANA()" class="btn-small disabled next">></button></div></div>',
             "openWith": "settings"
         }, {
             "paramId": "customize",
