@@ -37,6 +37,7 @@ function setCardCtxMenuEvent() {
                     document.querySelector('.containerANA .editor input.newCardNameInput').value = card.querySelector('h3').textContent
                     document.querySelector('.containerANA p').textContent = card.querySelector('h3').textContent
                     document.querySelector('.containerANA img').src = card.querySelector('img').src
+                    document.querySelector('.containerANA h2').textContent = "Editing card: " + card.querySelector('h3').textContent
                 }, 200)
             }
         })
