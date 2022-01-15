@@ -3,6 +3,7 @@ const ipc = ipcRenderer
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const log = require('electron-log');
+const SINGLE_INSTANCE_ENABLED = true;
 autoUpdater.logger = log;
 
 let mainWindow;
@@ -29,7 +30,7 @@ function createWindow() {
   });
 }
 
-if (!app.requestSingleInstanceLock()) {
+if (!app.requestSingleInstanceLock() && SINGLE_INSTANCE_ENABLED) {
   app.quit()
 } else {
   app.on('second-instance', (event, commandLine, workingDirectory) => {
