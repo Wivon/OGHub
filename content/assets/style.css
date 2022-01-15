@@ -697,6 +697,7 @@ footer a:hover {
     justify-content: start;
     flex-direction: row;
     width: 100%;
+    height: 116px;
 }
 
 .parameterContent .updateHeader img {
@@ -713,6 +714,10 @@ footer a:hover {
     from {
         transform: rotate(0deg);
         cursor: wait;
+    }
+
+    50% {
+        transform: scale(.95) rotate(180deg);
     }
 
     to {
@@ -986,14 +991,14 @@ button.ftPlug:before {
     padding-left: 15px;
 }
 
-.panelContainer h2 {
+.panelContainer:not(.container-only) h2 {
     text-align: center;
     font-weight: 700;
     font-size: 35px;
     margin-top: 15px;
 }
 
-.panelContainer h5 {
+.panelContainer:not(.container-only) h5 {
     text-align: center;
     font-weight: 500;
     font-size: 18px;
@@ -1019,7 +1024,7 @@ button.ftPlug:before {
     transition: 0.2s all;
 }
 
-.panelContainer .buttons {
+.panelContainer:not(.container-only) .buttons {
     position: absolute;
     bottom: 20px;
     left: 50%;
