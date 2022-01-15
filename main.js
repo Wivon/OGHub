@@ -62,6 +62,7 @@ app.on('ready', () => {
   globalShortcut.register('Alt+CommandOrControl+I', () => {
     mainWindow.webContents.send('goto-main-panel')
     mainWindow.show()
+    console.log('app maximazed')
   })
 });
 

@@ -2,21 +2,27 @@ const appdata = process.env.APPDATA
 
 let SelectedExePath = ""
 
-function SelectExecutable() {
-    ipcRenderer.invoke("select-exe").then(response => {
-        SelectedExePath = response.filePaths[0]
-        if (SelectedExePath) {
-            document.querySelector("div.parameterContent div img").style.transform = "translateX(-50%) scale(.85)"
-            document.querySelector(".containerANA p").style.opacity = "0"
-            setTimeout(() => {
-                document.querySelector("div.parameterContent div div button.next").classList.remove('disabled')
-                document.querySelector("div.parameterContent div img").style.transform = "translateX(-50%) scale(1)"
-                document.querySelector('.containerANA p').innerHTML = SelectedExePath.split('\\')[[SelectedExePath.split('\\').length - 1]]
-                document.querySelector("div.parameterContent div img").style.opacity = "1"
-                document.querySelector(".containerANA p").style.opacity = ".75"
-            }, 450)
-        }
-    })
+function MainActionANA() {
+    if (document.querySelector('.containerANA').classList.contains('stepOne')) {
+        ipcRenderer.invoke("select-exe").then(response => {
+            SelectedExePath = response.filePaths[0]
+            if (SelectedExePath) {
+                document.querySelector("div.parameterContent div img").style.transform = "translateX(-50%) scale(.85)"
+                document.querySelector(".containerANA p").style.opacity = "0"
+                setTimeout(() => {
+                    document.querySelector("div.parameterContent div div button.next").classList.remove('disabled')
+                    document.querySelector("div.parameterContent div img").style.transform = "translateX(-50%) scale(1)"
+                    document.querySelector('.containerANA p').innerHTML = SelectedExePath.split('\\')[[SelectedExePath.split('\\').length - 1]]
+                    document.querySelector("div.parameterContent div img").style.opacity = "1"
+                    document.querySelector(".containerANA p").style.opacity = ".75"
+                }, 450)
+            }
+        })
+    } else if (document.querySelector('.containerANA').classList.contains('stepTwo')) {
+        // select icon code
+    } else if (document.querySelector('.containerANA').classList.contains('stepThree')) {
+        CreateShortcut()
+    }
 }
 
 
@@ -84,6 +90,16 @@ function deleteCard(elementSelector) {
 }
 
 const CONTAINER_ANA_TITLES = ['Let\'s add an app !', 'Card Personalization', 'Alright ?']
+const CONTAINER_ANA_MAIN_BTN = ['select an app', 'select an icon', 'Create card !']
+
+function AnimateButtonText(elementSelector, newText, transitionDuration=250) {
+    elementSelector.style.transform = "scale(.90)"
+
+    setTimeout(() => {
+        elementSelector.textContent = newText
+        elementSelector.style.transform = "scale(1)"
+    }, transitionDuration)
+}
 
 function NextANA() {
     if (document.querySelector('.containerANA').classList.contains('stepOne')) {
@@ -91,12 +107,9 @@ function NextANA() {
         document.querySelector('.containerANA').classList.add('stepTwo')
 
         document.querySelector('.containerANA h5').style.opacity = "0"
-        document.querySelector('.ActionBtnANA').style.transform = "scale(.90)"
         document.querySelector("div.parameterContent div div button.back").classList.remove('hidden')
-        setTimeout(() => {
-            document.querySelector('.ActionBtnANA').textContent = "Select an icon"
-            document.querySelector('.ActionBtnANA').style.transform = "scale(1)"
-        }, 250)
+
+        AnimateButtonText(document.querySelector('.ActionBtnANA'), CONTAINER_ANA_MAIN_BTN[1])
 
         document.querySelector('.containerANA .editor input.newCardNameInput').value = document.querySelector('.containerANA p').innerHTML
         document.querySelector('.ActionBtnANA').classList.remove('selectExeBtn')
@@ -106,15 +119,9 @@ function NextANA() {
         document.querySelector('.containerANA').classList.add('stepThree')
         document.querySelector('.containerANA h2').textContent = CONTAINER_ANA_TITLES[2]
 
+        AnimateButtonText(document.querySelector('.ActionBtnANA'), CONTAINER_ANA_MAIN_BTN[2])
 
-        document.querySelector('.ActionBtnANA').style.transform = "scale(.90)"
-        setTimeout(() => {
-            document.querySelector('.ActionBtnANA').textContent = "Create card !"
-            document.querySelector('.ActionBtnANA').style.transform = "scale(1)"
-        }, 250)
-
-    } else if (document.querySelector('.containerANA').classList.contains('stepThree')) {
-        CreateShortcut()
+        document.querySelector("div.parameterContent div div button.next").classList.add('hidden')
     }
 }
 
@@ -124,12 +131,9 @@ function backANA() {
         document.querySelector('.containerANA').classList.add('stepOne')
 
         document.querySelector('.containerANA h5').style.opacity = "1"
-        document.querySelector('.ActionBtnANA').style.transform = "scale(.90)"
         document.querySelector("div.parameterContent div div button.back").classList.add('hidden')
-        setTimeout(() => {
-            document.querySelector('.ActionBtnANA').textContent = "Select an app"
-            document.querySelector('.ActionBtnANA').style.transform = "scale(1)"
-        }, 250)
+        
+        AnimateButtonText(document.querySelector('.ActionBtnANA'), CONTAINER_ANA_MAIN_BTN[0])
 
         document.querySelector('.ActionBtnANA').classList.add('selectExeBtn')
         document.querySelector('.containerANA h2').textContent = CONTAINER_ANA_TITLES[0]
@@ -138,10 +142,8 @@ function backANA() {
         document.querySelector('.containerANA').classList.add('stepTwo')
         document.querySelector('.containerANA h2').textContent = CONTAINER_ANA_TITLES[1]
 
-        document.querySelector('.ActionBtnANA').style.transform = "scale(.90)"
-        setTimeout(() => {
-            document.querySelector('.ActionBtnANA').textContent = "Select an icon"
-            document.querySelector('.ActionBtnANA').style.transform = "scale(1)"
-        }, 250)
+        document.querySelector("div.parameterContent div div button.next").classList.remove('hidden')
+        
+        AnimateButtonText(document.querySelector('.ActionBtnANA'), CONTAINER_ANA_MAIN_BTN[1])
     }
 }
