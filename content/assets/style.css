@@ -1074,7 +1074,7 @@ button.ftPlug:before {
     aspect-ratio: 1/1;
 }
 
-.containerANA.stepTwo .mainContainer, .containerANA.stepThree .mainContainer{
+.containerANA.stepTwo .mainContainer, .containerANA.stepThree .mainContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1084,7 +1084,7 @@ button.ftPlug:before {
 .containerANA.stepOne .editor, .containerANA.stepThree .editor {
     margin-top: 15px;
     display: none;
-    opacity: 0; 
+    opacity: 0;
     transform: scale(.8);
     pointer-events: none;
     transition: 0.3s all !important;
@@ -1166,12 +1166,24 @@ button.ftPlug:before {
 }
 
 .customizePanel .colorSelector input[type="color"] {
-    width: 120px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.15);
+    width: 100px;
+    height: 50px;
+    background: transparent;
     border: none;
     padding: 2px 10px;
     border-radius: 10px;
+}
+
+.customizePanel .colorSelector input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    background: transparent;
+}
+
+.customizePanel .colorSelector input[type="color"]::-webkit-color-swatch {
+    background: transparent;
+    transform: scale(1.2);
+    border-radius: 10px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
 }
 
 .customizePanel .colorSelector h3 {
@@ -1179,4 +1191,3 @@ button.ftPlug:before {
     font-size: 15px;
     font-weight: 500;
 }
-
