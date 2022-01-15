@@ -217,6 +217,7 @@ h1 {
     font-family: 'samsung_sharp_sansbold', 'Inter';
     vertical-align: middle;
     font-size: 45px;
+    transition: 0.1s;
 }
 
 header .headerBtn {
@@ -375,7 +376,7 @@ header .headerBtn:active {
     padding-right: 40px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(255px);
+    backdrop-filter: blur(15px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: var(--backgrnd-color);
 }
@@ -496,18 +497,13 @@ header .headerBtn:active {
     pointer-events: none;
 }
 
-.card:hover {
+.container:not(.editing) .card:hover {
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
     background: rgba(255, 255, 255, 0.08);
 }
 
-.card:hover img {
+.container:not(.editing) .card:hover img {
     transform: scale(1.08);
-}
-
-.container.editing .card:hover {
-    opacity: 8;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
 .card img {
@@ -697,13 +693,17 @@ footer a:hover {
     justify-content: start;
     flex-direction: row;
     width: 100%;
-    height: 116px;
+    margin-bottom: 10px;
+    height: 120px;
 }
 
 .parameterContent .updateHeader img {
     filter: invert();
     height: 100px;
     width: 100px;
+    vertical-align: middle;
+    margin-top: 14px;
+    margin-right: 7px;
 }
 
 .parameterContent .updateHeader img.active {
@@ -732,8 +732,18 @@ footer a:hover {
     flex-direction: column;
 }
 
+.parameterContent .updateHeader div h2 {
+    margin-top: 12px;
+}
+
 .parameterContent div div h4 {
+    margin-top: 8px;
+}
+
+.parameterContent div div h4, .parameterContent div div h4 * {
+    font-size: 15px;
     font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
     margin-top: 5px;
 }
 
@@ -766,18 +776,43 @@ footer a:hover {
     font-weight: 500;
 }
 
-.parameterContent h3.appVersionIndicator {
-    margin-top: 15px;
-    margin-left: 10px;
-}
-
 .parameterContent .updateInfo {
     margin-top: 10px;
-    background: #37383b;
-    border-radius: 15px;
     padding: 10px;
     padding-left: 15px;
     width: 100%;
+}
+
+.parameterContent .updateInfo p {
+    border-left: solid 2px rgba(255, 255, 255, 0.5);
+}
+
+.buttonsFooter {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 13px;
+    padding: 0 13px;
+}
+
+.buttonsFooter h3 {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: solid 1px rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    height: max-content;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    width: 167px;
+    text-align: center;
+    cursor: pointer;
 }
 
 /* add app */
@@ -855,9 +890,9 @@ option {
     background: rgba(0, 0, 0, 0.5);
     animation: contextMenuDisplay .2s;
     transform-origin: top left;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.671);
     animation-timing-function: cubic-bezier(0, 1, 0.5, 1.08);
-    border: 1.5px solid rgba(255, 255, 255, .6);
+    border: 0.5px solid rgba(255, 255, 255, .2);
 }
 
 @keyframes contextMenuDisplay {
@@ -1141,3 +1176,4 @@ button.ftPlug:before {
     font-size: 15px;
     font-weight: 500;
 }
+
