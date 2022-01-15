@@ -47,13 +47,15 @@ function sendCheckForUpdate() {
 
 function setUpdaterStatus() {
     if (UPDATER_STATUS == 'UPDATE_AV') {
-        document.querySelector('.parameterContent div div h2').innerHTML = "ℹ️ Update available ! downloading..."
+        document.querySelector('.parameterContent div div h2').innerHTML = "Downloading new update..."
+        document.querySelector('.parameterContent div div h4').innerHTML = "you can continue to use OG Hub while downloading"
         document.querySelector('.parameterContent div div .buttons .checkBtn').classList.add('hidden');
 
         setDownloadProgress();
 
     } else if (UPDATER_STATUS == 'UPDATE_DL') {
-        document.querySelector('.parameterContent div div h2').innerHTML = "ℹ️ New Update Downloaded. install on restart."
+        document.querySelector('.parameterContent div div h2').innerHTML = "New Update Downloaded."
+        document.querySelector('.parameterContent div div h4').innerHTML = "-> update will be installed on restart"
         document.querySelector('.parameterContent div div .buttons .restartBtn').classList.remove('hidden');
         document.querySelector('.parameterContent div div .buttons .checkBtn').classList.add('hidden');
 
@@ -67,7 +69,7 @@ function setUpdaterStatus() {
         clearInterval(dlIndicatorRefreshInterval);
         dlIndicatorRefreshInterval=null;
     } else if (UPDATER_STATUS == 'UTD') {
-        document.querySelector('.parameterContent div div h2').innerHTML = '✅ You\'re up to date'
+        document.querySelector('.parameterContent div div h2').innerHTML = '✅ You\'re up to date !'
         document.querySelector('.parameterContent div div .buttons .restartBtn').classList.add('hidden');
         document.querySelector('.parameterContent div div .buttons .checkBtn').classList.remove('hidden');
 
@@ -92,7 +94,7 @@ function DownloadProgressIntervalFunctions() {
         setUpdaterStatus()
         return
     } else {
-        document.querySelector('.dlPercent').textContent = dlProgressObj[1].slice(0,3)+'%';
+        document.querySelector('.dlPercent').textContent = dlProgressObj[1].slice(0,4)+'%';
         document.querySelector('.dlProg').value = Math.floor(dlProgressObj[2] / 1000000);
         document.querySelector('.dlProg').setAttribute('max', Math.floor(dlProgressObj[3] / 1000000));
         document.querySelector('.dlSpeed').textContent = Math.floor(dlProgressObj[0] / 1000000)+"Mb/s";
