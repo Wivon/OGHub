@@ -21,6 +21,10 @@ function sendTempNotification(text, miliseconds, button = null, buttonShowAcctio
     setTimeout(() => {
         hideNotification(true)
     }, miliseconds)
+
+    if (!document.querySelector('#notification #restart-button').classList.contains('hidden')) {
+        document.querySelector('#notification #restart-button').classList.add('hidden')
+    }
 }
 
 function hideNotification(animation) {
