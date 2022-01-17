@@ -72,18 +72,18 @@ function CreateShortcut() {
 function deleteCard(elementSelector) {
     let element = document.querySelector(elementSelector)
 
-    element.style.transition = 'all .3s ease-in'
-    element.style.transform = "scale(0) translateX(-80%)"
-    element.style.transformOrigin = 'left'
+    element.style.transition = 'all .2s ease-out'
+    element.style.transform = "scale(.3)"
     element.style.opacity = "0"
     element.style.pointerEvents = "none"
+    element.style.width = "0"
 
     setTimeout(() => {
         // remove element obviously :)
         element.remove()
         saveCards()
         console.log('card removed & saved !')
-    }, 350)
+    }, 250)
 
     // and hide the popup
     hidePopup()
