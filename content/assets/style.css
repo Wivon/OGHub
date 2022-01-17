@@ -565,16 +565,17 @@ footer a:hover {
     height: 30px;
     position: absolute;
     right: 10px;
-    width: 0;
+    width: 30px !important;
     opacity: 0;
     pointer-events: none;
-    transform: rotate(180deg);
+    transform: scale(.2) rotate(200deg);
     cursor: pointer;
+    transition: 0.2s all !important;
 }
 
 .backButton.active {
-    width: 30px;
     opacity: 1;
+    transform: scale(1) rotate(180deg);
     pointer-events: auto;
 }
 
