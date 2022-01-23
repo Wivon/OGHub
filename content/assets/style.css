@@ -1035,6 +1035,7 @@ button.ftPlug:before {
     font-weight: 700;
     font-size: 35px;
     margin-top: 15px;
+    transition: 0.15s ease-in;
 }
 
 .panelContainer:not(.container-only) h5 {
@@ -1075,14 +1076,14 @@ button.ftPlug:before {
     aspect-ratio: 1/1;
 }
 
-.containerANA.stepTwo .mainContainer, .containerANA.stepThree .mainContainer {
+.containerANA.stepTwo .mainContainer, .containerANA.stepThree .mainContainer, .containerANA.askForAddAnother .mainContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
     transition: 0.2s all;
 }
 
-.containerANA.stepOne .editor, .containerANA.stepThree .editor {
+.containerANA.stepOne .editor, .containerANA.stepThree .editor, .containerANA.askForAddAnother .editor {
     margin-top: 15px;
     display: none;
     opacity: 0;
@@ -1102,7 +1103,7 @@ button.ftPlug:before {
     transition: 0.3s all !important;
 }
 
-.containerANA.stepTwo .fakeCard, .containerANA.stepThree .fakeCard {
+.containerANA.stepTwo .fakeCard, .containerANA.stepThree .fakeCard, .containerANA.askForAddAnother .fakeCard {
     width: 106px;
     height: 127px;
     background: rgba(255, 255, 255, 0.1);
@@ -1115,11 +1116,11 @@ button.ftPlug:before {
     transition: 0.2s all !important;
 }
 
-.containerANA.stepThree .fakeCard {
+.containerANA.stepThree .fakeCard, .containerANA.askForAddAnother .fakeCard {
     transform: scale(1.2);
 }
 
-.containerANA.stepTwo .fakeCard img, .containerANA.stepThree .fakeCard img {
+.containerANA.stepTwo .fakeCard img, .containerANA.stepThree .fakeCard img, .containerANA.askForAddAnother img {
     width: 70px;
     margin-bottom: 10px;
     margin: 0;
@@ -1132,7 +1133,7 @@ button.ftPlug:before {
     cursor: pointer;
 }
 
-.containerANA.stepTwo .fakeCard p, .containerANA.stepThree .fakeCard p {
+.containerANA.stepTwo .fakeCard p, .containerANA.stepThree .fakeCard p, .containerANA.askForAddAnother .fakeCard p {
     color: #fff;
     text-align: center;
     font-size: 15px;

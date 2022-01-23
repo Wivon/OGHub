@@ -22,6 +22,18 @@ function MainActionANA() {
         // select icon code
     } else if (document.querySelector('.containerANA').classList.contains('stepThree')) {
         CreateShortcut()
+        document.querySelector('.ActionBtnANA').textContent = "Add Another App"
+        document.querySelector('.containerANA').classList.remove('stepThree')
+        document.querySelector('.containerANA').classList.add('askForAddAnother')
+    } else if (document.querySelector('.containerANA').classList.contains('askForAddAnother')) {
+        document.querySelector('.containerANA').classList.remove('askForAddAnother')
+        document.querySelector('.containerANA').classList.add('stepThree')
+        document.querySelector('.containerANA p').innerHTML = "your-app.exe"
+        document.querySelector('.containerANA img').src = "img/logoX512.png"
+        document.querySelector("div.parameterContent div div button.next").classList.add('disabled')
+        document.querySelector("div.parameterContent div img").style.transform = "translateX(-50%) scale(.85)"
+        backANA()
+        backANA()
     }
 }
 
@@ -107,17 +119,18 @@ function NextANA() {
         document.querySelector('.containerANA').classList.add('stepTwo')
 
         document.querySelector('.containerANA h5').style.opacity = "0"
+        document.querySelector('.containerANA h5').style.transform = "translateY(-5px)"
         document.querySelector("div.parameterContent div div button.back").classList.remove('hidden')
 
         AnimateButtonText(document.querySelector('.ActionBtnANA'), CONTAINER_ANA_MAIN_BTN[1])
 
         document.querySelector('.containerANA .editor input.newCardNameInput').value = document.querySelector('.containerANA p').innerHTML
         document.querySelector('.ActionBtnANA').classList.remove('selectExeBtn')
-        document.querySelector('.containerANA h2').textContent = CONTAINER_ANA_TITLES[1]
+        AnimateButtonText(document.querySelector('.containerANA h2'), CONTAINER_ANA_TITLES[1])
     } else if (document.querySelector('.containerANA').classList.contains('stepTwo')) {
         document.querySelector('.containerANA').classList.remove('stepTwo')
         document.querySelector('.containerANA').classList.add('stepThree')
-        document.querySelector('.containerANA h2').textContent = CONTAINER_ANA_TITLES[2]
+        AnimateButtonText(document.querySelector('.containerANA h2'), CONTAINER_ANA_TITLES[2])
 
         AnimateButtonText(document.querySelector('.ActionBtnANA'), CONTAINER_ANA_MAIN_BTN[2])
 
@@ -131,16 +144,17 @@ function backANA() {
         document.querySelector('.containerANA').classList.add('stepOne')
 
         document.querySelector('.containerANA h5').style.opacity = "1"
+        document.querySelector('.containerANA h5').style.transform = "translateY(0px)"
         document.querySelector("div.parameterContent div div button.back").classList.add('hidden')
         
         AnimateButtonText(document.querySelector('.ActionBtnANA'), CONTAINER_ANA_MAIN_BTN[0])
 
         document.querySelector('.ActionBtnANA').classList.add('selectExeBtn')
-        document.querySelector('.containerANA h2').textContent = CONTAINER_ANA_TITLES[0]
+        AnimateButtonText(document.querySelector('.containerANA h2'), CONTAINER_ANA_TITLES[0])
     } else if (document.querySelector('.containerANA').classList.contains('stepThree')) {
         document.querySelector('.containerANA').classList.remove('stepThree')
         document.querySelector('.containerANA').classList.add('stepTwo')
-        document.querySelector('.containerANA h2').textContent = CONTAINER_ANA_TITLES[1]
+        AnimateButtonText(document.querySelector('.containerANA h2'), CONTAINER_ANA_TITLES[1])
 
         document.querySelector("div.parameterContent div div button.next").classList.remove('hidden')
         
