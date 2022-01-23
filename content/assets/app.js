@@ -73,8 +73,12 @@ document.body.onkeydown = (event) => {
             ipcRenderer.send('quitApp');
         }
     } else if (event.keyCode == "27") {
-        event.preventDefault();
-        ipcRenderer.send('minimizeApp');
+        if (!popupDisplayed) {
+            event.preventDefault();
+            ipcRenderer.send('minimizeApp');
+        } else {
+            hidePopup()
+        }
     }
     if (event.keyCode == 17) {
         CTRL_IS_PRESSED = true

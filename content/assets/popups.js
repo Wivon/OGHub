@@ -1,3 +1,5 @@
+let popupDisplayed = false
+
 /**
  * 
  * @param {string} text 
@@ -20,6 +22,7 @@ function openPopup(title, text, blur = true, buttonsHTML='<button onclick="hideP
     if (blur) {
         document.querySelector('.popupBackground').classList.remove('popHidden')
     }
+    popupDisplayed = true
 }
 
 function hidePopup() {
@@ -33,4 +36,5 @@ function hidePopup() {
         document.querySelector('.popup').style.display = 'none';
     }, 200)
     document.querySelector('.popupBackground').classList.add('popHidden')
+    popupDisplayed = false
 }
