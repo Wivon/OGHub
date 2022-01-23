@@ -2,7 +2,8 @@
     {
         "require": "Discord\\Update.exe",
         "appName": "Discord",
-        "args": "--processStart Discord.exe"
+        "args": "--processStart Discord.exe",
+        "icon": "img/ext/discordX1024.png"
     }, {
         "require": "OGHub.exe",
         "appName": "OG Hub",
@@ -10,7 +11,8 @@
     }, {
         "require": "Spotify.exe",
         "appName": "Spotify",
-        "args": ""
+        "args": "",
+        "icon": "img/ext/spotifyX1024.png"
     }, {
         "require": "Figma.exe",
         "appName": "Figma",
@@ -19,5 +21,15 @@
         "require": "MinecraftLauncher.exe",
         "appName": "Minecraft",
         "args": ""
+    }, {
+        "require": "Code.exe",
+        "appName": "VS Code",
+        "args": "",
+        "icon": "img/ext/vscodeX1024.png"
+    }, {
+        "require": "chrome.exe",
+        "appName": "Chrome",
+        "args": "",
+        "icon": "img/ext/chromeX1024.png"
     }
 ]

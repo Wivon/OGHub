@@ -62,9 +62,9 @@ function CreateShortcut() {
 
     let newCard = document.createElement("div");
     // et lui donne un peu de contenu
-    newCard.innerHTML = `\n<div class="handle"></div><img src="img/logoX512.png" alt="app icon" class="icon"><h3>${newShortcutName}</h3>`
+    newCard.innerHTML = `\n<div class="handle"></div><img src="${document.querySelector('.containerANA img').src}" alt="app icon" class="icon"><h3>${newShortcutName}</h3>`
     newCard.classList.add('card')
-    newCard.setAttribute('onclick', 'launchExe(\'' + addslashes(SelectedExePath) + '\')')
+    newCard.setAttribute('onclick', 'launchExe(\'' + addslashes(SelectedExePath) + " " + document.querySelector('.newCardArgsInput').value + '\')')
     // add in HTML
     cardsContainer.appendChild(newCard);
 
@@ -117,15 +117,21 @@ function NextANA() {
     if (document.querySelector('.containerANA').classList.contains('stepOne')) {
         document.querySelector('.containerANA').classList.remove('stepOne')
         document.querySelector('.containerANA').classList.add('stepTwo')
-        
-        // args
+        document.querySelector('.containerANA .editor input.newCardNameInput').value = document.querySelector('.containerANA p').innerHTML
+
+        // args and auto name
         fetch('assets/args.json').then(res => {
             res.json().then(response => {
                 response.forEach(r => {
                     if (SelectedExePath.includes(r.require)) {
                         document.querySelector('.newCardArgsInput').value = r.args
-                        sendTempNotification("arguments for "+r.appName+" automatically added", 2000)
+                        sendTempNotification(r.appName+" has been recognized", 2000)
                         document.querySelector('.containerANA p').textContent = r.appName
+                        document.querySelector('.newCardNameInput').value = r.appName
+                        if(typeof r.icon !== 'undefined') {
+                            document.querySelector('.containerANA img').src = r.icon
+                            console.log('importing icon ('+r.icon+') for this app')
+                        }
                     }
                 })
         })})
@@ -136,7 +142,6 @@ function NextANA() {
 
         AnimateButtonText(document.querySelector('.ActionBtnANA'), CONTAINER_ANA_MAIN_BTN[1])
 
-        document.querySelector('.containerANA .editor input.newCardNameInput').value = document.querySelector('.containerANA p').innerHTML
         document.querySelector('.ActionBtnANA').classList.remove('selectExeBtn')
         AnimateButtonText(document.querySelector('.containerANA h2'), CONTAINER_ANA_TITLES[1])
     } else if (document.querySelector('.containerANA').classList.contains('stepTwo')) {
