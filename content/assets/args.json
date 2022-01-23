@@ -1,0 +1,11 @@
+[
+    {
+        "require": "Discord\\Update.exe",
+        "appName": "Discord",
+        "args": "--processStart Discord.exe"
+    }, {
+        "require": "OGHub.exe",
+        "appName": "OG Hub",
+        "args": "--selfStart true"
+    }
+]
