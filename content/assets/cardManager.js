@@ -117,6 +117,18 @@ function NextANA() {
     if (document.querySelector('.containerANA').classList.contains('stepOne')) {
         document.querySelector('.containerANA').classList.remove('stepOne')
         document.querySelector('.containerANA').classList.add('stepTwo')
+        
+        // args
+        fetch('assets/args.json').then(res => {
+            res.json().then(response => {
+                response.forEach(r => {
+                    if (SelectedExePath.includes(r.require)) {
+                        document.querySelector('.newCardArgsInput').value = r.args
+                        sendTempNotification("arguments for "+r.appName+" automatically added", 2000)
+                        document.querySelector('.containerANA p').textContent = r.appName
+                    }
+                })
+        })})
 
         document.querySelector('.containerANA h5').style.opacity = "0"
         document.querySelector('.containerANA h5').style.transform = "translateY(-5px)"
