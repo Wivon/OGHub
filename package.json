@@ -39,7 +39,6 @@
   "dependencies": {
     "electron-log": "^4.4.1",
     "electron-updater": "^4.3.9",
-    "exe-icon-extractor": "^1.0.8",
     "icon-extractor": "^1.0.3",
     "path": "^0.12.7"
   }
