@@ -7,5 +7,17 @@
         "require": "OGHub.exe",
         "appName": "OG Hub",
         "args": "--selfStart true"
+    }, {
+        "require": "Spotify.exe",
+        "appName": "Spotify",
+        "args": ""
+    }, {
+        "require": "Figma.exe",
+        "appName": "Figma",
+        "args": ""
+    }, {
+        "require": "MinecraftLauncher.exe",
+        "appName": "Minecraft",
+        "args": ""
     }
 ]
