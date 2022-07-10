@@ -1,5 +1,5 @@
-# OGHub
-Free up **SPACE** in your **Taskbar**
+# OGHub [DEAD]
+Free up **SPACE** in your **Taskbar** 
 
 ### [**feedback**](https://forms.gle/kfzZiQJyytgscY9R9)
 ### [**☕ buy me a coffee ☕**](https://paypal.me/LilianBrss)
